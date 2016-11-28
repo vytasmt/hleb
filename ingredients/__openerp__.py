@@ -12,6 +12,7 @@
         'account',
     ],
     'data': [
+        'views.xml',
     ],
     'installable': True,
 }

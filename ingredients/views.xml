@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="variants_template_tree_view_inherit" model="ir.ui.view">
+        <field name="name">variants.template.tree</field>
+        <field name="model">product.attribute.value</field>
+        <field name="inherit_id" ref="product.variants_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position='after'>
+                <field name='ingredients'/>
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>
