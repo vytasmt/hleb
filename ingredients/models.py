@@ -15,8 +15,16 @@ class ProductAttributeValue(models.Model):
     def pyth_met(self, *args, **kwargs):
         res = {'ingredients': ''}
         if kwargs.get('value_id', False):
-            val = self.env['product.attribute.value'].browse(int(kwargs.get('value_id', False)))
-            res['ingredients'] = val.ingredients
+            val = self.env['product.attribute.value'].browse(int(kwargs['value_id']))[0]
+            prod = self.env['product.product'].browse(int(kwargs['prod_id']))[0]
+            res['prod_ingred'] = prod.ingredients
+            res['val_ingred'] = val.ingredients
+        if kwargs.get('value_name', False):
+            val = self.env['product.attribute.value'].search([('name', '=', kwargs['value_name'].strip())])[0]
+            prod = self.env['product.product'].browse(int(kwargs['prod_id']))[0]
+            if len(val):
+                res['prod_ingred'] = prod.ingredients
+                res['val_ingred'] = val.ingredients
         return res
 
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="product_template_form_view">
+            <field name="name">product.template.product.baron.website.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="website_sale.product_template_form_view"/>
+             <field name="arch" type="xml">
+                 <group name="website" position="attributes">
+                    <attribute name="attrs">{}</attribute>
+                 </group>
+             </field>
+         </record>
+
+        <record model="ir.ui.view" id="product_normal_form_view">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="mode">primary</field>
+            <field eval="5" name="priority"/>
+            <field name="inherit_id" ref="website_sale.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <group name="website" position="inside">
+                    <field name="bestseller_ids" widget="many2many_tags"/>
+                </group>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_search_form_view">
+            <field name="name">product.product.baron.search</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view"/>
+            <field name="arch" type="xml">
+                <filter string='Product Template' position="after">
+                    <filter name="bestseller_group_by" string="Хит продаж" domain="[]" context="{'group_by' : 'bestseller_ids'}"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="bestseller_category_form_view" model="ir.ui.view">
+            <field name="name">Категория хитов продаж</field>
+            <field name="model">bestseller.category</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Категория хитов продаж" version="8.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="public"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="products_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+        <record id="bestseller_category_tree_view" model="ir.ui.view">
+            <field name="name">Категории Хитов Продаж</field>
+            <field name="model">bestseller.category</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Категории Хитов Продаж" version="8.0">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="public"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bestseller_category_action" model="ir.actions.act_window">
+            <field name="name">Категории Хитов Продаж</field>
+            <field name="res_model">bestseller.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem name="Категории Хитов Продаж" id="bestseller_category_menu" parent="base.menu_base_config" action="bestseller_category_action" groups='base.group_no_one' sequence="30"/>
+
+    </data>
+</openerp>

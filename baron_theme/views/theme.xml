@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <!-- <delete id="baron_theme.homepage_inherit" model="ir.ui.view"/> -->
+
+        <template id="theme" inherit_id="website.theme" name="Baron Theme">
+            <xpath expr="link[@href='/web/static/lib/bootstrap/css/bootstrap.css']" position="replace"/>
+        </template>
+
+        <template id="homepage_inherit" inherit_id="website.homepage">
+            <xpath expr="//div" position="replace">
+                <section class="para_large">
+                    <div class="carousel slide" id="myCarousel_1456252702493" style="">
+                        <div class="container" style="position: relative;">
+                            <div class="contact-block-slider">
+                                <a class="phone-slider" href="/page/tel:88126454545">+7 (812) 648-45-45</a>
+                                <a class="call-slider" href="/page/website.contactus">Заказать звонок</a>
+                                <a class="map-slider" href="/page/website.contactus">
+                                    <span>На карте</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="separation-slider"/>
+                        <ol class="carousel-indicators">
+                            <li class="active" data-slide-to="0" data-target="#myCarousel_1456252702493"/>
+                            <li data-slide-to="1" data-target="#myCarousel_1456252702493"/>
+                            <li data-slide-to="2" data-target="#myCarousel_1456252702493"/>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item oe_img_bg active" style="background-image: url(/baron_theme/static/src/img/slider1.jpg);">
+                                <div class="container">
+                                    <div class="row content">
+                                        <div class="carousel-content col-md-12 col-sm-12">
+                                            <h2>Производство и продажа<br/>
+                                            замороженных слоёных и хлебобулочных изделий,<br/>
+                                            мясо свинины и говядины
+                                            </h2>
+                                            <h3>В Санкт-Петербурге</h3>
+                                            <p>
+                                                <a class="btn btn-success " href="/shop">каталог продукции</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item oe_img_bg" style="background-image: url(/baron_theme/static/src/img/slider3.jpg);">
+                                <div class="container">
+                                    <div class="row content">
+                                        <div class="carousel-content col-md-12 col-sm-12">
+                                            <h2>Производство и продажа<br/>
+                                            замороженных слоёных и хлебобулочных изделий,<br/>
+                                            мясо свинины и говядины
+                                            </h2>
+                                            <h3>В Санкт-Петербурге</h3>
+                                            <p>
+                                                <a class="btn btn-success btn-large" href="/page/website.contactus">каталог продукции</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item oe_img_bg" style="background-image: url(/baron_theme/static/src/img/slider2.jpg);">
+                                <div class="container">
+                                    <div class="row content">
+                                        <div class="carousel-content col-md-12 col-sm-12 mb128">
+                                            <h2>Производство и продажа<br/>
+                                            замороженных слоёных и хлебобулочных изделий,<br/>
+                                            мясо свинины и говядины
+                                            </h2>
+                                            <h3>В Санкт-Петербурге</h3>
+                                            <p>
+                                                <a class="btn btn-success btn-large" href="/page/website.contactus">каталог продукции</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="go-to-down arrow"/>
+                        <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_1456252702493" href="#myCarousel_1456252702493" style="width: 10%">
+                            <i class="fa fa-chevron-left"/>
+                        </div>
+                        <div class="carousel-control right" data-slide="next" data-target="#myCarousel_1456252702493" href="#myCarousel_1456252702493" style="width: 10%">
+                            <i class="fa fa-chevron-right"/>
+                        </div>
+                    </div>
+                </section>
+                <section class="mb16 privilege-section">
+                    <div class="border"/>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center mt16">
+                                <h2>
+                                    <span class="title-section-separation left"/>
+                                    <span>Наши преимущества</span>
+                                    <span class="title-section-separation right"/>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt16">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege1.jpg"/>
+                                        <h3 class="mt0 mb0 col-md-9">Отсрочка оплаты</h3>
+                                        <p class="col-md-9">Комфортные условия для сотрудничества с отсрочкой оплаты до двух недель это не выдумка - мы действительно так работаем. Если вы дисциплинированый плательщик - одну неделю отсрочки на оплату заказа мы вам гарантируем. Две недели отсрочки могут быть предоставлены на индивидуальных условиях.
+                                            <span/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege2.jpg"/>
+                                        <h3 class="mt0 mb0 col-md-9">Бесплатная дегустация</h3>
+                                        <p class="col-md-9">Убедитесь лично, что Вас устраивают вкусовые качества продукции нашего собственного производства!
+                                            <br/>Составьте ассортимент интересующей вас продукции и передайте его нашему менеджеру. Наши специалисты с удовольствием проведут вместе с вами дегустацию нашей продукции.
+                                            <span/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege3.jpg"/>
+                                        <h3 class="mt0 mb0 col-md-9">Оперативная доставка</h3>
+                                        <p class="col-md-9">Ваш заказ будет доставлен на следующий день после заказа с понедельника по пятницу. Доставка осуществляется бесплатно.
+                                            <span/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt16 mb16">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege4.jpg"/>
+                                        <h3 class="mt0 mb0 col-md-9">Собственные производства</h3>
+                                        <p class="col-md-9">Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров.
+                                            <br/>Сейчас у нас собственная пекарня и мукомольное предприятие и мы работаем над расширением этого списка.
+                                            <span/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege5.jpg"/>
+                                        <h3 class="mt0 mb0 col-md-9">Высокое качество</h3>
+                                        <p class="col-md-9">Мы скрупулёзно следим за качеством поставляемой продукции, тщательно отбирая лучшее сырьё для производства, чтобы вы могли порадовать своих гостей еще более глубоким и насыщеным вкусом ваших блюд.
+                                            <span/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege6.jpg"/>
+                                        <h3 class="mt0 mb0 col-md-9">Минимальный заказ</h3>
+                                        <p class="col-md-9">У нас минимальная сумма заказа составляет    всего 1000 рублей! Сделайте заказ на сумму, превышающую 1000 р. и мы доставим его совершенно бесплатно!
+                                            <span/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="bestsellers" styte="display: none;"/>
+                <section class="slider-recall">
+                    <div class="container">
+                        <div class="row mt0 mb16">
+                            <div class="col-md-12 text-center">
+                                <h2 class="title-block">
+                                    <span class="title-section-separation left"/>
+                                    <span>Отзывы клиентов</span>
+                                    <span class="title-section-separation right"/>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="carousel slide mb32" id="myCarousel_1459696568601" style="height: 430px;">
+                            <ol class="carousel-indicators">
+                                <li class="active" data-slide-to="0" data-target="#myCarousel_1459696568601"/>
+                                <li data-slide-to="1" data-target="#myCarousel_1459696568601"/>
+                                <li data-slide-to="2" data-target="#myCarousel_1459696568601"/>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="container">
+                                        <div class="row content mt0 mb0">
+                                            <div class="col-md-6">
+                                                <div class="row mt0 mb0">
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row mt0 mb0">
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item oe_img_bg">
+                                    <div class="container">
+                                        <div class="row content mt0 mb0">
+                                            <div class="col-md-6">
+                                                <div class="row mt0 mb0">
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row mt0 mb0">
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item oe_img_bg">
+                                    <div class="container">
+                                        <div class="row content mt0 mb0">
+                                            <div class="col-md-6">
+                                                <div class="row mt0 mb0">
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row mt0 mb0">
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class="date-recall">10.12.2014</span>
+                                                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                                                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="about-company">
+                    <div class="container">
+                        <div class="row mt0">
+                            <div class="col-md-12">
+                                <div class="col-md-3">
+                                    <img class="img img-responsive" src="/baron_theme/static/src/img/about.jpg" style=""/>
+                                </div>
+                                <div class="col-md-9">
+                                    <h3>
+                                        <span>О компании</span>
+                                    </h3>
+                                    <p>Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров. Сейчас у нас собственная пекарня и мукомольное предприятие и мы работаем над расширением этого списка. Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров.    Сейчас у нас собственная пекарня и мукомольное предприятие и мы работаем над расширением этого списка. Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров. Сейчас у нас собственная пекарня и мукомольное предприятие и мы работаем над расширением этого списка. Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="stock">
+                    <div class="container">
+                        <div class="row mt0 mb16">
+                            <div class="col-md-12 text-center">
+                                <h2 class="title-block">
+                                    <span class="title-section-separation left"/>
+                                    <span>Акции</span>
+                                    <span class="title-section-separation right"/>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row mt0 mb16">
+                            <div class="col-md-6 text-center">
+                                <a href="#">
+                                    <img src="/baron_theme/static/src/img/stock1.jpg"/>
+                                </a>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <a href="#">
+                                    <img src="/baron_theme/static/src/img/stock2.jpg"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </xpath>
+
+        </template>
+
+        <template id="bestsellers" inherit_id="baron_theme.homepage_inherit" customize_show="True" active="True" name="Bestsellers">
+            <xpath expr="//section[@id='bestsellers']" position="replace">
+                <t t-set="bestsellers" t-value="website.get_bestsellers()"/>
+                <section t-if="bestsellers" class="mb32 slider-hit-sales">
+                    <t t-set="bestseller_categories" t-value="bestsellers.keys()"/>
+                    <t t-set="bestseller_categories_products" t-value="bestsellers.values()"/>
+                    <div class="container title">
+                        <div class="row">
+                            <div class="col-md-12 text-center mt16">
+                                <h2 class="title-block">
+                                    <span class="title-section-separation left"/>
+                                    <span>Хиты продаж</span>
+                                    <span class="title-section-separation right"/>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel slide mb32" id="myCarousel_bestsellers" style="">
+                        <t t-set="item1" t-value="0"/>
+                        <ul class="carousel-indicators">
+                            <t t-foreach="bestseller_categories" t-as="bestseller_category">
+                                <li t-if="bestsellers_bread" t-att-class="'active' if bestseller_category_first else ''" t-att-data-slide-to="item1 or '0'" data-target="#myCarousel_bestsellers" t-esc="bestseller_category"/>
+                                <t t-set="item1" t-value="item1+1"/>
+                            </t>
+                        </ul>
+                        <div class="carousel-inner">
+                            <t t-set="item2" t-value="1"/>
+                            <t t-foreach="bestseller_categories_products" t-as="bestseller_category_products">
+                                <div t-att-class="'item active' if bestseller_category_products_first else 'item'" style="background-image: url('/baron_theme/static/src/img/slider-goods1.jpg')">
+                                    <div class="container oe_website_sale">
+                                        <div class="row content catalog">
+                                            <t t-foreach="bestseller_category_products" t-as="product">
+                                                <t t-call="baron_theme.product_item_card_2"/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_bestsellers" href="#myCarousel_bestsellers" style="width: 10%">
+                            <i class="fa fa-chevron-left"/>
+                        </div>
+                        <div class="carousel-control right" data-slide="next" data-target="#myCarousel_bestsellers" href="#myCarousel_bestsellers" style="width: 10%">
+                            <i class="fa fa-chevron-right"/>
+                        </div>
+                    </div>
+                </section>
+            </xpath>
+        </template>
+
+        <template id="layout_inherit" inherit_id="website.layout">
+            <xpath expr="//html/head" position="inside">
+                <link rel="stylesheet" href="/baron_theme/static/src/css/bootstrap.css"/>
+                <link rel="stylesheet" href="/baron_theme/static/src/css/custom.css"/>
+            </xpath>
+            <xpath expr="//div[@id='wrapwrap']/header" position="attributes">
+                <attribute name="id">header-style-1</attribute>
+            </xpath>
+            <xpath expr="//div[@id='wrapwrap']/header/div/div/div[2]" position="replace">
+                <div class="collapse navbar-collapse navbar-top-collapse">
+                    <ul class="nav navbar-nav" id="top_menu">
+                        <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                            <t t-call="website.submenu"/>
+                        </t>
+                    </ul>
+                    <ul class="nav navbar-cabinet navbar-right dropup">
+                        <li class="dropdown" t-ignore="true" t-if="website.user_id != user_id">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <b>
+                                    <span t-esc="user_id.name"/>
+                                    <span class="caret"/>
+                                </b>
+                            </a>
+                            <ul class="dropdown-menu js_usermenu" role="menu">
+                                <li>
+                                    <a href="/web" role="menuitem">Кабинет</a>
+                                </li>
+                                <li class="divider"/>
+                                <li>
+                                    <a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li groups="base.group_public">
+                            <a t-attf-href="/web/login">
+                                <b>Sign in</b>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </xpath>
+            <xpath expr="//footer" position="replace">
+                <section class="map">
+                    <div class="background-map"/>
+                    <div class="container">
+                        <div class="row mt0">
+                            <div class="col-md-12 text-center">
+                                <h2 class="title-block">
+                                    <span class="title-section-separation left"/>
+                                    <span>Контакты</span>
+                                    <span class="title-section-separation right"/>
+                                </h2>
+                            </div>
+                            <img class="cook" src="/baron_theme/static/src/img/cook.png"/>
+                            <div class="map-contact">
+                                <div class="cont_arrow"></div>
+                                <div class="map_cont_logo">
+                                    <img src="/baron_theme/static/src/img/footer_logo.jpg"/>
+                                </div>
+                                <div class="map_cont_text">
+                                    <span class="title">ТД БАРОН</span>
+                                    <ul>
+                                        <li>
+                                            <i class="fa fa-map-marker"></i>
+                                            <span>Санкт-Петербург</span> 193019 Октябрьская набережная дом № 50, помещение 38-Н
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-phone"></i>
+                            +7 (812) 648-45-45
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-envelope-o"></i>
+                            info@tdbaron.ru
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="oe_structure" data-oe-id="776" data-oe-source-id="769" data-oe-xpath="/data/xpath/div" data-oe-model="ir.ui.view" data-oe-field="arch">
+                    <footer id="footer-style-1">
+                        <div class="container">
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12">
+                                <div class="widget">
+                                    <h3>Службы доставки</h3>
+                                    <ul>
+                                        <li>Твой курьер</li>
+                                        <li>DHL</li>
+                                        <li>Почта России</li>
+                                        <li>Автодор</li>
+                                        <li>Самовывоз</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12">
+                                <div class="widget">
+                                    <h3>Способы оплаты</h3>
+                                    <ul>
+                                        <li>Наличные</li>
+                                        <li>Безнал</li>
+                                        <li>Яндекс-Деньги</li>
+                                        <li>Qiwi</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+                                <div class="contact-block-slider">
+                                    <a class="phone-slider" href="/page/tel:88126454545">+7 (812) 648-45-45</a>
+                                    <br />
+                                    <a class="call-slider_2" href="/page/website.contactus">Заказать звонок</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <section id="copyrights" data-oe-id="1322" data-oe-source-id="263" data-oe-xpath="/data/xpath[4]/section" data-oe-model="ir.ui.view" data-oe-field="arch">
+                    <div class="container">
+                        <div class="container mt16 mb8">
+                            <div class="pull-left text-muted">
+                                <img src="/baron_theme/static/src/img/footer_logo.png"/>
+                                <p>Copyright © 2015 tdbaron.ru Все материалы являются собственностью интернет-издания.
+        Любое копирование запрещено без разрешения администрации.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </xpath>
+        </template>
+
+
+        <template id="website.layout_logo_show" inherit_id="website.layout" customize_show="True" name="Show Logo">
+            <xpath expr="//header//a[@class='navbar-brand']" position="replace">
+                <a href="/" class="navbar-brand logo">
+                    <img src="/baron_theme/static/src/img/logo.png"/>
+                </a>
+            </xpath>
+        </template>
+
+        <template id="product_item_card" name="Product item card">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <form action="/shop/cart/update" method="post">
+                    <div class="block-goods" t-att-data-publish="product.website_published and 'on' or 'off'">
+                        <a itemprop="url" t-att-href="keep('/shop/product/%s' % slug(product))">
+                            <t t-set="product_product" t-value="default_product(product)"/>
+                            <div class="item_card_title" style="">
+                                <span class="title" t-field="product.name"/>
+                            </div>
+                            <div class="category_img_cont">
+                                <img itemprop="image" t-att-src="website.image_url(product_product, 'image', None if product_image_big else '300x300')"/>
+                            </div>
+                            <t t-set="attribute_value_ids_price" t-value="get_attribute_value_ids(product, order=True)"/>
+                            <t t-set="website_price" t-value="get_website_price(product_product, attribute_value_ids_price)"/>
+                            <t t-set="product_pack_qty" t-value="default_product(product).get_default_pack_qty()[0]" />
+                            <p t-if="len(attribute_value_ids_price) &gt; 1">Стоимость:
+                                <span t-esc="website_price / product_pack_qty" t-esc-options='{
+                                   "widget": "monetary",
+                                   "display_currency": "user_id.partner_id.property_product_pricelist.currency_id",
+                                   "from_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                               }' /> за <span style="font-family: inherit;" t-field="product.uom_id"/>,<br/>
+                                Количество: <b><t t-esc="format_lang(product_pack_qty)" /></b> <span style="font-family: inherit;" t-field="product.uom_id"/>
+                            </p>
+                            <p t-if="len(attribute_value_ids_price) &lt;= 1">Стоимость:
+                                <span t-esc="website_price" t-esc-options='{
+                                   "widget": "monetary",
+                                   "display_currency": "user_id.partner_id.property_product_pricelist.currency_id",
+                                   "from_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                               }' /> за <span style="font-family: inherit;" t-field="product.uom_id"/>,<br/>
+                                Количество:
+                                <span><b>1</b></span> <span style="font-family: inherit;" t-field="product.uom_id"/>
+                            </p>
+                            <p t-if="product_product.lst_price - website_price &gt; 1" style="display: inline; padding-right: 10px;">
+                                <del class="text-danger" style="white-space: nowrap;"
+                                    t-esc="round(product_product.lst_price)" t-esc-options='{
+                                        "widget": "monetary",
+                                        "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                    }'
+                                />
+                            </p>
+                            <span class="price" t-esc="round(website_price)" style="display: inline;" t-esc-options='{
+                                   "widget": "monetary",
+                                   "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                               }'>
+                            </span>
+                            <span itemprop="price" style="display:none;" t-esc="website_price"/>
+                            <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
+                            <!-- <input name="product_id" t-att-value="product_product.id" type="hidden"/>
+
+                            <a class="add-to-card a-submit">Добавить в корзину</a> -->
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </template>
+
+        <template id="product_item_card_2" name="Modification Product item card">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <form action="/shop/cart/update" method="post">
+                    <div class="block-goods" t-att-data-publish="product.website_published and 'on' or 'off'">
+                        <a itemprop="url" t-att-href="keep('/shop/product/%s' % slug(product.product_tmpl_id))">
+                            <t t-set="product_template" t-value="get_product_template_with_context(product)"/>
+                            <div class="item_card_title" style="">
+                                <span class="title" t-field="product.name"/>
+                            </div>
+                            <div class="category_img_cont">
+                                <img  itemprop="image" t-att-src="website.image_url(product, 'image', None if product_image_big else '300x300')"/>
+                            </div>
+                            <t t-set="attribute_value_ids_price" t-value="get_attribute_value_ids(product_template, order=True)"/>
+                            <t t-set="website_price" t-value="get_website_price(product, attribute_value_ids_price)"/>
+                            <t t-set="product_pack_qty" t-value="product.get_default_pack_qty()[0]" />
+                            <p t-if="len(attribute_value_ids_price) &gt; 1">Стоимость:
+                                <span t-esc="website_price / product_pack_qty" t-esc-options='{
+                                   "widget": "monetary",
+                                   "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                               }' /> за <span style="font-weight: initial; font-family: inherit;" t-field="product.uom_id"/>,<br/>
+                                Количество: <b><t t-esc="format_lang(product_pack_qty)" /></b> <span style="font-weight: initial; font-family: inherit;" t-field="product.uom_id"/>
+                            </p>
+                            <p t-if="len(attribute_value_ids_price) &lt;= 1">Стоимость:
+                                <span t-esc="round(website_price)" t-esc-options='{
+                                   "widget": "monetary",
+                                   "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                               }' /> за <span style="font-family: inherit; font-weight: initial;" t-field="product.uom_id"/>,<br/>
+                                Количество:
+                                <span><b>1</b></span> <span style="font-family: inherit; font-weight: initial;" t-field="product.uom_id"/>
+                            </p>
+                            <p t-if="product.lst_price - website_price &gt; 1" style="display: inline; padding-right: 10px;">
+                                <del class="text-danger" style="white-space: nowrap;"
+                                    t-esc="round(product.lst_price)" t-esc-options='{
+                                        "widget": "monetary",
+                                        "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                    }'
+                                />
+                            </p>
+                            <span class="price" t-esc="round(website_price,1)" style="display: inline;" t-esc-options='{
+                                   "widget": "monetary",
+                                   "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                               }'>
+                            </span>
+                            <span itemprop="price" style="display:none;" t-esc="website_price"/>
+                            <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
+                            <!-- <input name="product_id" t-att-value="product.id" type="hidden"/>
+
+                            <a class="add-to-card a-submit">Добавить в корзину</a> -->
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </template>
+
+        <template id="products_item" inherit_id="website_sale.products_item" name="Product item">
+            <xpath expr="//form[@action='/shop/cart/update']" position="replace">
+                <t t-call="baron_theme.product_item_card"/>
+            </xpath>
+        </template>
+
+        <template id="website_sale.products_add_to_cart" inherit_id="baron_theme.product_item_card" active="False" customize_show="True" name="Add to Cart Baron">
+            <xpath expr="//div[@class='item_card_title']" position="inside">
+                <t t-if="product_product.attributes_values_string">
+                    <span t-esc="product_product.attributes_values_string[1:-1]" style="color: #5b90f1; padding-top: 5px;"/>
+                </t>
+            </xpath>
+            <xpath expr="//div[@class='block-goods']/a" position="inside">
+                <input name="product_id" t-att-value="product_product.id" type="hidden"/>
+                <a class="add-to-card a-submit">Добавить в корзину</a>
+            </xpath>
+        </template>
+
+        <template id="products_add_to_cart_in_cart" inherit_id="baron_theme.product_item_card_2" active="False" customize_show="True" name="Add to Cart Baron (in cart)">
+            <xpath expr="//div[@class='item_card_title']" position="inside">
+                <t t-if="product.attributes_values_string">
+                    <span t-esc="product.attributes_values_string[1:-1]" style="color: #5b90f1; padding-top: 5px;"/>
+                </t>
+            </xpath>
+            <xpath expr="//div[@class='block-goods']/a" position="inside">
+                <input name="product_id" t-att-value="product.id" type="hidden"/>
+                <a class="add-to-card a-submit">Добавить в корзину</a>
+            </xpath>
+        </template>
+
+        <template id="products" inherit_id="website_sale.products" name="Products">
+            <xpath expr="//t[@t-call='website.layout']" position="replace">
+                <t t-call="website.layout">
+                    <t t-set="additional_title">Shop</t>
+                    <section class="inner_header" style="background-image: url(/baron_theme/static/src/img/bc_inner_1.jpg);">
+                        <div class="vint_border"></div>
+                        <div class="container">
+                            <div class="row">
+                                <a href="javascript:void(0)" class="logo-big"></a>
+                                <div class="contact-block-slider">
+                                    <a class="phone-slider" href="/page/tel:88126454545">+7 (812) 648-45-45</a>
+                                    <a class="call-slider" href="/page/website.contactus">Заказать звонок</a>
+                                    <a class="map-slider" href="/page/website.contactus">
+                                        <span>На карте</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div id="wrap" class="js_sale">
+                        <div class="oe_structure"/>
+                        <div class="container oe_website_sale">
+                            <h2>
+                                <span class="title-section-separation left"></span>
+                                <span>Товары</span>
+                                <span class="title-section-separation right"></span>
+                            </h2>
+                            <div id="products_grid_before" class="col-lg-6 col-md-6 col-sm-6 products_pager"/>
+                            <div class="col-lg-6 col-md-6 col-sm-6 products_pager">
+                                <div class="row" style="width: 100%;">
+                                    <t t-call="website_sale.search">
+                                        <t t-set="search_class">pagination form-inline col-md-6</t>
+                                    </t>
+                                    <t t-call="website.pager"/>
+                                </div>
+                            </div>
+                            <div class="clr"></div>
+                            <div class="row content catalog">
+                                <t t-foreach="products" t-as="product">
+                                    <t t-call="website_sale.products_item"/>
+                                </t>
+                            </div>
+
+                            <t t-if="not products">
+                                <div class="text-center text-muted">
+                                    <h3 class="css_editable_display">В этой категории товары отсутствуют.</h3>
+                                    <p groups="base.group_sale_manager">Use the
+                                        <i>'Content'</i> top menu to create a new product.
+                                    </p>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="products_pager">
+                        <t t-call="website.pager"/>
+                    </div>
+                <div class="oe_structure mb32"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="categories_recursive" name="Product Categories">
+        <li t-att-class="'active' if c.id == int(category or 0) else ''">
+            <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-field="c.name"/>
+            <ul t-if="c.child_id" class="nav nav-pills nav-stacked nav-hierarchy">
+                <t t-foreach="c.child_id" t-as="c">
+                    <t t-call="baron_theme.categories_recursive"/>
+                </t>
+            </ul>
+        </li>
+    </template>
+
+    <template id="website_sale.products_categories" inherit_id="baron_theme.products" active="False" customize_show="True" name="Category list Baron">
+        <xpath expr="//div[@id='products_grid_before']" position="inside">
+            <ul class="nav nav-pills nav-stacked mt16">
+                <li t-att-class=" '' if category else 'active' "><a t-att-href="keep('/shop',category=0)">All Products</a></li>
+                <t t-foreach="categories" t-as="c">
+                    <t t-call="baron_theme.categories_recursive"/>
+                </t>
+            </ul>
+        </xpath>
+    </template>
+
+    <template id="product" inherit_id="website_sale.product" name="Product">
+        <xpath expr="//t[@t-call='website.layout']" position="replace">
+            <t t-call="website.layout">
+                <t t-set="additional_title" t-value="product.name"/>
+                <section class="inner_header" style="background-image: url(/baron_theme/static/src/img/bc_inner_2.jpg);">
+                    <div class="vint_border"></div>
+                    <div class="container">
+                        <div class="row">
+                            <a href="javascript:void(0)" class="logo-big"></a>
+                            <div class="contact-block-slider">
+                                <a class="phone-slider">+7 (812) 648-45-45</a>
+                                <a class="call-slider" href="/page/website.contactus">Заказать звонок</a>
+                                <a class="map-slider" href="/page/website.contactus">
+                                    <span>На карте</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="container mt8">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <ol class="breadcrumb2">
+                                <li><u><a t-att-href="keep(category=0)" onclick="history.go(-1); return false;">Products</a></u></li>
+                                <li t-if="category"><u><a t-att-href="keep('/shop/category/%s' % slug(category), category=0)" t-field="category.name"/></u></li>
+                                <!--<li class="active"><span t-field="product.name"/></li>-->
+                            </ol>
+                        </div>
+                        <div class="col-sm-3">
+                            <t t-call="website_sale.search"><t t-set="search_class">pull-right</t></t>
+                        </div>
+                        <div class="col-sm-4" groups="base.group_sale_manager">
+                            <t t-call="website.publish_management">
+                                <t t-set="object" t-value="product"/>
+                                <t t-set="publish_edit" t-value="True"/>
+                                <t t-set="action" t-value="'product.product_template_action'"/>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+                <div class="container category">
+                    <div class="row mt0 mb16">
+                        <div class="col-md-12 text-center">
+                            <h1 itemprop="name" t-field="product.name" class="title-block" style="margin-top: 0px; margin-bottom: 0px;">
+                                <span class="title-section-separation left"></span>
+                                <span>Product Name</span>
+                                <span class="title-section-separation right"></span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div itemscope="itemscope" itemtype="http://schema.org/Product" id="wrap" class="js_sale">
+                    <section t-attf-class="container mt8 oe_website_sale #{(compute_currency(product.lst_price) - product.price) &gt; 0.1 and 'discount'}" id="product_detail">
+                        <div class="row">
+                            <div class="bc_wh">
+                                <div class="col-sm-6 col-md-6 col-lg-6 big_image hidden-xs">
+                                    <span class="img img-responsive" itemprop="image" t-field="product.image" t-field-options='{"widget": "image", "class": "product_detail_img"}'/>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <span itemprop="url" style="display:none;" t-esc="'/shop/product/%s' % slug(product)"/>
+                                    <form t-att-action="keep('/shop/cart/update')" class="js_add_cart_variants" method="POST">
+                                        <div class="js_product">
+                                            <t t-placeholder="select">
+                                                <input type="hidden" class="product_id" name="product_id" t-att-value="int(product.product_variant_ids[0]) if len(product.product_variant_ids) == 1 else '0'"/>
+                                                <t t-call="baron_theme.custom_variants">
+                                                    <t t-set="ul_class" t-value="'nav-stacked'"/>
+                                                </t>
+                                            </t>
+                                            <t t-call="website_sale.product_price"/>
+                                            <p t-if="len(product.product_variant_ids) &gt; 1" class="css_not_available_msg bg-danger" style="padding: 15px;">Product not available</p>
+                                            <p style="color: #636363; padding-bottom: 10px;">Выбрано:
+                                                <span class="variants_result_string"/>
+                                            </p>
+                                            <span style="color: #636363; padding-bottom: 0px;">СОСТАВ:
+                                            </span>
+                                            <hr style="margin-top: 0px; margin-bottom: 0px;">
+                                                <p style="color: #636363; padding-bottom: 0px;"
+                                                   class="prod_ingred"/>
+                                                <p style="color: #636363; padding-bottom: 20px;"
+                                                   class="val_ingred"/>
+                                            </hr>
+
+
+                                            <a id="add_to_cart" class="btn btn-primary btn-lg mt8 js_check_product a-submit" href="#">Add to Cart</a>
+                                        </div>
+                                    </form>
+                                    <hr t-if="product.description_sale"/>
+                                    <div>
+                                        <p t-field="product.description_sale" class="text-muted"/>
+                                    </div>
+                                    <hr/>
+                                    <p class="text-muted">Оперативное исполнение заказов
+                                        <br/>
+        Гарантия качества продукции
+                                    </p>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs" style="padding-right: 0; padding-left: 0; padding-top: 0;">
+                                    <div itemprop="description" t-field="product.website_description" class="oe_structure mt16" id="product_full_description"/>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <div id="alternative_products"/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="recommended_products" inherit_id="baron_theme.product" customize_show="True" name="Alternative Products Baron">
+        <xpath expr="//div[@id='alternative_products']" position="after">
+            <section class="oe_structure" t-if="product.alternative_product_ids">
+                <div class="container category related">
+                    <div class="row mt0 mb16">
+                        <div class="col-md-12 text-center">
+                            <h2 class="title-block">
+                                <span class="title-section-separation left"></span>
+                                <span>Обратите внимание на эти товары:</span>
+                                <span class="title-section-separation right"></span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class='row catalog'>
+                        <t t-foreach="product.alternative_product_ids" t-as="product">
+                            <t t-call="baron_theme.product_item_card"/>
+                        </t>
+                    </div>
+                </div>
+            </section>
+        </xpath>
+    </template>
+
+    <template id="header" inherit_id="baron_theme.layout_inherit" name="Header Shop My Cart Link">
+        <xpath expr="//ul[@id='top_menu']" position="inside">
+            <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+            <li t-att-class="'' if website_sale_order and website_sale_order.cart_quantity else 'hidden'">
+                <a href="/shop/cart">
+                    <i class="fa fa-shopping-cart"></i>
+                    My cart <sup t-attf-class="my_cart_quantity label label-primary" t-esc="website_sale_order and website_sale_order.cart_quantity or ''"/>
+                </a>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="minimal_total_alert" name="Minimal Total Alert">
+        <div id="minimal_total_alert">
+            <t t-if="minimal_order_price &lt;= website_sale_order.amount_total">
+                <a t-if="not optional_products and website_sale_order and website_sale_order.website_order_line" class="btn btn-primary pull-right mb32" href="/shop/checkout">
+                    <span class="hidden-xs">Оформить заказ</span>
+                    <span class="visible-xs-inline">Далее</span>
+                    <span class="fa fa-long-arrow-right"/>
+                </a>
+            </t>
+            <t t-if="minimal_order_price &gt; website_sale_order.amount_total">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-8">
+                        <div class="alert alert-danger">
+                            Сумма заказа должна быть не меньше <span t-esc="format_lang(minimal_order_price)" style="white-space: nowrap;"/>!
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </template>
+
+
+    <template id="cart" inherit_id="website_sale.cart" name="Shopping Cart" >
+        <xpath expr="//t[@t-call='website.layout']" position="replace">
+            <t t-call="website.layout">
+                <section class="inner_header" style="background-image: url(/baron_theme/static/src/img/bc_inner_1.jpg);">
+                    <div class="vint_border"></div>
+                    <div class="container oe_website_sale">
+                        <div class="row">
+                            <a href="javascript:void(0)" class="logo-big"></a>
+                            <div class="contact-block-slider">
+                                <a class="phone-slider">+7 (812) 648-45-45</a>
+                                <a class="call-slider" href="/page/website.contactus">Заказать звонок</a>
+                                <a class="map-slider" href="/page/website.contactus">
+                                    <span>На карте</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div id="wrap">
+                    <div class="container oe_website_sale">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-9 oe_cart">
+                                <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+                                <div t-if="not website_sale_order or not website_sale_order.website_order_line" class="well well-lg">Your cart is empty!</div>
+                                <div class="container oe_website_sale">
+                                    <h1>
+                                        <span class="title-section-separation left"></span>
+                                        <span>Корзина</span>
+                                        <span class="title-section-separation right"></span>
+                                    </h1>
+                                    <section name="conditions" class="oe_structure">
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
+                                                    <i class="fa fa-rub" aria-hidden="true"/>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                    <ul class="list-unstyled-cart mb32">
+                                                        <li>30-дневная гарантия возврата денег</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
+                                                    <i class="fa fa-envelope" aria-hidden="true"/>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                    <ul class="list-unstyled-cart mb32">
+                                                        <li>Счет высылается по электронной почте</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
+                                                    <i class="fa fa-lock" aria-hidden="true"/>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                    <ul class="list-unstyled-cart mb32">
+                                                        <li>256-бит шифрование</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
+                                                    <i class="fa fa-credit-card" aria-hidden="true"/>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                    <ul class="list-unstyled-cart mb32">
+                                                        <li>Обработка Ogone</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section class="oe_structure basket_main">
+                                        <div class="row basket title">
+                                            <div class="col-lg-7 col-md-7 col-sm-5 col-xs-4">
+                                                <h4>Товар</h4>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                                                <h4>Цена</h4>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                                                <h4>Количество</h4>
+                                            </div>
+                                        </div>
+                                        <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+                                        <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                                            <div class="row basket tovar">
+                                                <div class="col-lg-7 col-md-7 col-sm-5">
+                                                    <div class="row basket_col-1">
+                                                        <div class="col-lg-5 col-md-5 col-sm-12">
+                                                            <div>
+                                                                <a t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }"><h3 itemprop="name" t-field="line.product_id.name"/></a>
+                                                            </div>
+                                                            <t t-if="line.product_id.attributes_values_string">
+                                                                <div class="text-muted"  t-esc="line.product_id.attributes_values_string"/>
+                                                            </t>
+                                                        </div>
+                                                        <div class="col-lg-7 col-md-6 col-sm-12 img_basket">
+                                                            <span t-field="line.product_id.image" t-field-options='{"widget": "image", "class": "img-rounded", "style": "width: 100%;"}'/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-4">
+                                                    <div class="row basket_col-1">
+                                                        <div class="text-center">
+                                                            <t t-if="(compute_currency(line.product_id.lst_price) - line.price_unit) &gt; 1">
+                                                                <del class="text-danger" style="white-space: nowrap;"
+                                                                    t-field="line.product_id.lst_price" t-field-options='{
+                                                                        "widget": "monetary",
+                                                                        "from_currency": "line.company_id.currency_id",
+                                                                        "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                                                    }'/>&amp;nbsp;
+                                                            </t>
+                                                        </div>
+                                                        <div class="price">
+                                                            <span t-field="line.price_unit" style="white-space: nowrap;" t-field-options='{
+                                                                 "widget": "monetary",
+                                                                 "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                                            }'/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-3">
+                                                    <div class="css_quantity input-group oe_website_spinner">
+                                                        <span class="input-group-addon">
+                                                            <a t-attf-href="#" class="mb8 js_add_cart_json" data-no-instant="">
+                                                                <i class="fa fa-minus"/>
+                                                            </a>
+                                                        </span>
+                                                        <input type="text" class="js_quantity form-control" t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id" t-att-value="int(line.product_uom_qty)"/>
+                                                        <span class="input-group-addon">
+                                                            <a t-attf-href="#" class="mb8 float_left js_add_cart_json" data-no-instant="">
+                                                                <i class="fa fa-plus"/>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </section>
+                                    <div class="col-xs-12 col-sm-6 text-muted" id="right_column">
+                                    </div>
+                                    <t t-call="website_sale.total"/>
+                                    <div class="clearfix"/>
+                                    <t t-call="baron_theme.minimal_total_alert"/>
+                                    <div class="oe_structure"/>
+                                </div>
+                                <table id='cart_products' class="hidden"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+                <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_1459091489617" href="#myCarousel_1459091489617" style="width: 10%">
+                    <i class="fa fa-chevron-left"/>
+                </div>
+                <div class="carousel-control right" data-slide="next" data-target="#myCarousel_1459091489617" href="#myCarousel_1459091489617" style="width: 10%">
+                    <i class="fa fa-chevron-right"/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="website_sale.reduction_code" inherit_id="baron_theme.cart" active="False" customize_show="True" name="Coupon Code">
+        <xpath expr="//div[@id='right_column']" position="inside">
+            <h3 style="font-size: 24px; padding: 0px; margin: 0px;">Купон</h3>
+            <p>
+                Есть купон? Заполните это поле.
+            </p>
+            <form t-if="website_sale_order and website_sale_order.website_order_line" action="/shop/pricelist" method="post" class="mb32">
+                <div class="input-group">
+                    <input name="promo" class='form-control-primary' type="text" placeholder="code..." t-att-value="website_sale_order.pricelist_id.code or ''"/>
+                    <div class="input-group-btn">
+                        <a class="btn btn-primary a-submit">Применить</a>
+                    </div>
+                </div>
+            </form>
+        </xpath>
+    </template>
+
+    <template id="website_sale.suggested_products_list" inherit_id="baron_theme.cart" customize_show="True" name="Suggested Products in my cart Baron">
+        <xpath expr="//section[@class='oe_structure basket_main']" position="after">
+            <section t-if="suggested_products" class="mb32 slider-hit-sales oe_website_sale cart" style="margin-bottom: 0px !important;">
+                <div class="container title">
+                    <div class="row">
+                        <div class="col-md-12 text-center mt16">
+                            <h2 class="title-block">
+                                <span class="title-section-separation left visible-lg"/>
+                                <span>Обратите внимание и на эти товары:</span>
+                                <span class="title-section-separation right visible-lg"/>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel slide mb32 visible-lg visible-md" id="myCarousel_suggested_products_lg_md" style="margin-bottom: 0px !important;">
+                    <div class="carousel-inner">
+                        <t t-set="product_list_lg_md" t-value="drop_suggested_products(suggested_products,4)"/>
+                        <t t-foreach="product_list_lg_md" t-as="products_set">
+                            <div t-att-class="'item active' if products_set_first else 'item'">
+                                <div class="container">
+                                    <div class="row catalog" style="padding: 0 30px;">
+                                        <t t-foreach="products_set" t-as="product">
+                                            <t t-call="baron_theme.product_item_card_2"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_suggested_products_lg_md" href="#myCarousel_suggested_products_lg_md" style="width: 9%">
+                        <i class="fa fa-chevron-left" style="font-size: 14px;"/>
+                    </div>
+                    <div class="carousel-control right" data-slide="next" data-target="#myCarousel_suggested_products_lg_md" href="#myCarousel_suggested_products_lg_md" style="width: 9%">
+                        <i class="fa fa-chevron-right" style="font-size: 14px;"/>
+                    </div>
+                </div>
+                <div class="carousel slide mb32 visible-xs visible-sm" id="myCarousel_suggested_products_xs" style="margin-bottom: 0px !important;">
+                    <div class="carousel-inner">
+                        <t t-set="product_list_xs" t-value="drop_suggested_products(suggested_products,1)"/>
+                        <t t-foreach="product_list_xs" t-as="products_set">
+                            <div t-att-class="'item active' if products_set_first else 'item'">
+                                <div class="container">
+                                    <div class="row catalog" style="padding: 0 20px;">
+                                        <t t-foreach="products_set" t-as="product">
+                                            <t t-call="baron_theme.product_item_card_2"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_suggested_products_xs" href="#myCarousel_suggested_products_xs" style="left: 5%;width: 30%;">
+                        <i class="fa fa-chevron-left"/>
+                    </div>
+                    <div class="carousel-control right" data-slide="next" data-target="#myCarousel_suggested_products_xs" href="#myCarousel_suggested_products_xs" style="right: 5%;width: 30%">
+                        <i class="fa fa-chevron-right"/>
+                    </div>
+                </div>
+            </section>
+          </xpath>
+    </template>
+
+    <template id="website_sale.continue_shopping" inherit_id="baron_theme.minimal_total_alert" customize_show="True" name="Continue Shopping Button">
+        <xpath expr="//div[@id='minimal_total_alert']" position="before">
+            <a href="/shop" class="btn btn-default2 mb32"><span class="fa fa-long-arrow-left"/> <span class="hidden-xs">Continue Shopping</span><span class="visible-xs-inline">Continue</span></a>
+        </xpath>
+    </template>
+
+    <template id="checkout" inherit_id="website_sale.checkout">
+        <xpath expr="//a[@class='btn btn-default mb32']" position="attributes">
+            <attribute name="class">btn btn-default2 mb32</attribute>
+        </xpath>
+        <xpath expr="//div[@class='col-md-8 oe_cart']/div[@class='clearfix']" position="attributes">
+            <attribute name="style">padding-top: 120px;</attribute>
+        </xpath>
+        <xpath expr="//div[@class='col-lg-offset-1 col-lg-3 col-md-3 text-muted']" position="replace">
+            <div class="col-lg-offset-1 col-lg-3 col-md-3 text-muted">
+
+            </div>
+        </xpath>
+        <xpath expr="//select[@name='shipping_id']" position="after">
+            <t t-if="delivery_periods">
+                <div t-attf-class="form-group">
+                    <label class="control-label" for="delivery_period_id">Периоды доставки</label>
+                    <select name="delivery_period_id" class="form-control">
+                        <t t-foreach="delivery_periods" t-as="period">
+                           <option t-att-value="period.id" t-att-selected="period.id == checkout.get('delivery_period_id')"><t t-esc="period.name"/></option>
+                        </t>
+                    </select>
+                </div>
+            </t>
+            <div t-attf-class="form-group">
+                <label class="control-label" for="comment">Дополнительная информация</label>
+                <input type="text" name="comment" class="form-control" t-att-value="checkout.get('comment')"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[@class='col-lg-offset-1 col-lg-3 col-md-3 text-muted']" position="replace">
+            <div class="col-lg-offset-1 col-lg-3 col-md-3 text-muted">
+                <h3 class="page-header mt16">Your Order
+                    <a style="color: #5B90F1 !important;" href="/shop/cart">
+                        <small>
+                            <span style="color: #5B90F1 !important;" class="fa fa-arrow-right"/>
+                        </small> change
+                    </a>
+                </h3>
+                <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+                <div class="row" style="margin-top: 0px;">
+                    <div class="col-sm-6 text-right">Subtotal: </div>
+                    <div class="col-sm-6">
+                        <span style="white-space: nowrap;" t-field="website_sale_order.amount_untaxed" t-field-options='{
+                            "widget": "monetary",
+                            "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                            }'/>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 0px;">
+                    <div class="col-sm-6 text-right">Taxes: </div>
+                    <div class="col-sm-6">
+                        <span style="white-space: nowrap;" t-field="website_sale_order.amount_tax" t-field-options='{
+                            "widget": "monetary",
+                            "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                            }'/>
+                    </div>
+                </div>
+                <hr style="margin-top: 0px; margin-bottom: 0px; border: 0; border-top: 1px solid rgba(6, 0, 0, 0.43);"/>
+                <div class="row" style="margin-top: 0px;">
+                    <div class="col-sm-6 text-right">Total To Pay: </div>
+                    <div class="col-sm-6">
+                        <!-- <h4> -->
+                            <span style="white-space: nowrap; color: black;" t-field="website_sale_order.amount_total" t-field-options='{
+                                "widget": "monetary",
+                                "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                }'/>
+                        <!-- </h4> -->
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <!-- <xpath expr="//ul[@class='wizard pull-right']" position="replace"/> -->
+    </template>
+
+
+    <template id="assets_frontend" inherit_id="website_sale.assets_frontend">
+        <xpath expr="." position="inside">
+                <script src="/baron_theme/static/src/js/variants.js"></script>
+        </xpath>
+    </template>
+
+    <template id="custom_variants">
+        <t t-set="attribute_value_ids" t-value="get_attribute_value_ids(product)"/>
+        <div t-if="product.attribute_line_ids" t-attf-class="list-unstyled js_add_cart_variants #{ul_class}" t-att-data-attribute_value_ids="attribute_value_ids">
+            <ul class="main-variants-nav">
+                <t t-foreach="product.attribute_line_ids" t-as="variant_id">
+                    <li t-att-data-order="variant_id_index + 1">
+                        <strong t-field="variant_id.attribute_id.name"/>
+                    </li>
+                </t>
+            </ul>
+            <t t-foreach="product.attribute_line_ids" t-as="variant_id">
+                <t t-if="variant_id.attribute_id.type in ['select', 'hidden']">
+                    <select class="form-control js_variant_change" t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)">
+                        <t t-foreach="variant_id.value_ids" t-as="value_id">
+                            <option t-att-value="value_id.id" t-att-pack="value_id.pack_qty">
+                                <span t-field="value_id.name"/>
+                                <t t-if="value_id.pack_qty">
+                                    <span> x <span t-field="value_id.pack_qty"/> Шт.</span>
+                                </t>
+                                <span t-if="value_id.price_extra">
+                                    <t t-esc="value_id.price_extra > 0 and '+' or ''"/><span t-field="value_id.price_extra" style="white-space: nowrap;" t-field-options='{
+                                           "widget": "monetary",
+                                            "from_currency": "product.company_id.currency_id",
+                                           "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                       }'/>
+                                </span>
+                            </option>
+                        </t>
+                    </select>
+                </t>
+
+                <t t-if="variant_id.attribute_id.type == 'radio'">
+                    <ul class="list-unstyled" t-att-style=" 'visibility: hidden;position: absolute;' if (variant_id_index > 0) else '' " t-att-data-order="variant_id_index + 1">
+                        <t t-set="inc" t-value="0"/>
+                        <t t-foreach="variant_id.value_ids" t-as="value_id">
+                            <li t-if="value_id.product_ids" class="form-group js_attribute_value" style="margin: 0;">
+                                <label class="control-label" style="margin: 0px;">
+                                    <input type="radio" class="js_variant_change" t-att-checked="'checked' if not inc else ''" t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)" t-att-value="value_id.id" style="vertical-align: top; margin-right: 10px;" t-att-pack="value_id.pack_qty" />
+                                    <span t-field="value_id.name"/>
+                                    <t t-if="value_id.pack_qty">
+                                        <span> x <span t-field="value_id.pack_qty"/> Шт.</span>
+                                    </t>
+                                    <span class="badge" t-if="value_id.price_extra">
+                                        <t t-esc="value_id.price_extra > 0 and '+' or ''"/><span t-field="value_id.price_extra" style="white-space: nowrap;" t-field-options='{
+                                                "widget": "monetary",
+                                                "from_currency": "product.company_id.currency_id",
+                                                "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                            }'/>
+                                    </span>
+                                </label>
+                            </li>
+                            <t t-set="inc" t-value="inc+1"/>
+                        </t>
+                    </ul>
+                </t>
+
+                <t t-if="variant_id.attribute_id.type == 'color'">
+                    <ul class="list-inline">
+                        <t t-set="inc" t-value="0"/>
+                        <li t-foreach="variant_id.value_ids" t-as="value_id">
+                            <label t-attf-style="background-color:#{value_id.color or value_id.name}"
+                                t-attf-class="css_attribute_color #{'active' if not inc else ''}">
+                            <input type="radio" class="js_variant_change"
+                                t-att-checked="'checked' if not inc else ''"
+                                t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)"
+                                t-att-value="value_id.id"
+                                t-att-title="value_id.name"/>
+                            </label>
+                            <t t-set="inc" t-value="inc+1"/>
+                        </li>
+                    </ul>
+                </t>
+            </t>
+        </div>
+    </template>
+
+    <template id="product_attributes_baron" inherit_id="website_sale.product_attributes">
+        <xpath expr="//span[@t-field='variant_id.value_ids[0].name']" position="attributes">
+            <attribute name="t-att-pack">variant_id.value_ids[0].pack_qty</attribute>
+            <attribute name="class">product_pack_variant</attribute>
+        </xpath>
+        <xpath expr="//span[@t-field='variant_id.value_ids[0].name']" position="after">
+            <span> <span t-field="variant_id.value_ids[0].pack_qty"/> <span t-field="product.uom_id"/></span>
+        </xpath>
+    </template>
+
+    </data>
+</openerp>
