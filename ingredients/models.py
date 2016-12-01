@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 class ProductAttributeValue(models.Model):
     _inherit = 'product.attribute.value'
 
-    ingredients = fields.Char(string="Состав", default = 'Состав не определен')
+    ingredients = fields.Char(string=u"Состав", default=u'Состав не определен')
 
     @api.model
     def pyth_met(self, *args, **kwargs):
@@ -31,4 +31,4 @@ class ProductAttributeValue(models.Model):
 class ProductProduct(models.Model):
     _inherit = 'product.template'
 
-    ingredients = fields.Text(string="Состав", default = 'Состав не определен')
+    ingredients = fields.Text(string=u"Состав", default=u'Состав не определен')
