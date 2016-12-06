@@ -550,3 +550,21 @@ class baron_website_sale(website_sale):
         product = registry.get('product.product').browse(cr, uid, int(product_id))
         back_to_product_href = "/shop/product/" + slug(product.product_tmpl_id)
         return request.redirect(back_to_product_href)
+
+    @http.route('/shop/ingredients', type='json', auth="public", website=True)
+    def pyth_met(self, *args, **kwargs):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+        res = {'ingredients': ''}
+        if kwargs.get('value_id', False):
+            val = registry.get('product.attribute.value').browse(cr, uid, int(kwargs['value_id']))[0]
+            prod = registry.get('product.product').browse(cr, uid, int(kwargs['prod_id']))[0]
+            res['prod_ingred'] = prod.ingredients
+            res['val_ingred'] = val.ingredients
+        if kwargs.get('value_name', False):
+            val_id = registry.get('product.attribute.value').search(cr, uid, [('name', '=', kwargs['value_name'].strip())])[0]
+            val = registry.get('product.attribute.value').browse(cr, uid, val_id)
+            prod = registry.get('product.product').browse(cr, uid, int(kwargs['prod_id']))[0]
+            if len(val):
+                res['prod_ingred'] = prod.ingredients
+                res['val_ingred'] = val.ingredients
+        return res

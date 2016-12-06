@@ -15,13 +15,11 @@ $(document).ready(function () {
             result += variant_text + ": " + value_text + "; "; // get variant value
         });
         $(".variants_result_string").text(result);
-        var session = new openerp.Session();
-        this.pav_model = new openerp.Model(session, "product.attribute.value");
-        this.pav_model.call('pyth_met', [], {
+        openerp.jsonRpc("/shop/ingredients", 'call', {
             'prod_id': this.prod_id,
             'value_id': this.value,
             'value_name': value_name
-        }).done(function (result) {
+        }).then(function (result) {
             this.ingredients = result['ingredients'];
             $(".prod_ingred").text(result['prod_ingred']);
             $(".val_ingred").text(result['val_ingred']);
