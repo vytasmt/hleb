@@ -561,9 +561,15 @@ class baron_website_sale(website_sale):
             if prod.property_id:
                 res['prod_property'] = prod.property_id.description
                 res['prod_property_caption'] = prod.property_id.caption
+            else:
+                res['prod_property'] = ''
+                res['prod_property_caption'] = ''
             if val.property_id:
                 res['val_property'] = val.property_id.description
                 res['val_property_caption'] = val.property_id.caption
+            else:
+                res['val_property'] = ''
+                res['val_property_caption'] = ''
         if kwargs.get('value_name', False):
             val_id = registry.get('product.attribute.value').search(cr, uid, [('name', '=', kwargs['value_name'].strip())])[0]
             val = registry.get('product.attribute.value').browse(cr, uid, val_id)
@@ -572,7 +578,13 @@ class baron_website_sale(website_sale):
                 if prod.property_id:
                     res['prod_property'] = prod.property_id.description
                     res['prod_property_caption'] = prod.property_id.caption
+                else:
+                    res['prod_property'] = ''
+                    res['prod_property_caption'] = ''
                 if val.property_id:
                     res['val_property'] = val.property_id.description
                     res['val_property_caption'] = val.property_id.caption
+                else:
+                    res['val_property'] = ''
+                    res['val_property_caption'] = ''
         return res
