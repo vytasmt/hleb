@@ -18,10 +18,10 @@ class Property(models.Model):
 class ProductAttributeValue(models.Model):
     _inherit = 'product.attribute.value'
 
-    property_id = fields.Many2one('property')
+    property_id = fields.Many2one('property', string=u"Свойство")
 
 
 class ProductProduct(models.Model):
     _inherit = 'product.template'
 
-    property_id = fields.Many2one('property')
+    property_id = fields.Many2one('property', string=u"Свойство")

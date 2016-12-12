@@ -11,20 +11,20 @@
             </field>
         </field>
     </record>
-    <record id="product_template" model="ir.ui.view">
-        <field name="name">product.form.inherit</field>
-        <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_form_view"/>
-        <field name="arch" type="xml">
-            <data>
-                <xpath expr="//page[@name='sales']" position="after">
-                    <page string="Состав">
-                        <field name="property_id"/>
-                    </page>
-                </xpath>
-            </data>
-        </field>
-    </record>
+    <!--<record id="product_template" model="ir.ui.view">-->
+        <!--<field name="name">product.form.inherit</field>-->
+        <!--<field name="model">product.template</field>-->
+        <!--<field name="inherit_id" ref="product.product_template_form_view"/>-->
+        <!--<field name="arch" type="xml">-->
+            <!--<data>-->
+                <!--<xpath expr="//page[@name='sales']" position="after">-->
+                    <!--<page string="Состав">-->
+                        <!--<field name="property_id"/>-->
+                    <!--</page>-->
+                <!--</xpath>-->
+            <!--</data>-->
+        <!--</field>-->
+    <!--</record>-->
     <record id="property_form_view" model="ir.ui.view">
         <field name="name">property.form.view</field>
         <field name="model">property</field>

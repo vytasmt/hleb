@@ -10,6 +10,7 @@
         'website_sale',
         'baron_shop_js',
         'baron_shelf',
+        'ingredients',
     ],
     'data': [
         'views/theme.xml',

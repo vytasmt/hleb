@@ -12,6 +12,16 @@
                  </group>
              </field>
          </record>
+        <record model="ir.ui.view" id="product_template_form_view2">
+            <field name="name">product.template.product.baron.website.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="website_sale.product_template_form_view"/>
+             <field name="arch" type="xml">
+                 <group name="website" position="inside">
+                     <field name="property_id"/>
+                 </group>
+             </field>
+         </record>
 
         <record model="ir.ui.view" id="product_normal_form_view">
             <field name="name">product.product.form</field>
