@@ -20,10 +20,35 @@ $(document).ready(function () {
             'value_id': this.value,
             'value_name': value_name
         }).then(function (result) {
-            $(".prod_property").html(result['prod_property']);
-            $(".val_property").html(result['val_property']);
             $(".prod_property_caption").text(result['prod_property_caption']);
+            $(".prod_property").html(result['prod_property']);
             $(".val_property_caption").text(result['val_property_caption']);
+            $(".val_property").html(result['val_property']);
+            if (result['prod_property_caption'] == ''){
+                 $(".prod_property_caption").hide();
+            }
+            else{
+                $(".prod_property_caption").show();
+            }
+            if (result['prod_property'] == ''){
+                 $(".prod_property").hide();
+            }
+            else{
+                $(".prod_property").show();
+            }
+            if (result['val_property_caption'] == ''){
+                 $(".val_property_caption").hide();
+            }
+            else{
+                $(".val_property_caption").show();
+            }
+            if (result['val_property'] == ''){
+                 $(".val_property").hide();
+            }
+            else{
+                $(".val_property").show();
+            }
+
         });
     }
     count_variants();
