@@ -15,14 +15,15 @@ $(document).ready(function () {
             result += variant_text + ": " + value_text + "; "; // get variant value
         });
         $(".variants_result_string").text(result);
-        openerp.jsonRpc("/shop/ingredients", 'call', {
+        openerp.jsonRpc("/shop/properties", 'call', {
             'prod_id': this.prod_id,
             'value_id': this.value,
             'value_name': value_name
         }).then(function (result) {
-            this.ingredients = result['ingredients'];
-            $(".prod_ingred").text(result['prod_ingred']);
-            $(".val_ingred").text(result['val_ingred']);
+            $(".prod_property").html(result['prod_property']);
+            $(".val_property").html(result['val_property']);
+            $(".prod_property_caption").text(result['prod_property_caption']);
+            $(".val_property_caption").text(result['val_property_caption']);
         });
     }
     count_variants();

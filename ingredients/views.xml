@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="product.variants_tree_view"/>
         <field name="arch" type="xml">
             <field name="name" position='after'>
-                <field name='ingredients'/>
+                <field name='property_id'/>
             </field>
         </field>
     </record>
@@ -19,10 +19,23 @@
             <data>
                 <xpath expr="//page[@name='sales']" position="after">
                     <page string="Состав">
-                        <field name="ingredients"/>
+                        <field name="property_id"/>
                     </page>
                 </xpath>
             </data>
+        </field>
+    </record>
+    <record id="property_form_view" model="ir.ui.view">
+        <field name="name">property.form.view</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+            <form string="Проект">
+                <group>
+                    <field name="name"/>
+                    <field name="caption"/>
+                    <field name="description" widget="html" class="oe_memo"/>
+                </group>
+            </form>
         </field>
     </record>
 </data>

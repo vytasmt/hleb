@@ -809,13 +809,13 @@
                                             <p style="color: #636363; padding-bottom: 10px;">Выбрано:
                                                 <span class="variants_result_string"/>
                                             </p>
-                                            <span style="color: #636363; padding-bottom: 0px;">СОСТАВ:
+                                            <span style="color: #636363; padding-bottom: 0px;">СВОЙСТВА:
                                             </span>
                                             <hr style="margin-top: 0px; margin-bottom: 0px;">
-                                                <p style="color: #636363; padding-bottom: 0px;"
-                                                   class="prod_ingred"/>
-                                                <p style="color: #636363; padding-bottom: 20px;"
-                                                   class="val_ingred"/>
+                                                <p style="color: #636363; padding-bottom: 0px;" class="prod_property_caption"/>
+                                                <p style="color: #636363; padding-bottom: 20px;" class="prod_property"/>
+                                                <p style="color: #636363; padding-bottom: 0px;" class="val_property_caption"/>
+                                                <p style="color: #636363; padding-bottom: 20px;" class="val_property"/>
                                             </hr>
 
 

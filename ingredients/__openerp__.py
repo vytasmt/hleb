@@ -4,7 +4,7 @@
     'version': '1.0',
     'category': 'Sale',
     'license': 'AGPL-3',
-    'summary': 'ingredients for product.attribute.value',
+    'summary': 'property_id for product.attribute.value',
     'author': 'Ilyas',
     'depends': [
         'product',
@@ -13,7 +13,6 @@
     ],
     'data': [
         'views.xml',
-        'templates.xml',
     ],
     'installable': True,
 }
