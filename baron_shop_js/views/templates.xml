@@ -14,7 +14,8 @@
 	<b class="oe_price" 
             t-field="product.price"
 	    style="display:none;"/>
-	<span class="total_price_caption" id="total_price_caption" name="total_price_caption">Всего:</span><b t-field="product.price" style="white-space: nowrap; color: #636363; font-size: 32px;" t-field-options='{
+	<span style="font-size: 32px;" class="total_price_caption" id="total_price_caption" name="total_price_caption">Всего:</span>
+	    <b t-field="product.price" style="white-space: nowrap; color: #636363; font-size: 32px;" t-field-options='{
                "widget": "monetary",
                "display_currency": "user_id.partner_id.property_product_pricelist.currency_id" }'/>
     </xpath>
