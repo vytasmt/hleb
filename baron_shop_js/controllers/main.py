@@ -151,6 +151,16 @@ class baron_shop(website_sale):
 
         order_obj.write(cr, SUPERUSER_ID, [order.id], order_info, context=context)
 
+    @http.route('/shop/upd_qty', type='json', auth="public", website=True)
+    def upd_qty(self, *args, **kwargs):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+        res = {'qty': ''}
+        if kwargs.get('prod_id', False):
+            prod = registry.get('product.product').browse(cr, uid, int(kwargs['prod_id']))[0]
+            if prod.property_id:
+                res['prod_property'] = prod.property_id.description
+                res['prod_property_caption'] = prod.property_id.caption
+        return res
 
 class CountactusExt(contactus):
 

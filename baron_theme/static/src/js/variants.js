@@ -9,10 +9,11 @@ $(document).ready(function () {
             var parent_li = $(this).parents("ul.list-unstyled"); // parent element is needed to get sequence number
             variant_text = $("li[data-order=" + parent_li.data("order") + "]").children().first().text(); // get corresponding variant text
             value_text = $(this).parent().text()
-            if (variant_text == 'Выберите вкус'){
-                value_name = value_text
-            }
-            result += variant_text + ": " + value_text + "; "; // get variant value
+            // if (variant_text == 'Выберите вкус'){
+            //     value_name = value_text
+            // }
+            // result += variant_text + ": " + value_text + "; "; // get variant value
+            result += value_text + "; "; // get variant value
         });
         $(".variants_result_string").text(result);
         openerp.jsonRpc("/shop/properties", 'call', {
