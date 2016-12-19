@@ -18,7 +18,7 @@ class product_product(models.Model):
                 for price_id in v.price_ids:
                     if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
                         if price_id.pack_true:
-                            variant += ' x ' + ('%.2f' % price_id.pack_qty) + u" Шт."
+                            variant += ' x ' + ('%.2f' % price_id.pack_qty) + u" шт."
                 variant += ', '
             product.attributes_values_string = variant and "(%s)" % (
                 variant[:-2]) or ''
