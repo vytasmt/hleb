@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+<template id="assets_frontend" inherit_id="website_sale.assets_frontend" name="Shop">
+    <xpath expr="script[@src='/website_sale/static/src/js/website_sale.js']" position="replace">
+        <script type="text/javascript" src="/baron_shop_js/static/src/js/website_sale.js"></script>
+    </xpath>
+</template>
+
+<template id="product_price" inherit_id="website_sale.product_price" >
+
+    <xpath expr="//b[@class='oe_price']" position="before">
+        <t t-set="attribute_value_ids_price" t-value="get_attribute_value_ids(product)"/>
+        <p t-if="len(attribute_value_ids_price) &gt; 1" class="text-muted" style="font-size: 14pt; color: #5b90f1; font-family: proxima;" >
+            Стоимость: <span class="price_per_one"/> руб. за <span t-field="product.uom_id"/>,<br/>
+            Количество: <span class="price_per_one_qty"/> <span t-field="product.uom_id"/>
+        </p>
+        <p t-if="len(attribute_value_ids_price) &lt;= 1" class="text-muted" style="font-size: 14pt; color: #5b90f1; font-family: proxima;" >
+            Стоимость: <span t-field="product.price"/> руб. за <span t-field="product.uom_id"/>,<br/>
+            Количество: 1 <span t-field="product.uom_id"/>
+        </p>
+	    <span style="font-size: 32px;" class="total_price_caption" id="total_price_caption" name="total_price_caption">Всего:</span>
+    </xpath>
+</template>
+
+<!-- <template id="variants" inherit_id="website_sale.variants" >
+    <xpath expr="//option[@t-att-value='value_id.id']" position="attributes">
+        <attribute name="t-att-pack">value_id.pack_qty</attribute>
+    </xpath>
+    <xpath expr="//option[@t-att-value='value_id.id']/span" position="after">
+        <t t-if="value_id.pack_qty">
+            <span> x <span t-field="value_id.pack_qty"/> <span t-field="product.uom_id"/></span>
+        </t>
+    </xpath>
+    <xpath expr="//input[@class='js_variant_change']" position="attributes">
+        <attribute name="t-att-pack">value_id.pack_qty</attribute>
+    </xpath>
+    <xpath expr="//ul[@class='list-unstyled']//li/label/span" position="after">
+        <t t-if="value_id.pack_qty">
+            <span> x <span t-field="value_id.pack_qty"/> <span t-field="product.uom_id"/></span>
+        </t>
+    </xpath>
+</template>
+
+<template id="product_attributes_baron" inherit_id="website_sale.product_attributes">
+    <xpath expr="//span[@t-field='variant_id.value_ids[0].name']" position="attributes">
+        <attribute name="t-att-pack">variant_id.value_ids[0].pack_qty</attribute>
+        <attribute name="class">product_pack_variant</attribute>
+    </xpath>
+    <xpath expr="//span[@t-field='variant_id.value_ids[0].name']" position="after">
+        <span> <span t-field="variant_id.value_ids[0].pack_qty"/> <span t-field="product.uom_id"/></span>
+    </xpath>
+</template> -->
+
+<template id="product" inherit_id="website_sale.product">
+    <xpath expr="////a[@id='add_to_cart']" position="replace">
+        <a id="add_to_cart" class="btn btn-primary btn-lg mt8 js_check_product_baron" href="#">Add to Cart</a>
+    </xpath>
+</template>
+
+<!--
+<template id="Shopping Cart" inherit_id="website_sale.cart">
+    <xpath expr="////span[@t-field='line.product_id.image']" position="replace">
+        <span t-field="line.product_id.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;, &quot;style&quot;: &quot;width:100%;&quot;}"/>
+    </xpath>
+</template>
+-->
+
+</data>
+</openerp>

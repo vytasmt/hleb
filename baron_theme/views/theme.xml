@@ -598,7 +598,7 @@
                                }' /> за <span style="font-family: inherit; font-weight: initial;" t-field="product.uom_id"/>,<br/>
                                 Количество:
                                 <span><b>1</b></span> <span style="font-family: inherit; font-weight: initial;" t-field="product.uom_id"/>
-                            </p>
+                            </p>o/
                             <p t-if="product.lst_price - website_price &gt; 1" style="display: inline; padding-right: 10px;">
                                 <del class="text-danger" style="white-space: nowrap;"
                                     t-esc="round(product.lst_price)" t-esc-options='{
@@ -612,7 +612,7 @@
                                    "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
                                }'>
                             </span>
-                            <span itemprop="price" style="display:none;" t-esc="website_price"/>
+                            <span itemprop="price" style="display:none;" t-esc="website_price"/>   
                             <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
                             <!-- <input name="product_id" t-att-value="product.id" type="hidden"/>
 
