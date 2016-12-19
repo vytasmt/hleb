@@ -37,7 +37,7 @@
 		background-position:100% -14%;*/
 
 		background: url(../img/bg-new.jpg);
-		background-position:100% -14%;
+		background-position:100% -12%;
 
 
 	}
@@ -520,8 +520,10 @@
 
 	}
 
-	.label {border-radius: 0;vertical-align:bottom;padding-bottom: 1px;margin-left:5px;}
+	.label {border-radius: 0;vertical-align:bottom;padding: 5px 10px 5px 10px;margin-left:5px;animation:blinker 1.5s linear infinite;background-color:#eaa645;color:#333}
 	.btn {border-radius: 0 !important;padding:12px !important;line-height:1 !important}
+
+	@keyframes blinker { 50% { opacity: 0; }}
 
 
 	@media (max-width: 768px) {
@@ -8672,13 +8674,18 @@
 
 	.slider-hit-sales .title-block,
 
-	.map .title-block{
+	{
 
-		color: #f8f3df;
+		color: #313131;
+		background: rgba(255, 255, 255, 0.9);
 
 		font-size: 36px;
+		padding: 8px 0;
 
 	}
+
+.map .title-block {color: #fff;font-size: 36px;}
+
 
 	.slider-hit-sales h2 .title-section-separation,
 
@@ -8751,6 +8758,9 @@
 
 	}
 
+	.form-horizontal {background:#fff;padding-top: 40px;}
+	.form-horizontal .form-group {margin-bottom: 0 !important}
+
 	.slider-hit-sales h2 .title-section-separation.right:before,
 
 	.map h2 .title-section-separation.right:before{
@@ -8780,13 +8790,14 @@
 
 		overflow: initial;
 
-		margin-top: -130px;
+		/*margin-top: -130px;*/
 
 	}
 
 	.slider-hit-sales .carousel-inner>.item{
 
 		padding-bottom: 90px;
+		padding-top:60px;
 
 	}
 
@@ -9316,6 +9327,7 @@ section.mb16.privilege-section .border {
 	height:10px;
 	position:absolute;
 	top:-10px;
+   opacity:0.95;
 }
 
 .oe_website_sale h2, .oe_website_sale h1 {border-bottom: 1px solid #dcdcdc}
@@ -9362,8 +9374,11 @@ h2 .title-section-separation.left, h2 .title-section-separation.right {
 .mb32.slider-hit-sales {
 	min-height:400px;
 	overflow-x:hidden;
-	margin-top: -16px;
+	/*margin-top: -16px;*/
+	/*padding-top: 80px;*/
+	margin-bottom: 0 !important;
 }
+.under-border {height: 5px;background: url(../img/bg.jpg) 0 0 repeat-y;background-size:cover;}
 #myCarousel_1459696568601 {
 	overflow:visible;
 }
@@ -9678,6 +9693,8 @@ h2 .title-section-separation.left, h2 .title-section-separation.right {
 	position: absolute;
 	top: -3px;
 }
+.oe_website_sale {}
+
 .oe_website_sale h2 .title-section-separation.left:after, .oe_website_sale h1 .title-section-separation.left:after{
 	right: 0;
 }
@@ -9733,7 +9750,7 @@ carousel slide mb32 visible-sm visible-sx{
 }
 .bc_wh {
 	/*background:#FFFFFF;*/
-	background:rgb(255, 253, 234);
+	background:rgba(255, 253, 234, 0.92);
 	margin-left:15px;
 	margin-right:15px;
 	margin-bottom:40px;
@@ -9786,7 +9803,7 @@ carousel slide mb32 visible-sm visible-sx{
 	overflow-y: auto;
 }
 
-.price_per_one {font-size:35px;color:#ecb200;}
+.price_per_one {font-size:35px;color:#de8c12;}
 
 .list-unstyled.js_add_cart_variants.nav-stacked li {
     /*font-family: 'helvetica', serif;*/
@@ -9923,17 +9940,18 @@ img.img-responsive.product_detail_img {
 	margin:0 !important;
 }
 .oe_price {
-	font-size:48px;
-	color:#5b90f1;
+	font-size:30px;
+	/*color:#5b90f1;*/
+    font-weight: normal;
 }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {padding-bottom: 25px}
 .products_pager > div > * {float: left;margin-right: 10px}
 .products_pager > div > ul {padding-left:10px;padding-top:3px;}
-section.mb16.privilege-section {background: #fff}
+section.mb16.privilege-section {background: rgba(255, 255, 255, 0.9)}
 .about-company {padding:50px 0;}
 .about-company .col-md-9 {padding: 0 40px}
-.stock {background:#fff;padding:15px 0}
+.stock {background:rgba(255, 255, 255, 0.9);padding:15px 0}
 .pr-desc {width:100%;padding-right: 0; padding-left: 0; padding-top: 0}
 
 .text-muted {
@@ -9987,7 +10005,7 @@ section.mb16.privilege-section {background: #fff}
 	color: #fff;
 }
 #product_full_description {
-	background: rgb(64, 64, 64);
+	background: rgba(64, 64, 64, 0.73);
 	color:#FFFFFF !important;
 	padding:20px;
 	/*position:absolute;*/
