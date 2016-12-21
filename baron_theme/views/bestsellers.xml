@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<data inherit_id="baron_theme.homepage_inherit" customize_show="True" active="True" name="Bestsellers">
+            <xpath expr="//section[@id='bestsellers']" position="replace">
+                <t t-set="bestsellers" t-value="website.get_bestsellers()"/>
+                <section t-if="bestsellers" class="mb32 slider-hit-sales">
+                    <t t-set="bestseller_categories" t-value="bestsellers.keys()"/>
+                    <t t-set="bestseller_categories_products" t-value="bestsellers.values()"/>
+                    <div class="container title">
+                        <div class="row">
+                            <div class="col-md-12 text-center mt16">
+                                <h2 style="background: rgba(255, 255, 255, 0.9);padding:6px" class="title-block">
+                                    <span class="title-section-separation left"/>
+                                    <span>Наша продукция</span>
+                                    <span class="title-section-separation right"/>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel slide" id="myCarousel_bestsellers" style="">
+                        <t t-set="item1" t-value="0"/>
+                        <ul class="carousel-indicators">
+                            <t t-foreach="bestseller_categories" t-as="bestseller_category">
+                                <li t-if="bestsellers_bread" t-att-class="'active' if bestseller_category_first else ''" t-att-data-slide-to="item1 or '0'" data-target="#myCarousel_bestsellers" t-esc="bestseller_category"/>
+                                <t t-set="item1" t-value="item1+1"/>
+                            </t>
+                        </ul>
+                        <div class="carousel-inner">
+                            <t t-set="item2" t-value="1"/>
+                            <t t-foreach="bestseller_categories_products" t-as="bestseller_category_products">
+                                <div t-att-class="'item active' if bestseller_category_products_first else 'item'" style="background-image: url('/baron_theme/static/src/img/slider-goods1.jpg')">
+                                    <div class="container oe_website_sale">
+                                        <div class="row content catalog">
+                                            <t t-foreach="bestseller_category_products" t-as="product">
+                                                <t t-call="baron_theme.product_item_card_2"/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_bestsellers" href="#myCarousel_bestsellers" style="width: 10%">
+                            <i class="fa fa-chevron-left"/>
+                        </div>
+                        <div class="carousel-control right" data-slide="next" data-target="#myCarousel_bestsellers" href="#myCarousel_bestsellers" style="width: 10%">
+                            <i class="fa fa-chevron-right"/>
+                        </div>
+                    </div>
+                </section>
+            </xpath>
+        </data>
