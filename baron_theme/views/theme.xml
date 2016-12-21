@@ -598,7 +598,7 @@
                                }' /> за <span style="font-family: inherit; font-weight: initial;" t-field="product.uom_id"/>,<br/>
                                 Количество:
                                 <span><b>1</b></span> <span style="font-family: inherit; font-weight: initial;" t-field="product.uom_id"/>
-                            </p>o/
+                            </p>
                             <p t-if="product.lst_price - website_price &gt; 1" style="display: inline; padding-right: 10px;">
                                 <del class="text-danger" style="white-space: nowrap;"
                                     t-esc="round(product.lst_price)" t-esc-options='{
