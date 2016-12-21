@@ -520,7 +520,7 @@
 
 	}
 
-	.discount .oe_default_price {font-size:35px !important;color:#8c8c8c !important;}
+	.discount .oe_default_price {font-size:30px !important;color:rgba(27, 27, 27, 0.46) !important;font-weight: 700}
 
 	.label {border-radius: 0;vertical-align:bottom;padding: 5px 10px 5px 10px;margin-left:5px;animation:blinker 1.5s linear infinite;background-color:#ffc000;}
 	.btn {border-radius: 0 !important;padding:12px !important;line-height:1 !important}
@@ -534,6 +534,8 @@
 			height: 41px;
 		}
 	}
+
+	p:empty {display: none;}
 
 	#header-style-1 .navbar-default {
 
@@ -8861,7 +8863,7 @@
 	.slider-hit-sales div.carousel .block-goods p span{
 
 		font-weight: bold;
-		font-size: 22px;
+		font-size: 23px;
 		color:#de8c12;
 
 	}
@@ -9453,8 +9455,9 @@ h2 .title-section-separation.left, h2 .title-section-separation.right {
 	color:#ffffff;
 	display:inline-block;
 	clear:both;
-	font-size:34px;
+	font-size:30px;
 	margin-top:15px;
+	margin-bottom:24px;
 }
 #footer-style-1 a.call-slider_2 {
 	/*font-family: 'Playfair Display', serif;*/
@@ -9556,11 +9559,11 @@ h2 .title-section-separation.left, h2 .title-section-separation.right {
 	/*font-family:proximab;*/
 }
 .row.catalog .block-goods .price {
-    font-size: 24px;
+    font-size: 17px;
     margin-bottom: 15px;
 	display: block;
     text-align: center;
-    color: #5b90f1;
+    color: #333;
     
     font-weight: bolder;
 }
