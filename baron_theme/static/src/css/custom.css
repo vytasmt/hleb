@@ -520,7 +520,9 @@
 
 	}
 
-	.label {border-radius: 0;vertical-align:bottom;padding: 5px 10px 5px 10px;margin-left:5px;animation:blinker 1.5s linear infinite;background-color:#eaa645;color:#333}
+	.discount .oe_default_price {font-size:35px !important;color:#8c8c8c !important;}
+
+	.label {border-radius: 0;vertical-align:bottom;padding: 5px 10px 5px 10px;margin-left:5px;animation:blinker 1.5s linear infinite;background-color:#ffc000;}
 	.btn {border-radius: 0 !important;padding:12px !important;line-height:1 !important}
 
 	@keyframes blinker { 50% { opacity: 0; }}
@@ -8381,7 +8383,7 @@
 
 	.para_large .carousel .carousel-control .fa{
 
-		top:40%;
+		top:50%;
 
 	}
 
@@ -8514,6 +8516,7 @@
 		border-color: #fff;
 
 		margin-right: 20px;
+		display: none;
 
 	}
 
@@ -8858,6 +8861,8 @@
 	.slider-hit-sales div.carousel .block-goods p span{
 
 		font-weight: bold;
+		font-size: 22px;
+		color:#de8c12;
 
 	}
 
@@ -9498,7 +9503,7 @@ h2 .title-section-separation.left, h2 .title-section-separation.right {
 }
 .row.catalog .block-goods {
 	display: inline-block;
-	height: 430px;
+	height: 365px;
 	background-color: #fff;
 	border-radius: 0;
 	width: 100%;
@@ -9525,14 +9530,15 @@ h2 .title-section-separation.left, h2 .title-section-separation.right {
     line-height: 30px;
 	color:#453f35;
 	text-align:center;
-	/*height:80px;*/
+	height:43px;
 	display:block;
 	overflow:hidden;
 	padding:10px 3px 0px 3px;
+	width:250px;
 
 }
 .item_card_title {
-	height: 100px;
+	height: 55px;
 	padding-bottom: 20px;
 }
 .row.catalog .block-goods p {
