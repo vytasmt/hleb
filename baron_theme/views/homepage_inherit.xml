@@ -1,0 +1,306 @@
+<data inherit_id="website.homepage">
+  <xpath expr="//div" position="replace">
+    <section class="para_large">
+      <div class="carousel slide" id="myCarousel_1456252702493">
+        <div class="container" style="position: relative;">
+          <div class="contact-block-slider">
+            <a class="phone-slider" href="/page/tel:88126454545">+7 (812) 648-45-45</a>
+            <a class="call-slider" href="/page/website.contactus">Заказать звонок</a>
+            <a class="map-slider" href="/page/website.contactus">
+              <span>На карте</span>
+            </a>
+          </div>
+        </div>
+        <div class="separation-slider"/>
+        <ol class="carousel-indicators">
+          <li class="active" data-slide-to="0" data-target="#myCarousel_1456252702493"/>
+          <li data-slide-to="1" data-target="#myCarousel_1456252702493"/>
+          <li data-slide-to="2" data-target="#myCarousel_1456252702493"/>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item oe_img_bg active" style="background-image: url(/baron_theme/static/src/img/slider1.jpg);">
+            <div class="container">
+              <div class="row content">
+                <div class="carousel-content col-md-12 col-sm-12 mb128">
+                  <h2>Замороженный хлеб - новое слово в домашней кулинарии</h2>
+                  <h3/>
+                  <div/>
+                  <div/>
+                  <div/>
+                  <div/>
+                  <div/>
+                  <p>
+                    <a class="btn btn-success " href="/shop">Перейти в магазин</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item oe_img_bg" style="background-image: url(/baron_theme/static/src/img/slider3.jpg);">
+            <div class="container">
+              <div class="row content">
+                <div class="carousel-content col-md-12 col-sm-12">
+                  <h2>Пекарня Барон.</h2>
+                  <h2>
+                    <span style="letter-spacing: 0px; line-height: 33.6px;">Мы производим и доставляем удовольствие.</span>
+                  </h2>
+                  <h3/>
+                  <div>
+                    <span style="letter-spacing: 0px; line-height: 33.6px;"/>
+                  </div>
+                  <p>
+                    <a class="btn btn-success " href="/shop">Перейти в магазин</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item oe_img_bg" style="background-image: url(/baron_theme/static/src/img/slider2.jpg);">
+            <div class="container">
+              <div class="row content">
+                <div class="carousel-content col-md-12 col-sm-12 mb128">
+                  <h2>Как будто настоящая пекарня у Вас дома</h2>
+                  <h3>доставка по Санкт-Петербургу</h3>
+                  <p>
+                    <a class="btn btn-success " href="/shop">Перейти в магазин</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="go-to-down arrow"/>
+        <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_1456252702493" href="#myCarousel_1456252702493" style="width: 10%">
+          <i class="fa fa-chevron-left" style=""/>
+        </div>
+        <div class="carousel-control right" data-slide="next" data-target="#myCarousel_1456252702493" href="#myCarousel_1456252702493" style="width: 10%">
+          <i class="fa fa-chevron-right" style=""/>
+        </div>
+      </div>
+    </section>
+    <div class="border"/>
+    <div class="under-border"/>
+    <section id="bestsellers"/>
+    <section class="mb16 privilege-section">
+      <div class="border"/>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center mt16">
+            <h2>
+              <span class="title-section-separation left"/>
+              <span>Наши преимущества</span>
+              <span class="title-section-separation right"/>
+            </h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mt16">
+            <div class="row">
+              <div class="col-md-12">
+                <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege1.jpg"/>
+                <h3 class="mt0 mb0 col-md-9">Отсрочка оплаты</h3>
+                <p class="col-md-9">Комфортные условия для сотрудничества с отсрочкой оплаты до двух недель это не выдумка - мы действительно так работаем. Если вы дисциплинированый плательщик - одну неделю отсрочки на оплату заказа мы вам гарантируем. Две недели отсрочки могут быть предоставлены на индивидуальных условиях. <span/></p>
+              </div>
+              <div class="col-md-12">
+                <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege2.jpg"/>
+                <h3 class="mt0 mb0 col-md-9">Бесплатная дегустация</h3>
+                <p class="col-md-9">Убедитесь лично, что Вас устраивают вкусовые качества продукции нашего собственного производства!<br/>
+Составьте ассортимент интересующей вас продукции и передайте его нашему менеджеру. Наши специалисты с удовольствием проведут вместе с вами дегустацию нашей продукции. <span/></p>
+              </div>
+              <div class="col-md-12">
+                <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege3.jpg"/>
+                <h3 class="mt0 mb0 col-md-9">Оперативная доставка</h3>
+                <p class="col-md-9">Ваш заказ будет доставлен на следующий день после заказа с понедельника по пятницу. Доставка осуществляется бесплатно. <span/></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mt16 mb16">
+            <div class="row">
+              <div class="col-md-12">
+                <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege4.jpg"/>
+                <h3 class="mt0 mb0 col-md-9">Собственные производства</h3>
+                <p class="col-md-9">Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров.&amp;nbsp;Сейчас у нас собственная пекарня и мукомольное предприятие и мы работаем над расширением этого списка. <span/></p>
+              </div>
+              <div class="col-md-12 mb48">
+                <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege5.jpg"/>
+                <h3 class="mt0 mb0 col-md-9">Высокое качество</h3>
+                <p class="col-md-9">Мы скрупулёзно следим за качеством поставляемой продукции, тщательно отбирая лучшее сырьё для производства, чтобы вы могли порадовать своих гостей еще более глубоким и насыщеным вкусом ваших блюд. <span/></p>
+              </div>
+              <div class="col-md-12">
+                <img class="img img-circle col-md-5" src="/baron_theme/static/src/img/privilege6.jpg"/>
+                <h3 class="mt0 mb0 col-md-9">Минимальный заказ</h3>
+                <p class="col-md-9">У нас минимальная сумма заказа составляет всего 1000 рублей! Сделайте заказ на сумму, превышающую 1000 р. и мы доставим его совершенно бесплатно! <span/></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slider-recall">
+      <div class="container" style="background:rgba(255, 255, 255, 0.9);padding:5px 50px">
+        <div class="row mt0 mb16">
+          <div class="col-md-12 text-center">
+            <h2 class="title-block">
+              <span class="title-section-separation left"/>
+              <span>Отзывы клиентов</span>
+              <span class="title-section-separation right"/>
+            </h2>
+          </div>
+        </div>
+        <div class="carousel slide mb32" id="myCarousel_1459696568601" style="height: 430px;">
+          <ol class="carousel-indicators">
+            <li class="active" data-slide-to="0" data-target="#myCarousel_1459696568601"/>
+            <li data-slide-to="1" data-target="#myCarousel_1459696568601"/>
+            <li data-slide-to="2" data-target="#myCarousel_1459696568601"/>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item active">
+              <div class="container">
+                <div class="row content mt0 mb0">
+                  <div class="col-md-6">
+                    <div class="row mt0 mb0">
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row mt0 mb0">
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item oe_img_bg">
+              <div class="container">
+                <div class="row content mt0 mb0">
+                  <div class="col-md-6">
+                    <div class="row mt0 mb0">
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row mt0 mb0">
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item oe_img_bg">
+              <div class="container">
+                <div class="row content mt0 mb0">
+                  <div class="col-md-6">
+                    <div class="row mt0 mb0">
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row mt0 mb0">
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                      <div class="col-md-12">
+                        <span class="date-recall">10.12.2014</span>
+                        <h3 class="mt0 mb0">Алексей Смирнов, ООО ”Садко”</h3>
+                        <p>Наша организация плодотворно сотрудничает с ООО "Барон" с 2006 года. В процессе своей деятельности специалисты компании подтвердили свой высокий профессиональный статус и оперативность в решении проблем. Менеджеры по работе с клиентами квалифицированны и доброжелательны.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about-company">
+      <div class="container">
+        <div class="row mt0">
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <img class="img img-responsive" src="/baron_theme/static/src/img/about.jpg" style=""/>
+            </div>
+            <div class="col-md-9">
+              <h3>
+                <span>О компании</span>
+              </h3>
+              <p>Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров. Сейчас у нас собственная пекарня и мукомольное предприятие и мы работаем над расширением этого списка. Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров.    Сейчас у нас собственная пекарня и мукомольное предприятие и мы работаем над расширением этого списка. Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров. Сейчас у нас собственная пекарня и мукомольное предприятие и мы работаем над расширением этого списка. Обладание контролем над полным производственным циклом - это не только плюс к обеспечению качества продукции, но и серьезный шаг к конъюнктурной усточивости и гарантии наличия необходимых вам товаров. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="stock">
+      <div style="background:rgba(255, 255, 255, 0.9)" class="container">
+        <div class="row mt0 mb16">
+          <div class="col-md-12 text-center">
+            <h2 class="title-block">
+              <span class="title-section-separation left"/>
+              <span>Акции</span>
+              <span class="title-section-separation right"/>
+            </h2>
+          </div>
+        </div>
+        <div class="row mt0 mb16">
+          <div class="col-md-6 text-center">
+            <a href="#">
+              <img src="/baron_theme/static/src/img/stock1.jpg"/>
+            </a>
+          </div>
+          <div class="col-md-6 text-center">
+            <a href="#">
+              <img src="/baron_theme/static/src/img/stock2.jpg"/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </xpath>
+</data>
