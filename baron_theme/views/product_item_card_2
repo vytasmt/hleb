@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<t name="Modification Product item card" t-name="baron_theme.product_item_card_2">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <form action="/shop/cart/update" method="post">
+                    <div class="block-goods" t-att-data-publish="product.website_published and 'on' or 'off'">
+                        <a itemprop="url" t-att-href="keep('/shop/product/%s' % slug(product.product_tmpl_id))">
+                            <t t-set="product_template" t-value="get_product_template_with_context(product)"/>
+                            <div class="item_card_title" style="">
+                                <span class="title" t-field="product.name"/>
+                            </div>
+                            <div class="category_img_cont">
+                                <img itemprop="image" t-att-src="website.image_url(product, 'image', None if product_image_big else '300x300')"/>
+                            </div>
+                            <t t-set="attribute_value_ids_price" t-value="get_attribute_value_ids(product_template, order=True)"/>
+                            <t t-set="website_price" t-value="get_website_price(product, attribute_value_ids_price)"/>
+                            <t t-set="product_pack_qty" t-value="product.get_default_pack_qty()[0]"/>
+                            <p t-if="len(attribute_value_ids_price) &gt; 1">Стоимость:
+                                <span t-esc="website_price / product_pack_qty" t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/> за <span style="font-size:15px; font-weight: normal; color: #1b1b1b;" t-field="product.uom_id"/>,<br/>
+                                Количество: <b><t t-esc="format_lang(product_pack_qty)"/></b> <span style="color: #1b1b1b;font-weight: normal;" t-field="product.uom_id"/>
+                            </p>
+                            <p t-if="len(attribute_value_ids_price) &lt;= 1">Стоимость:
+                                <span t-esc="round(website_price)" t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/> за <span style="font-size:15px; font-weight: normal; color: #1b1b1b;" t-field="product.uom_id"/>,<br/>
+                                Количество:
+                                <span><b>1</b></span> <span style="color: #1b1b1b;font-weight: normal;" t-field="product.uom_id"/>
+                            </p>o/
+                            <p t-if="product.lst_price - website_price &gt; 1" style="display: inline; padding-right: 10px;">
+                                <del class="text-danger" style="white-space: nowrap;" t-esc="round(product.lst_price)" t-esc-options="{                                         &quot;widget&quot;: &quot;monetary&quot;,                                         &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                     }"/>
+                            </p>
+                            <span class="price" t-esc="round(website_price,1)" style="display: inline;" t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }">
+                            </span>
+                            <span itemprop="price" style="display:none;" t-esc="website_price"/>   
+                            <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
+                            <!-- <input name="product_id" t-att-value="product.id" type="hidden"/>
+
+                            <a class="add-to-card a-submit">Добавить в корзину</a> -->
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </t>
