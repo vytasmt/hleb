@@ -92,7 +92,13 @@ $('.oe_website_sale').each(function () {
         $('input[name="'+$input.attr("name")+'"]').val(quantity > min ? (quantity < max ? quantity : max) : min);
         $input.change();
         if (quantity > 0) {
-            var new_price = $("input[checked='checked'][pack]").attr('pack')*$(".price_per_one").text()*quantity;
+            var pack = $("input[checked='checked'][pack]").attr('pack');
+            if (pack) {
+                var new_price = $("input[checked='checked'][pack]").attr('pack') * $(".price_per_one").text() * quantity;
+            }
+            else {
+                var new_price = 1*$(".price_per_one").text()*quantity;
+            }
             $("b[class='oe_price'] span[class='oe_currency_value']").html(new_price.toFixed(2));
         }
         return false;
