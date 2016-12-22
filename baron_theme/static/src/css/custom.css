@@ -535,7 +535,7 @@
 		}
 	}
 
-	p:empty {display: none;}
+	p:empty {display: none !important;}
 
 	#header-style-1 .navbar-default {
 
@@ -8856,7 +8856,7 @@
 
 		text-align: center;
 
-		margin: 0 0 10px;
+		margin: 18px 0 -10px;
 
 	}
 
@@ -9384,6 +9384,7 @@ h2 .title-section-separation.left, h2 .title-section-separation.right {
 	/*margin-top: -16px;*/
 	/*padding-top: 80px;*/
 	margin-bottom: 0 !important;
+	background: rgba(255, 255, 255, 0.8);
 }
 .under-border {height: 5px;background: url(../img/bg.jpg) 0 0 repeat-y;background-size:cover;}
 #myCarousel_1459696568601 {

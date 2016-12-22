@@ -162,6 +162,7 @@ class baron_shop(website_sale):
                 res['prod_property_caption'] = prod.property_id.caption
         return res
 
+
 class CountactusExt(contactus):
 
     def create_lead(self, request, values, kwargs):
