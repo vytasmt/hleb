@@ -549,12 +549,12 @@ class baron_website_sale(website_sale):
         product = registry.get('product.product').browse(cr, uid, int(product_id))
         add_uos_qty = float(add_qty)
         set_uos_qty = float(set_qty)
-        for v in product.attribute_value_ids:
-            for price_id in v.price_ids:
-                if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
-                    if price_id.pack_true:
-                        add_uos_qty = add_uos_qty * price_id.pack_qty
-                        set_uos_qty = set_uos_qty * price_id.pack_qty
+        # for v in product.attribute_value_ids:
+        #     for price_id in v.price_ids:
+        #         if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
+        #             if price_id.pack_true:
+        #                 add_uos_qty = add_uos_qty * price_id.pack_qty
+        #                 set_uos_qty = set_uos_qty * price_id.pack_qty
         res = super(baron_website_sale, self).cart_update(product_id, add_uos_qty, set_uos_qty, **kw)
         back_to_product_href = "/shop/product/" + slug(product.product_tmpl_id)
         return request.redirect(back_to_product_href)

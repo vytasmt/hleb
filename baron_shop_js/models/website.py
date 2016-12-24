@@ -22,8 +22,10 @@ class BaronWebsite(models.Model):
     def product_get_quantity(self, product):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         uos_id = product.uos_id.id
-        res = self.subnumber(self.env['product.uom'].sudo().browse(uos_id).name)
-        return res
+        if uos_id:
+            res = self.subnumber(self.env['product.uom'].sudo().browse(uos_id).name)
+            return res
+        return 1
 
     @api.model
     def subnumber(self, inp):
