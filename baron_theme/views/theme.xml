@@ -10,7 +10,7 @@
         <template id="homepage_inherit" inherit_id="website.homepage">
             <xpath expr="//div" position="replace">
     <section class="para_large">
-      <div class="carousel slide" id="myCarousel_1456252702493">
+      <div class="carousel slide" id="myCarousel_1456252702493" style="height: 456px; overflow: hidden;">
         <div class="container" style="position: relative;">
           <div class="contact-block-slider">
             <a class="phone-slider" href="/page/tel:88126454545">+7 (812) 648-45-45</a>
@@ -30,11 +30,14 @@
           <div class="item oe_img_bg active" style="background-image: url(/baron_theme/static/src/img/slider1.jpg);">
             <div class="container">
               <div class="row content">
-                <div class="carousel-content col-md-12 col-sm-12">
-                  <h2>Производство и продажа<br/>
-замороженных слоёных и хлебобулочных изделий,<br/>
-мясо свинины и говядины</h2>
-                  <h3>В Санкт-Петербурге</h3>
+                <div class="carousel-content col-md-12 col-sm-12 mb128">
+                  <h2>Замороженный хлеб - новое слово в домашней кулинарии</h2>
+                  <h3/>
+                  <div/>
+                  <div/>
+                  <div/>
+                  <div/>
+                  <div/>
                   <p>
                     <a class="btn btn-success " href="/shop">Перейти в магазин</a>
                   </p>
@@ -46,10 +49,14 @@
             <div class="container">
               <div class="row content">
                 <div class="carousel-content col-md-12 col-sm-12">
-                  <h2>Производство и продажа<br/>
-замороженных слоёных и хлебобулочных изделий,<br/>
-мясо свинины и говядины</h2>
-                  <h3>В Санкт-Петербурге</h3>
+                  <h2>Пекарня Барон.</h2>
+                  <h2>
+                    <span style="letter-spacing: 0px; line-height: 33.6px;">Мы производим и доставляем удовольствие.</span>
+                  </h2>
+                  <h3/>
+                  <div>
+                    <span style="letter-spacing: 0px; line-height: 33.6px;"/>
+                  </div>
                   <p>
                     <a class="btn btn-success " href="/shop">Перейти в магазин</a>
                   </p>
@@ -61,10 +68,8 @@
             <div class="container">
               <div class="row content">
                 <div class="carousel-content col-md-12 col-sm-12 mb128">
-                  <h2>Производство и продажа<br/>
-замороженных слоёных и хлебобулочных изделий,<br/>
-мясо свинины и говядины</h2>
-                  <h3>В Санкт-Петербурге</h3>
+                  <h2>Как будто настоящая пекарня у Вас дома</h2>
+                  <h3>доставка по Санкт-Петербургу</h3>
                   <p>
                     <a class="btn btn-success " href="/shop">Перейти в магазин</a>
                   </p>
@@ -75,7 +80,7 @@
         </div>
         <div class="go-to-down arrow"/>
         <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_1456252702493" href="#myCarousel_1456252702493" style="width: 10%">
-          <i class="fa fa-chevron-left"/>
+          <i class="fa fa-chevron-left" style=""/>
         </div>
         <div class="carousel-control right" data-slide="next" data-target="#myCarousel_1456252702493" href="#myCarousel_1456252702493" style="width: 10%">
           <i class="fa fa-chevron-right" style=""/>
@@ -321,7 +326,7 @@
                             <div class="col-md-12 text-center mt16">
                                 <h2 style="padding:6px" class="title-block">
                                     <span class="title-section-separation left"/>
-                                    <span>Наша продукция</span>
+                                    <span>Горячее предложение:</span>
                                     <span class="title-section-separation right"/>
                                 </h2>
                             </div>
@@ -507,13 +512,13 @@
                             <t t-set="website_price" t-value="get_website_price(product_product, attribute_value_ids_price)"/>
                             <t t-set="product_pack_qty" t-value="default_product(product).get_default_pack_qty()[0]"/>
                             <p t-if="len(attribute_value_ids_price) &gt; 1">Стоимость:
-                                <span t-esc="website_price / product_pack_qty" t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;,                                    &quot;from_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/> за <span style="font-family: inherit;" t-field="product.uom_id"/>,<br/>
-                                Количество: <b><t t-esc="format_lang(product_pack_qty)"/></b> <span style="font-family: inherit;" t-field="product.uom_id"/>
+                                <span t-esc="website_price / product_pack_qty" t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;,                                    &quot;from_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/> за <span style="font-size:15px; font-weight: normal; color: #1b1b1b;" t-field="product.uom_id"/>,<br/>
+                                Количество: <b><t t-esc="format_lang(product_pack_qty)"/></b> <span style="color: #1b1b1b;font-weight: normal;" t-field="product.uom_id"/>
                             </p>
                             <p t-if="len(attribute_value_ids_price) &lt;= 1">Стоимость:
-                                <span t-esc="website_price" t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;,                                    &quot;from_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/> за <span style="font-family: inherit;" t-field="product.uom_id"/>,<br/>
+                                <span t-esc="website_price" t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;,                                    &quot;from_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/> за <span style="font-size:15px; font-weight: normal; color: #1b1b1b;" t-field="product.uom_id"/>,<br/>
                                 Количество:
-                                <span><b>1</b></span> <span style="font-family: inherit;" t-field="product.uom_id"/>
+                                <span style="font-size:15px; color: #1b1b1b;"><b>1</b></span> <span style="color: #1b1b1b;font-weight: normal;" t-field="product.uom_id"/>
                             </p>
                             <p t-if="product_product.lst_price - website_price &gt; 1" style="display: inline; padding-right: 10px;">
                                 <del class="text-danger" style="white-space: nowrap;" t-esc="round(product_product.lst_price)" t-esc-options="{                                         &quot;widget&quot;: &quot;monetary&quot;,                                         &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                     }"/>
@@ -606,10 +611,10 @@
                 <t t-call="website.layout">
                     <t t-set="additional_title">Shop</t>
                     <section class="inner_header" style="background-image: url(/baron_theme/static/src/img/bc_inner_1.jpg);">
-                        <div class="vint_border"></div>
+                        <div class="vint_border"/>
                         <div class="container">
                             <div class="row">
-                                <a href="javascript:void(0)" class="logo-big"></a>
+                                <a href="javascript:void(0)" class="logo-big"/>
                                 <div class="contact-block-slider">
                                     <a class="phone-slider" href="/page/tel:88126454545">+7 (812) 648-45-45</a>
                                     <a class="call-slider" href="/page/website.contactus">Заказать звонок</a>
@@ -623,21 +628,33 @@
                     <div id="wrap" class="js_sale">
                         <div class="oe_structure"/>
                         <div class="container oe_website_sale">
-                            <h2>
-                                <span class="title-section-separation left"></span>
-                                <span>Товары</span>
-                                <span class="title-section-separation right"></span>
+
+                            <div class="col-sm-3 products_pager">
+                                <div class="row" style="width: 100%;">
+
+                                    <t t-call="website.pager"/>
+                                </div>
+                            </div>
+                            <div style="display:inline-block;padding-bottom:10px;text-align:center" class="col-sm-6">
+                            <h2 style="display:inline-block;border-bottom:none;">
+                                <span class="title-section-separation left"/>
+                                <span>Добро пожаловать в магазин</span>
+                                <span class="title-section-separation right"/>
                             </h2>
-                            <div id="products_grid_before" class="col-lg-6 col-md-6 col-sm-6 products_pager"/>
-                            <div class="col-lg-6 col-md-6 col-sm-6 products_pager">
+                            </div>
+                            <div style="float:right;margin-right:36px;padding-bottom:10px" class="col-sm-2">
                                 <div class="row" style="width: 100%;">
                                     <t t-call="website_sale.search">
                                         <t t-set="search_class">pagination form-inline col-md-6</t>
                                     </t>
-                                    <t t-call="website.pager"/>
-                                </div>
+                                 </div>
+
                             </div>
-                            <div class="clr"></div>
+
+
+                            <div id="products_grid_before" class="col-lg-6 col-md-6 col-sm-6 products_pager"/>
+
+                            <div class="clr"/>
                             <div class="row content catalog">
                                 <t t-foreach="products" t-as="product">
                                     <t t-call="website_sale.products_item"/>
