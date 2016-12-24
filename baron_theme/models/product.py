@@ -8,6 +8,8 @@ import random
 class product_product(models.Model):
     _inherit = "product.product"
 
+    description = fields.Html(u'Описание')
+
     @api.multi
     def get_attributes_values(self):
         for product in self:
