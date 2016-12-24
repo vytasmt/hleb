@@ -2,6 +2,7 @@
 {
     'name': 'Ingredients',
     'version': '1.0',
+    'description': 'Custom properties for goods',
     'category': 'Sale',
     'license': 'AGPL-3',
     'summary': 'property_id for product.attribute.value',

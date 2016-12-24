@@ -5,15 +5,21 @@ import re
 import random
 
 
+class ProductTemplate(models.Model):
+    _inherit = "product.template"
+
+    description = fields.Html(u'Описание', translate=False)
+
+
 class product_product(models.Model):
     _inherit = "product.product"
 
-    description = fields.Html(u'Описание')
+    description = fields.Html(u'Описание', translate=False)
 
     @api.multi
     def get_attributes_values(self):
         for product in self:
-            #variant = ", ".join([v.name for v in product.attribute_value_ids])
+            # variant = ", ".join([v.name for v in product.attribute_value_ids])
             variant = ''
             for v in product.attribute_value_ids:
                 variant += v.name

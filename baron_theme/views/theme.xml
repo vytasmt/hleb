@@ -738,9 +738,10 @@
                                 <div class="col-sm-6 col-md-6 col-lg-6 big_image hidden-xs">
                                     <span class="img img-responsive" itemprop="image" t-field="product.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;product_detail_img&quot;}"/>
                                 <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs pr-desc">
-                                    <div itemprop="description" t-field="product.website_description" class="oe_structure mt16" id="product_full_description"/>
+                                    <div t-field="product.description" itemprop="description2" class="oe_structure mt16" id="product_full_description"/>
                                     </div>
                                 </div>
+                                <span t-field="product.description" />
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <span itemprop="url" style="display:none;" t-esc="'/shop/product/%s' % slug(product)"/>
                                     <form t-att-action="keep('/shop/cart/update')" class="js_add_cart_variants" method="POST">
