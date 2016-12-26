@@ -92,7 +92,7 @@ $('.oe_website_sale').each(function () {
         $('input[name="' + $input.attr("name") + '"]').val(quantity > min ? (quantity < max ? quantity : max) : min);
         $input.change();
         if (quantity > 0) {
-            var el = $("input.js_variant_change:checked[pack]");
+            var el = $("input.js_variant_change");
             var $ul = $(el).parents('.js_add_cart_variants:first');
             var $parent = $ul.closest('.js_product');
             var $product_id = $parent.find('input.product_id').first();
@@ -123,13 +123,17 @@ $('.oe_website_sale').each(function () {
                 coef = coef * val_pack_qty[v];
                 break
             }
-            var qty_val = quantity * coef * parseFloat($("#uos_val").text());
             var product_id = false;
+            var qty_val = coef * parseFloat($("#uos_val").text());
+            var qty_name = $("#uos_name").text();
+            var uos_cof = parseFloat($("#uos_cof").text()) || 1;
+            var basic_price = parseFloat($("h4[style='display: none;'] span.oe_currency_value").text());
+            var total_price = quantity * basic_price * coef * uos_cof;
             for (var k in variant_ids) {
                 if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
-                    $price.html(price_to_str(variant_ids[k][2] * quantity));
-                    // $price_per_one.html(price_to_str(variant_ids[k][2]/coef));
-                    // $price_per_one_qty.html(quantity_to_str(qty_val));
+                    $price.html(price_to_str(total_price));
+                    // $price_per_one.html(price_to_str(basic_price));
+                    // $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name);
                     // $default_price.html(price_to_str(variant_ids[k][3]));
                     if (variant_ids[k][3] - variant_ids[k][2] > 0.2) {
                         $default_price.closest('.oe_website_sale').addClass("discount");
@@ -140,6 +144,7 @@ $('.oe_website_sale').each(function () {
                     break;
                 }
             }
+
             if (product_id) {
                 var $img = $(el).closest('tr.js_product, .oe_website_sale').find('span[data-oe-model^="product."][data-oe-type="image"] img:first, img.product_detail_img');
                 $img.attr("src", "/website/image/product.product/" + product_id + "/image");
@@ -252,13 +257,18 @@ $('.oe_website_sale').each(function () {
             coef = coef * val_pack_qty[v];
             break
         }
-        var qty_val = coef * parseFloat($("#uos_val").text());
         var product_id = false;
+        var qty_val = coef * parseFloat($("#uos_val").text());
+        var qty_name = $("#uos_name").text();
+        var uos_cof = parseFloat($("#uos_cof").text()) || 1;
+        var basic_price =  parseFloat($("h4[style='display: none;'] span.oe_currency_value").text());
+        var quantity = parseFloat($("[name='add_qty']").val());
+        var total_price = basic_price * coef * uos_cof * quantity;
         for (var k in variant_ids) {
             if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
-                $price.html(price_to_str(variant_ids[k][2]));
-                $price_per_one.html(price_to_str(variant_ids[k][2]));
-                $price_per_one_qty.html(quantity_to_str(qty_val));
+                $price.html(price_to_str(total_price));
+                $price_per_one.html(price_to_str(basic_price));
+                $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name);
                 $default_price.html(price_to_str(variant_ids[k][3]));
                 if (variant_ids[k][3]-variant_ids[k][2]>0.2) {
                     $default_price.closest('.oe_website_sale').addClass("discount");

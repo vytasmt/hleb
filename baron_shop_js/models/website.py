@@ -5,7 +5,7 @@ from openerp import models
 from openerp.http import request
 from fractions import Fraction as FR
 from openerp import tools, SUPERUSER_ID
-
+import re
 
 class BaronWebsite(models.Model):
     _name = 'baron_website_tools'
@@ -22,8 +22,15 @@ class BaronWebsite(models.Model):
     def product_get_quantity(self, product):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         uos_id = product.uos_id.id
+        res = {}
         if uos_id:
-            res = self.subnumber(self.env['product.uom'].sudo().browse(uos_id).name)
+            name = self.env['product.uom'].sudo().browse(uos_id).name
+            res['qty'] = self.subnumber(name)
+            res['uos_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  name.encode('utf8').decode('utf8'))
+            if product.uos_id.uom_type == 'smaller':
+                res['cof'] = 1/float(product.uos_coeff)
+            elif product.uos_id.uom_type == 'bigger':
+                res['cof'] = product.uos_coeff
             return res
         return 1
 
