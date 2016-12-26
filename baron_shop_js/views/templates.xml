@@ -21,6 +21,7 @@
                 <span id='uos_val' t-esc="uos_vals['qty']" hidden="1"/>
                 <span id='uos_name' t-esc="uos_vals['uos_name']" hidden="1"/>
                 <span id='uos_cof' t-esc="uos_vals['cof']" hidden="1"/>
+                <span id='website_styles' t-esc="uos_vals['styles']" hidden="1"/>
                 <span class="price_per_one_qty"/>
                 <!--<span t-field="product.uom_id"/>-->
             </t>

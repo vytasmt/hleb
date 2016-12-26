@@ -27,12 +27,13 @@ class BaronWebsite(models.Model):
             name = self.env['product.uom'].sudo().browse(uos_id).name
             res['qty'] = self.subnumber(name)
             res['uos_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  name.encode('utf8').decode('utf8'))
+            res['styles'] = ', '.join(self.env['product.style'].sudo().browse(product.website_style_ids.ids).mapped('html_class'))
             if product.uos_id.uom_type == 'smaller':
                 res['cof'] = 1/float(product.uos_coeff)
             elif product.uos_id.uom_type == 'bigger':
                 res['cof'] = product.uos_coeff
             return res
-        return 1
+        return {'styles': ''}
 
     @api.model
     def subnumber(self, inp):
