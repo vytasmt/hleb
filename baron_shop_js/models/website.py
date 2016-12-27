@@ -36,6 +36,17 @@ class BaronWebsite(models.Model):
         return {'styles': ''}
 
     @api.model
+    def variant_data(self, variant):
+        res = {}
+        if len(variant.value_ids):
+            for var in variant.value_ids:
+                vals = {'name': var.name, 'price_multiple': var.price_multiple}
+                res['id'] = var.id
+                res['data'] = vals
+        return res
+
+
+    @api.model
     def subnumber(self, inp):
         s = "".join([x for x in inp if x in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "/", ".", ",", "-"]]).replace(",",".")
         try:

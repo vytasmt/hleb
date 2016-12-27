@@ -125,15 +125,18 @@ $('.oe_website_sale').each(function () {
             }
             var product_id = false;
             var qty_val = coef * parseFloat($("#uos_val").text());
+            var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult'));
             var qty_name = $("#uos_name").text();
+            var uom_name = $('h4 p span[data-oe-field=uom_id]').text();
             var uos_cof = parseFloat($("#uos_cof").text()) || 1;
             var basic_price = parseFloat($("h4[style='display: none;'] span.oe_currency_value").text());
-            var total_price = quantity * basic_price * coef * uos_cof;
+            var qty_in_ous = uos_cof * coef * quantity;
+            var total_price = basic_price * (1 + price_multiple / 100) * qty_in_ous;
             for (var k in variant_ids) {
                 if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
                     $price.html(price_to_str(total_price));
                     // $price_per_one.html(price_to_str(basic_price));
-                    // $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name);
+                    $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name + " (" + qty_in_ous  + " " + uom_name + ")");
                     // $default_price.html(price_to_str(variant_ids[k][3]));
                     if (variant_ids[k][3] - variant_ids[k][2] > 0.2) {
                         $default_price.closest('.oe_website_sale').addClass("discount");
@@ -259,16 +262,19 @@ $('.oe_website_sale').each(function () {
         }
         var product_id = false;
         var qty_val = coef * parseFloat($("#uos_val").text());
+        var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult'));
         var qty_name = $("#uos_name").text();
+        var uom_name = $('h4 p span[data-oe-field=uom_id]').text();
         var uos_cof = parseFloat($("#uos_cof").text()) || 1;
         var basic_price =  parseFloat($("h4[style='display: none;'] span.oe_currency_value").text());
         var quantity = parseFloat($("[name='add_qty']").val());
-        var total_price = basic_price * coef * uos_cof * quantity;
+        var qty_in_ous = uos_cof * coef * quantity;
+        var total_price = basic_price * (1+price_multiple/100) * qty_in_ous;
         for (var k in variant_ids) {
             if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
                 $price.html(price_to_str(total_price));
                 $price_per_one.html(price_to_str(basic_price));
-                $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name);
+                $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name + " (" + qty_in_ous  + " " + uom_name + ")");
                 $default_price.html(price_to_str(variant_ids[k][3]));
                 if (variant_ids[k][3]-variant_ids[k][2]>0.2) {
                     $default_price.closest('.oe_website_sale').addClass("discount");
