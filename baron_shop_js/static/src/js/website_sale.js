@@ -125,7 +125,7 @@ $('.oe_website_sale').each(function () {
             }
             var product_id = false;
             var qty_val = coef * parseFloat($("#uos_val").text());
-            var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult'));
+            var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult'))  || 1;
             var qty_name = $("#uos_name").text();
             var uom_name = $('h4 p span[data-oe-field=uom_id]').text();
             var uos_cof = parseFloat($("#uos_cof").text()) || 1;
@@ -262,7 +262,7 @@ $('.oe_website_sale').each(function () {
         }
         var product_id = false;
         var qty_val = coef * parseFloat($("#uos_val").text());
-        var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult'));
+        var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult')) || 1;
         var qty_name = $("#uos_name").text();
         var uom_name = $('h4 p span[data-oe-field=uom_id]').text();
         var uos_cof = parseFloat($("#uos_cof").text()) || 1;
