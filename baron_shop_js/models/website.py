@@ -24,13 +24,13 @@ class BaronWebsite(models.Model):
         uos_id = product.uos_id.id
         res = {}
         if uos_id:
-            name = self.env['product.uom'].sudo().browse(uos_id).name
-            res['qty'] = self.subnumber(name)
-            res['uos_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  name.encode('utf8').decode('utf8'))
+            uos = self.env['product.uom'].sudo().browse(uos_id)
+            res['qty'] = self.subnumber(uos.name)
+            res['uos_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  uos.name.encode('utf8').decode('utf8'))
             res['styles'] = ', '.join(self.env['product.style'].sudo().browse(product.website_style_ids.ids).mapped('html_class'))
-            if product.uos_id.uom_type == 'smaller':
+            if uos.uom_type == 'smaller':
                 res['cof'] = 1/float(product.uos_coeff)
-            elif product.uos_id.uom_type == 'bigger':
+            elif uos.uom_type == 'bigger':
                 res['cof'] = product.uos_coeff
             else:
                 res['cof'] = 1
@@ -40,11 +40,11 @@ class BaronWebsite(models.Model):
     @api.model
     def variant_data(self, variant):
         res = {}
-        if len(variant.value_ids):
-            for var in variant.value_ids:
-                vals = {'name': var.name, 'price_multiple': var.price_multiple}
-                res['id'] = var.id
-                res['data'] = vals
+        # if len(variant.value_ids):
+        #     for var in variant.value_ids:
+        #         vals = {'name': var.name, 'price_multiple': var.price_multiple}
+        #         res['id'] = var.id
+        #         res['data'] = vals
         return res
 
 
