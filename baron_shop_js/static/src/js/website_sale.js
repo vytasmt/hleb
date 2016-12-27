@@ -127,7 +127,7 @@ $('.oe_website_sale').each(function () {
             var qty_val = coef * parseFloat($("#uos_val").text());
             var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult'))  || 0;
             var qty_name = $("#uos_name").text();
-            var uom_name = $('h4 p span[data-oe-field=uom_id]').text();
+            var uom_name = $('#uom_name').text();
             var uos_cof = parseFloat($("#uos_cof").text()) || 1;
             var basic_price = parseFloat($("h4[style='display: none;'] span.oe_currency_value").text());
             var qty_in_ous = uos_cof * coef * quantity;
@@ -264,7 +264,7 @@ $('.oe_website_sale').each(function () {
         var qty_val = coef * parseFloat($("#uos_val").text());
         var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult')) || 0;
         var qty_name = $("#uos_name").text();
-        var uom_name = $('h4 p span[data-oe-field=uom_id]').text();
+        var uom_name = $('#uom_name').text();
         var uos_cof = parseFloat($("#uos_cof").text()) || 1;
         var basic_price =  parseFloat($("h4[style='display: none;'] span.oe_currency_value").text());
         var quantity = parseFloat($("[name='add_qty']").val());
