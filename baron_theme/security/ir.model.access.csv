@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_bestseller_category,access_bestseller_category,model_bestseller_category,,1,1,1,0
 access_bestseller_category_group_user,access_bestseller_category group_user,model_bestseller_category,base.group_user,1,1,1,1
+access_product_uom_useer,a11,product.model_product_uom,base.group_user,1,0,0,0
+access_product_uom_all,a22,product.model_product_uom,,1,0,0,0
