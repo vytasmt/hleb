@@ -123,27 +123,33 @@ $('.oe_website_sale').each(function () {
                 coef = coef * val_pack_qty[v];
                 break
             }
-            var product_id = false;
             var qty_val = coef * parseFloat($("#uos_val").text());
-            var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult'))  || 0;
+            var price_multiple = parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult')) || 0;
+            var price_plus = parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('plus')) || 0;
             var qty_name = $("#uos_name").text();
             var uom_name = $('#uom_name').text();
             var uos_cof = parseFloat($("#uos_cof").text()) || 1;
-            var basic_price = parseFloat($("h4[style='display: none;'] span.oe_currency_value").text());
-            var qty_in_ous = uos_cof * coef * quantity;
-            var total_price = basic_price * (1 + price_multiple / 100) * qty_in_ous;
+            var basic_price = parseFloat($("h4 span.oe_currency_value").text()); //тут уже содержится: (базовая_цена+наценка_варианта)*коэф_варианта
+            // var result_price = basic_price * множитлель прайса
+            var quantity = parseFloat($("[name='add_qty']").val());
+            var qty_in_uom = uos_cof * coef * quantity; // количество UOS приведенное в единицы UOM
+            // var total_price = result_price * qty_in_uom;
+            var product_id = false;
             for (var k in variant_ids) {
                 if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
+                    product_id = variant_ids[k][0];
+                    var total_price = qty_in_uom * parseFloat($('span[varid=' + product_id + ']').text());
+                    var result_price = parseFloat($('span[varid=' + product_id + ']').text());
+                    var total_price = result_price * qty_in_uom;
                     $price.html(price_to_str(total_price));
                     // $price_per_one.html(price_to_str(basic_price));
-                    $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name + " (" + qty_in_ous  + " " + uom_name + ")");
+                    $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name + " (" + qty_in_uom  + " " + uom_name + ")");
                     // $default_price.html(price_to_str(variant_ids[k][3]));
                     if (variant_ids[k][3] - variant_ids[k][2] > 0.2) {
                         $default_price.closest('.oe_website_sale').addClass("discount");
                     } else {
                         $default_price.closest('.oe_website_sale').removeClass("discount");
                     }
-                    product_id = variant_ids[k][0];
                     break;
                 }
             }
@@ -262,26 +268,30 @@ $('.oe_website_sale').each(function () {
         }
         var product_id = false;
         var qty_val = coef * parseFloat($("#uos_val").text());
-        var price_multiple = coef * parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult')) || 0;
+        var price_multiple = parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('mult')) || 0;
+        var price_plus = parseFloat($('input.js_variant_change:checked').siblings().last().children('#attr_uos_val').attr('plus')) || 0;
         var qty_name = $("#uos_name").text();
         var uom_name = $('#uom_name').text();
         var uos_cof = parseFloat($("#uos_cof").text()) || 1;
-        var basic_price =  parseFloat($("h4[style='display: none;'] span.oe_currency_value").text());
+        var basic_price =  parseFloat($("h4 span[itemprop=price]").text()); // должна уже учитывать прайс
+        var result_price =  basic_price*(1+price_multiple/100) + price_plus; // используемая цена
         var quantity = parseFloat($("[name='add_qty']").val());
-        var qty_in_ous = uos_cof * coef * quantity;
-        var total_price = basic_price * (1+price_multiple/100) * qty_in_ous;
+        var qty_in_uom = uos_cof * coef * quantity; // количество UOS приведенное в единицы UOM
+        // var total_price = result_price * qty_in_uom;
         for (var k in variant_ids) {
             if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
+                product_id = variant_ids[k][0];
+                var result_price = parseFloat($('span[varid=' + product_id + ']').text());
+                var total_price = result_price * qty_in_uom;
                 $price.html(price_to_str(total_price));
-                $price_per_one.html(price_to_str(basic_price));
-                $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name + " (" + qty_in_ous  + " " + uom_name + ")");
+                $price_per_one.html(price_to_str(result_price));
+                $price_per_one_qty.html(quantity_to_str(qty_val) + " " + qty_name + " (" + qty_in_uom  + " " + uom_name + ")");
                 $default_price.html(price_to_str(variant_ids[k][3]));
                 if (variant_ids[k][3]-variant_ids[k][2]>0.2) {
                     $default_price.closest('.oe_website_sale').addClass("discount");
                 } else {
                     $default_price.closest('.oe_website_sale').removeClass("discount");
                 }
-                product_id = variant_ids[k][0];
                 break;
             }
         }

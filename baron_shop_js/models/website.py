@@ -38,13 +38,18 @@ class BaronWebsite(models.Model):
         return {'styles': ''}
 
     @api.model
-    def variant_data(self, variant):
-        res = {}
-        # if len(variant.value_ids):
-        #     for var in variant.value_ids:
-        #         vals = {'name': var.name, 'price_multiple': var.price_multiple}
-        #         res['id'] = var.id
-        #         res['data'] = vals
+    def variant_data(self, product, variant):
+        cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
+        res = []
+        partner = self.pool['res.users'].browse(cr, SUPERUSER_ID, uid, context=context).partner_id
+        pricelist = partner.property_product_pricelist.id
+        if len(product.product_variant_ids):
+            for prod_prod in product.product_variant_ids:
+                vals = {}
+                price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist], prod_prod.id, 1.0, partner.id, context)[pricelist]
+                vals['id'] = prod_prod.id
+                vals['price'] = price
+                res.append(vals)
         return res
 
 
