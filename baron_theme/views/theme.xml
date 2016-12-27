@@ -759,6 +759,8 @@
                                     <div itemprop="description" t-field="product.description" class="oe_structure"/>
                                     <div style="margin-top: 30px;text-align: left;"><a class="btn btn-warning " href="/page/kak-gotovit"><span style="color:#000000;">СПОСОБ ПРИГОТОВЛЕНИЯ</span></a>
                                     </div>
+                                    </div>
+
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <span itemprop="url" style="display:none;" t-esc="'/shop/product/%s' % slug(product)"/>
@@ -1221,8 +1223,7 @@
                             <option t-att-value="value_id.id" t-att-pack="value_id.pack_qty">
                                 <span t-field="value_id.name"/>
                                 <t t-if="value_id.pack_qty">
-                                    <t t-set="variant_data" t-value="website.env['baron_website_tools'].variant_data(value_id)"/>
-                                    <span> (<span t-esc="value_id.pack_qty*uos_vals['qty']" id="attr_uos_val"/> <span t-esc="uos_vals['uos_name']" id="attr_uos_name"/>)</span>
+                                    <span> x <span t-field="value_id.pack_qty"/> шт.</span>
                                 </t>
                                 <span t-if="value_id.price_extra">
                                     <t t-esc="value_id.price_extra > 0 and '+' or ''"/><span t-field="value_id.price_extra" style="white-space: nowrap;" t-field-options='{
@@ -1243,7 +1244,8 @@
                         <t t-foreach="variant_id.value_ids" t-as="value_id">
                             <li t-if="value_id.product_ids" class="form-group js_attribute_value" style="margin: 0;">
                                 <label class="control-label" style="margin: 0px;">
-                                    <input type="radio" class="js_variant_change" t-att-checked="'checked' if not inc else ''" t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)" t-att-value="value_id.id" style="vertical-align: top; margin-right: 10px;" t-att-pack="value_id.pack_qty" />
+                                    <input type="radio" class="js_variant_change" t-att-checked="'checked' if not inc else ''" t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)" t-att-value="value_id.id" style="vertical-align: top; margin-right: 5px;" t-att-pack="value_id.pack_qty" />
+
                                     <span t-field="value_id.name"/>
                                     <t t-if="value_id.pack_qty">
                                         <span> (<span t-esc="value_id.pack_qty*uos_vals['qty']" id="attr_uos_val" t-att-mult="value_id.price_multiple"/> <span t-esc="uos_vals['uos_name']" id="attr_uos_name"/>)</span>
@@ -1256,6 +1258,7 @@
                                             }'/>
                                     </span>
                                 </label>
+                                <span class="carret"/>
                             </li>
                             <t t-set="inc" t-value="inc+1"/>
                         </t>
