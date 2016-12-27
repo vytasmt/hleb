@@ -32,6 +32,8 @@ class BaronWebsite(models.Model):
                 res['cof'] = 1/float(product.uos_coeff)
             elif product.uos_id.uom_type == 'bigger':
                 res['cof'] = product.uos_coeff
+            else:
+                res['cof'] = 1
             return res
         return {'styles': ''}
 
