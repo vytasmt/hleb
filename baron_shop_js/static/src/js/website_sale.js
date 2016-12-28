@@ -129,7 +129,7 @@ $('.oe_website_sale').each(function () {
             var qty_name = $("#uos_name").text();
             var uom_name = $('#uom_name').text();
             var uos_cof = parseFloat($("#uos_cof").text()) || 1;
-            var basic_price = parseFloat($("h4 span.oe_currency_value").text()); //тут уже содержится: (базовая_цена+наценка_варианта)*коэф_варианта
+            // var basic_price = parseFloat($("h4 span.oe_currency_value").text()); //тут уже содержится: (базовая_цена+наценка_варианта)*коэф_варианта
             // var result_price = basic_price * множитлель прайса
             var quantity = parseFloat($("[name='add_qty']").val());
             var qty_in_uom = uos_cof * coef * quantity; // количество UOS приведенное в единицы UOM
@@ -138,7 +138,6 @@ $('.oe_website_sale').each(function () {
             for (var k in variant_ids) {
                 if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
                     product_id = variant_ids[k][0];
-                    var total_price = qty_in_uom * parseFloat($('span[varid=' + product_id + ']').text());
                     var result_price = parseFloat($('span[varid=' + product_id + ']').text());
                     var total_price = result_price * qty_in_uom;
                     $price.html(price_to_str(total_price));

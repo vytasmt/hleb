@@ -506,7 +506,7 @@
                             <div class="item_card_title" style="">
                                 <span class="title" t-field="product.name"/>
                             </div>
-                            <div class="category_img_cont">
+                            <div class="category_img_cont" t-att-websiteclass="uos_vals['styles']">
                                 <img itemprop="image" t-att-src="website.image_url(product_product, 'image', None if product_image_big else '300x300')"/>
                             </div>
                             <t t-set="attribute_value_ids_price" t-value="get_attribute_value_ids(product, order=True)"/>
@@ -546,7 +546,7 @@
                             <div class="item_card_title" style="">
                                 <span class="title" t-field="product.name"/>
                             </div>
-                            <div class="category_img_cont">
+                            <div class="category_img_cont"  t-att-websiteclass="uos_vals['styles']">
                                 <img itemprop="image" t-att-src="website.image_url(product, 'image', None if product_image_big else '300x300')"/>
                             </div>
                             <t t-set="attribute_value_ids_price" t-value="get_attribute_value_ids(product_template, order=True)"/>
