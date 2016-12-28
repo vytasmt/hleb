@@ -538,6 +538,7 @@
         </template>
 
         <template id="product_item_card_2" name="Modification Product item card">
+            <t t-set="uos_vals" t-value="website.env['baron_website_tools'].product_get_quantity(product)"/>
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <form action="/shop/cart/update" method="post">
                     <div class="block-goods" t-att-data-publish="product.website_published and 'on' or 'off'">
