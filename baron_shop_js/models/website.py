@@ -20,16 +20,16 @@ class BaronWebsite(models.Model):
 
     @api.model
     def product_get_quantity(self, product):
-        cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         uos_id = product.uos_id.id
-        res = {'styles': ''}
+        res = {'styles': '', 'qty': False, 'uos_name': False, 'cof': False}
+        res['list_price'] = product.list_price
+        res['styles'] = ', '.join(self.env['product.style'].sudo().browse(product.website_style_ids.ids).mapped('html_class'))
         if uos_id:
             uos = self.env['product.uom'].sudo().browse(uos_id)
             res['qty'] = self.subnumber(uos.name)
             res['uos_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  uos.name.encode('utf8').decode('utf8'))
-            res['styles'] = ', '.join(self.env['product.style'].sudo().browse(product.website_style_ids.ids).mapped('html_class'))
             if uos.uom_type == 'smaller':
-                res['cof'] = 1/float(product.uos_coeff)
+                res['cof'] = float(product.uos_coeff)
             elif uos.uom_type == 'bigger':
                 res['cof'] = product.uos_coeff
             else:
@@ -40,18 +40,17 @@ class BaronWebsite(models.Model):
     @api.model
     def variant_data(self, product, variant):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
-        res = []
         partner = self.pool['res.users'].browse(cr, SUPERUSER_ID, uid, context=context).partner_id
         pricelist = partner.property_product_pricelist.id
-        if len(product.product_variant_ids):
-            for prod_prod in product.product_variant_ids:
-                vals = {}
-                price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist], prod_prod.id, 1.0, partner.id, context)[pricelist]
-                vals['id'] = prod_prod.id
-                vals['price'] = price
-                res.append(vals)
-        return res
-
+        vals = {'variant_qty': False, 'variant_uos': False}
+        vals['variant_qty'] = self.subnumber(variant.name)
+        vals['variant_uos'] = ""
+        # if len(product.product_variant_ids):
+        #     for prod_prod in product.product_variant_ids:
+        #         price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist], prod_prod.id, 1.0, partner.id, context)[pricelist]
+        #         vals['id'] = prod_prod.id
+        #         vals['price'] = price
+        return vals
 
     @api.model
     def subnumber(self, inp):

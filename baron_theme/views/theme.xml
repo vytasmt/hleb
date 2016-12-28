@@ -1218,11 +1218,11 @@
             </ul>
             <t t-set="uos_vals" t-value="website.env['baron_website_tools'].product_get_quantity(product)"/>
             <t t-foreach="product.attribute_line_ids" t-as="variant_id">
-                <t t-set="variant_data" t-value="website.env['baron_website_tools'].variant_data(product, variant_id)"/>
-                <t t-foreach="variant_data" t-as="varik">
-                    <!--Выводим цены за единицу с учетом прайса наценки варианта и коэф. варианта.-->
-                    <span name='variant_data_row' t-att-varid="varik['id']" t-esc="varik['price']" hidden="1"/>
-                </t>
+                <!--<t t-set="variant_data" t-value="website.env['baron_website_tools'].variant_data(product, variant_id)"/>-->
+                <!--<t t-foreach="variant_data" t-as="varik">-->
+                    <!--&lt;!&ndash;Выводим цены за единицу с учетом прайса наценки варианта и коэф. варианта.&ndash;&gt;-->
+                    <!--<span name='variant_data_row' t-att-varid="varik['id']" t-esc="varik['price']" hidden="1"/>-->
+                <!--</t>-->
                 <t t-if="variant_id.attribute_id.type in ['select', 'hidden']">
                     <select class="form-control js_variant_change" t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)">
                         <t t-foreach="variant_id.value_ids" t-as="value_id">
@@ -1251,10 +1251,11 @@
                             <li t-if="value_id.product_ids" class="form-group js_attribute_value" style="margin: 0;">
                                 <label class="control-label" style="margin: 0px;">
                                     <input type="radio" class="js_variant_change" t-att-checked="'checked' if not inc else ''" t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)" t-att-value="value_id.id" style="vertical-align: top; margin-right: 5px;" t-att-pack="value_id.pack_qty" />
-
                                     <span t-field="value_id.name"/>
+                                    <t t-set="variant_data" t-value="website.env['baron_website_tools'].variant_data(product, value_id)"/>
                                     <t t-if="value_id.pack_qty">
-                                        <span> (<span t-esc="value_id.pack_qty*uos_vals['qty']" id="attr_uos_val" t-att-mult="value_id.price_multiple" t-att-plus="value_id.price_plus"/> <span t-esc="uos_vals['uos_name']" id="attr_uos_name"/>)</span>
+                                        <span t-esc="value_id.pack_qty" name="attr_uom_val" hidden="1"/>
+                                        <span t-esc="variant_data['variant_qty']" name="attr_uos_val" hidden="1"/>
                                     </t>
                                     <span class="badge" t-if="value_id.price_extra">
                                         <t t-esc="value_id.price_extra > 0 and '+' or ''"/><span t-field="value_id.price_extra" style="white-space: nowrap;" t-field-options='{
