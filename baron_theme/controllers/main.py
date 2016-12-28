@@ -13,6 +13,7 @@ from openerp.addons.website_crm.controllers.main import contactus
 from openerp.addons.website_sale.controllers.main import QueryURL
 from openerp.addons.website_sale.controllers.main import website_sale
 from openerp.addons.website_sale.controllers.main import table_compute
+from bs4 import BeautifulSoup
 
 PPG = 20  # Products Per Page
 PPR = 4  # Products Per Row
@@ -533,10 +534,29 @@ class baron_website_sale(website_sale):
 
     @http.route(['/shop/cart/update_json'], type='json', auth="public", methods=['POST'], website=True)
     def cart_update_json(self, product_id, line_id, add_qty=None, set_qty=None, display=True):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         value = super(baron_website_sale, self).cart_update_json(product_id, line_id, add_qty, set_qty, display)
+        so = request.website.sale_get_order()
+        partner = registry.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context).partner_id
+        pricelist = partner.property_product_pricelist
+        price_subtotal = 0
+        for line in so.website_order_line:
+            price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
+            line.price_unit = price
+            line.price_reduce = price
+            line.price_subtotal = price * line.product_uom_qty
+            price_subtotal = line.price_subtotal
+            # line.product_uom_qty = line.product_uos_qty
+            if line.correct_quantity > 1:
+                line.product_uos_qty = line.correct_quantity
+        soup = BeautifulSoup(value['website_sale.total'], 'html.parser')
+        for el in soup.find_all('span', {"class": "oe_currency_value"}):
+            if float(el.string)!=0:
+                el.string = str(price_subtotal)
+        value['website_sale.total'] = str(soup)
         value['baron_theme.minimal_total_alert'] = request.website._render(
             "baron_theme.minimal_total_alert", {
-                'website_sale_order': request.website.sale_get_order(),
+                'website_sale_order': so,
                 'minimal_order_price': self.get_minimal_order_price(),
                 'format_lang': self.format_lang,
             }
