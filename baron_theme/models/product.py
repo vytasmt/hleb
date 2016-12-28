@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from openerp import api, fields, models, _
-from openerp.osv import expression
+from openerp.osv import expression, osv
 import re
 import random
+from itertools import chain
 
 
 class ProductTemplate(models.Model):
@@ -122,3 +123,24 @@ class product_temolate(models.Model):
     bestseller = fields.Selection([
         ('bread', u'Выпечка'),
         ('meat', u'Мясо')], u"Хит продаж", inverse="on_inverse_bestseller")
+
+
+class ProductPricelist(models.Model):
+    _inherit = "product.pricelist"
+
+    @api.model
+    def _price_rule_get_multi(self, pricelist, products_by_qty_by_partner):
+        product_uom_obj = self.env['product.uom']
+        res = super(ProductPricelist, self)._price_rule_get_multi(pricelist, products_by_qty_by_partner)
+        products = map(lambda x: x[0], products_by_qty_by_partner)
+        is_product_template = products[0]._name == "product.template"
+        if is_product_template:
+            for rec in res:
+                product = self.env['product.template'].sudo().browse(rec)
+                res[rec] = (product_uom_obj._compute_price(product.uom_id.id, res[rec][0], product.uos_id.id),res[rec][1])
+        else:
+            for rec in res:
+                product = self.env['product.product'].sudo().browse(rec)
+                res[rec] = (product_uom_obj._compute_price(product.uom_id.id, res[rec][0], product.uos_id.id),res[rec][1])
+        return res
+
