@@ -281,7 +281,7 @@ $('.oe_website_sale').each(function () {
                 var result_price = parseFloat(variant_ids[k][3]);
                 var total_price = result_price * quantity;
                 $price.html(price_to_str(total_price));
-                $price_per_one.html(price_to_str(basic_price));
+                $price_per_one.html(price_to_str(total_price/uom_qty));
                 $price_per_one_qty.html(qty); //
                 $default_price.html(price_to_str(variant_ids[k][3]));
                 if (variant_ids[k][3]-variant_ids[k][2]>0.2) {

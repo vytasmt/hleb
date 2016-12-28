@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-
         <record model="ir.ui.view" id="product_template_form_view">
             <field name="name">product.template.product.baron.website.form</field>
             <field name="model">product.template</field>
@@ -101,5 +100,38 @@
 
         <menuitem name="Категории Хитов Продаж" id="bestseller_category_menu" parent="base.menu_base_config" action="bestseller_category_action" groups='base.group_no_one' sequence="30"/>
 
+        <record model="ir.ui.view" id="view_order_form_inherit">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//tree[@string='Sales Order Lines']" position="replace">
+                    <tree string="Sales Order Lines" editable="bottom">
+                        <field name="sequence" widget="handle"/>
+                        <field name="state" invisible="1"/>
+                        <field name="th_weight" invisible="1"/>
+                        <field name="product_id"
+                               context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                               groups="base.group_user"
+                               on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)"/>
+                        <field name="name"/>
+                        <field name="product_uom_qty"
+                               context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                               on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, False, parent.fiscal_position, True, context)"/>
+                        <field name="product_uom" string="UoM"
+                               context="{'company_id': parent.company_id}"
+                               on_change="onchange_product_uom(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, parent.fiscal_position, context)"
+                               groups="product.group_uom" options='{"no_open": True}'/>
+                        <field name="product_uos_qty"  groups="product.group_uos"/>
+                        <field name="product_uos" string="UoS" groups="product.group_uos"/>
+                        <field name="price_unit"/>
+                        <field name="tax_id" widget="many2many_tags"
+                               domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]" invisible="1"/>
+                        <field name="discount" groups="sale.group_discount_per_so_line"/>
+                        <field name="price_subtotal"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>

@@ -555,7 +555,20 @@ class baron_website_sale(website_sale):
         #             if price_id.pack_true:
         #                 add_uos_qty = add_uos_qty * price_id.pack_qty
         #                 set_uos_qty = set_uos_qty * price_id.pack_qty
+        kw['qty_uos'] = 1
         res = super(baron_website_sale, self).cart_update(product_id, add_uos_qty, set_uos_qty, **kw)
+        so = request.website.sale_get_order()
+        partner = registry.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context).partner_id
+        pricelist = partner.property_product_pricelist
+        for line in so.website_order_line:
+            price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
+            line.price_unit = price
+            line.price_reduce = price
+            line.price_subtotal = price * line.product_uom_qty
+            # line.product_uom_qty = line.product_uos_qty
+            if line.correct_quantity > 0:
+                line.product_uos_qty = line.correct_quantity
+
         back_to_product_href = "/shop/product/" + slug(product.product_tmpl_id)
         return request.redirect(back_to_product_href)
 

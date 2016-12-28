@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data noupdate="0">
+    <data>
         <!-- <delete id="baron_theme.homepage_inherit" model="ir.ui.view"/> -->
 
         <template id="theme" inherit_id="website.theme" name="Baron Theme">
@@ -1229,7 +1229,7 @@
                             <option t-att-value="value_id.id" t-att-pack="value_id.pack_qty">
                                 <span t-field="value_id.name"/>
                                 <t t-if="value_id.pack_qty">
-                                    <span> x <span t-field="value_id.pack_qty"/> шт.</span>
+                                    <!--<span> x <span t-field="value_id.pack_qty"/> шт.</span>-->
                                 </t>
                                 <span t-if="value_id.price_extra">
                                     <t t-esc="value_id.price_extra > 0 and '+' or ''"/><span t-field="value_id.price_extra" style="white-space: nowrap;" t-field-options='{

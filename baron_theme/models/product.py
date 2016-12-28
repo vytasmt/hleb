@@ -27,7 +27,7 @@ class product_product(models.Model):
                 for price_id in v.price_ids:
                     if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
                         if price_id.pack_true:
-                            variant += ' x ' + ('%.2f' % price_id.pack_qty) + u" шт."
+                            variant += ''  #' x ' + ('%.2f' % price_id.pack_qty) + u" шт."
                 variant += ', '
             product.attributes_values_string = variant and "(%s)" % (
                 variant[:-2]) or ''
@@ -125,22 +125,22 @@ class product_temolate(models.Model):
         ('meat', u'Мясо')], u"Хит продаж", inverse="on_inverse_bestseller")
 
 
-class ProductPricelist(models.Model):
-    _inherit = "product.pricelist"
-
-    @api.model
-    def _price_rule_get_multi(self, pricelist, products_by_qty_by_partner):
-        product_uom_obj = self.env['product.uom']
-        res = super(ProductPricelist, self)._price_rule_get_multi(pricelist, products_by_qty_by_partner)
-        products = map(lambda x: x[0], products_by_qty_by_partner)
-        is_product_template = products[0]._name == "product.template"
-        if is_product_template:
-            for rec in res:
-                product = self.env['product.template'].sudo().browse(rec)
-                res[rec] = (product_uom_obj._compute_price(product.uom_id.id, res[rec][0], product.uos_id.id),res[rec][1])
-        else:
-            for rec in res:
-                product = self.env['product.product'].sudo().browse(rec)
-                res[rec] = (product_uom_obj._compute_price(product.uom_id.id, res[rec][0], product.uos_id.id),res[rec][1])
-        return res
-
+# class ProductPricelist(models.Model):
+#     _inherit = "product.pricelist"
+#
+#     @api.model
+#     def _price_rule_get_multi(self, pricelist, products_by_qty_by_partner):
+#         product_uom_obj = self.env['product.uom']
+#         res = super(ProductPricelist, self)._price_rule_get_multi(pricelist, products_by_qty_by_partner)
+#         products = map(lambda x: x[0], products_by_qty_by_partner)
+#         is_product_template = products[0]._name == "product.template"
+#         if is_product_template:
+#             for rec in res:
+#                 product = self.env['product.template'].sudo().browse(rec)
+#                 res[rec] = (product_uom_obj._compute_price(product.uom_id.id, res[rec][0], product.uos_id.id),res[rec][1])
+#         else:
+#             for rec in res:
+#                 product = self.env['product.product'].sudo().browse(rec)
+#                 res[rec] = (product_uom_obj._compute_price(product.uom_id.id, res[rec][0], product.uos_id.id),res[rec][1])
+#         return res
+#
