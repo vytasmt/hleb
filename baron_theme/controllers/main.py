@@ -537,20 +537,21 @@ class baron_website_sale(website_sale):
         partner = registry.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context).partner_id
         pricelist = partner.property_product_pricelist
         price_subtotal = 0
-        for line in so.website_order_line:
-            price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
-            line.price_unit = price
-            line.price_reduce = price
-            line.price_subtotal = price * line.product_uom_qty
-            price_subtotal = line.price_subtotal
-            # line.product_uom_qty = line.product_uos_qty
-            if line.correct_quantity > 1:
-                line.product_uos_qty = line.correct_quantity
-        soup = BeautifulSoup(value['website_sale.total'], 'html.parser')
-        for el in soup.find_all('span', {"class": "oe_currency_value"}):
-            if el.string != "0,00":
-                el.string = str(price_subtotal)
-        value['website_sale.total'] = str(soup)
+        if len(so.website_order_line):
+            for line in so.website_order_line:
+                price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
+                line.price_unit = price
+                line.price_reduce = price
+                line.price_subtotal = price * line.product_uom_qty
+                price_subtotal = line.price_subtotal
+                # line.product_uom_qty = line.product_uos_qty
+                if line.correct_quantity > 1:
+                    line.product_uos_qty = line.correct_quantity
+            soup = BeautifulSoup(value['website_sale.total'], 'html.parser')
+            for el in soup.find_all('span', {"class": "oe_currency_value"}):
+                if el.string != "0,00":
+                    el.string = str(price_subtotal)
+            value['website_sale.total'] = str(soup)
         value['baron_theme.minimal_total_alert'] = request.website._render(
             "baron_theme.minimal_total_alert", {
                 'website_sale_order': so,
