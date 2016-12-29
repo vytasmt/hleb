@@ -6,6 +6,8 @@ import random
 class sale_order(models.Model):
     _inherit = "sale.order"
 
+    cart_uos_qty = fields.Float()
+
     @api.multi
     def _cart_accessories(self):
         for order in self:

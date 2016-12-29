@@ -538,19 +538,25 @@ class baron_website_sale(website_sale):
         pricelist = partner.property_product_pricelist
         price_subtotal = 0
         if so:
+            amount_total = 0
+            amount_untaxed = 0
+            amount_qty = 0
             for line in so.website_order_line:
-                price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
+                ous_price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
+                price = ous_price / (line.correct_quantity * line.product_uom_qty)
                 line.price_unit = price
                 line.price_reduce = price
-                line.price_subtotal = price * line.product_uom_qty
-                price_subtotal = line.price_subtotal
-                # line.product_uom_qty = line.product_uos_qty
-                if line.correct_quantity > 1:
-                    line.product_uos_qty = line.correct_quantity
+                line.product_uos_qty = line.product_uom_qty
+                line.product_uom_qty = line.correct_quantity
+                line.price_subtotal = price * line.product_uos_qty
+                amount_total += line.price_subtotal
+                amount_untaxed += line.price_subtotal
+                amount_qty += line.product_uos_qty
+            so.cart_uos_qty = amount_qty
             soup = BeautifulSoup(value['website_sale.total'], 'html.parser')
             for el in soup.find_all('span', {"class": "oe_currency_value"}):
                 if el.string != "0,00":
-                    el.string = str(price_subtotal)
+                    el.string = str(amount_total)
             value['website_sale.total'] = str(soup)
         value['baron_theme.minimal_total_alert'] = request.website._render(
             "baron_theme.minimal_total_alert", {
@@ -575,18 +581,27 @@ class baron_website_sale(website_sale):
         #                 set_uos_qty = set_uos_qty * price_id.pack_qty
         kw['qty_uos'] = 1
         res = super(baron_website_sale, self).cart_update(product_id, add_uos_qty, set_uos_qty, **kw)
-        so = request.website.sale_get_order()
+        so = request.website.sudo().sale_get_order()
         partner = registry.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context).partner_id
         pricelist = partner.property_product_pricelist
-        for line in so.website_order_line:
-            price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
-            line.price_unit = price
-            line.price_reduce = price
-            line.price_subtotal = price * line.product_uom_qty
-            # line.product_uom_qty = line.product_uos_qty
-            if line.correct_quantity > 0:
-                line.product_uos_qty = line.correct_quantity
-
+        if so:
+            amount_total = 0
+            amount_untaxed = 0
+            amount_qty = 0
+            for line in so.website_order_line:
+                ous_price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
+                price = ous_price / line.correct_quantity * line.product_uom_qty
+                line.price_unit = price
+                line.price_reduce = price
+                line.product_uos_qty = line.product_uom_qty
+                line.product_uom_qty = line.correct_quantity
+                line.price_subtotal = price * line.product_uos_qty
+                amount_total += line.price_subtotal
+                amount_untaxed += line.price_subtotal
+                amount_qty += line.product_uos_qty
+            so.amount_total = amount_total
+            so.amount_untaxed = amount_untaxed
+            so.cart_uos_qty = amount_qty
         back_to_product_href = "/shop/product/" + slug(product.product_tmpl_id)
         return request.redirect(back_to_product_href)
 
@@ -627,3 +642,12 @@ class baron_website_sale(website_sale):
                     res['val_property'] = ''
                     res['val_property_caption'] = ''
         return res
+
+    @staticmethod
+    def subnumber(inp):
+        s = "".join([x for x in inp if x in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "/", ".", ",", "-"]]).replace(",",".")
+        try:
+            res = FR(s)
+            return float(res) if int(res) != float(res) else int(res)
+        except:
+            return 1

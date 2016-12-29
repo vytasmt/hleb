@@ -124,16 +124,17 @@ $('.oe_website_sale').each(function () {
                 break
             }
             var product_id = false;
-            var uom_qty = parseFloat($("input.js_variant_change:checked").siblings("span[name=attr_uom_val]").text());
-            var uos_qty = parseFloat($("input.js_variant_change:checked").siblings("span[name=attr_uos_val]").text());
+            var uom_qty = parseFloat($("input.js_variant_change:checked").siblings("span[name=attr_uom_val]").text()) || 1;
+            var uos_qty = parseFloat($('#uos_qty').text());
+            var factor = parseFloat($('#factor').text());
+            var res_uos_qty = uom_qty * uos_qty * factor;
             var uos_name = $("#uos_name").text();
             var uom_name = $('#uom_name').text();
             var uos_cof = parseFloat($("#uos_cof").text()) || 1;
             var basic_price = parseFloat($("#list_price").text());
-            var quantity = parseFloat($("[name='add_qty']").val());
             var qty = 0;
-            if (uos_qty != uom_qty) {
-                qty = quantity_to_str(uos_qty) + " " + uos_name + " (" + quantity_to_str(uom_qty) + " " + uom_name + ")";
+            if (uos_cof < 1 && uom_qty < 1) {
+                qty = quantity_to_str(res_uos_qty) + " " + uos_name + " (" + quantity_to_str(uom_qty) + " " + uom_name + ")";
             }
             else {
                 qty = quantity_to_str(uom_qty) + " " + uom_name;
@@ -269,16 +270,18 @@ $('.oe_website_sale').each(function () {
             break
         }
         var product_id = false;
-        var uom_qty = parseFloat($("input.js_variant_change:checked").siblings("span[name=attr_uom_val]").text());
-        var uos_qty = parseFloat($("input.js_variant_change:checked").siblings("span[name=attr_uos_val]").text());
+        var uom_qty = parseFloat($("input.js_variant_change:checked").siblings("span[name=attr_uom_val]").text()) || 1;
+        var uos_qty = parseFloat($('#uos_qty').text());
+        var factor = parseFloat($('#factor').text());
+        var res_uos_qty = uom_qty * uos_qty * factor;
         var uos_name = $("#uos_name").text();
         var uom_name = $('#uom_name').text();
         var uos_cof = parseFloat($("#uos_cof").text()) || 1;
         var basic_price =  parseFloat($("#list_price").text());
         var quantity = parseFloat($("[name='add_qty']").val());
         var qty = 0;
-        if(uos_qty != uom_qty){
-            qty = quantity_to_str(uos_qty) + " " + uos_name  + " (" +  quantity_to_str(uom_qty)  + " " + uom_name + ")";
+        if(uos_cof < 1 && uom_qty < 1){
+            qty = quantity_to_str(res_uos_qty) + " " + uos_name  + " (" +  quantity_to_str(uom_qty)  + " " + uom_name + ")";
         }
         else{
             qty = quantity_to_str(uom_qty)  + " " + uom_name;

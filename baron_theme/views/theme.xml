@@ -843,7 +843,7 @@
             <li t-att-class="'' if website_sale_order and website_sale_order.cart_quantity else 'hidden'">
                 <a href="/shop/cart">
                     <i class="fa fa-shopping-cart"></i>
-                    My cart <sup t-attf-class="my_cart_quantity label label-primary" t-esc="website_sale_order and website_sale_order.cart_quantity or ''"/>
+                    My cart <sup t-attf-class="my_cart_quantity label label-primary" t-esc="website_sale_order and website_sale_order.cart_uos_qty or ''"/>
                 </a>
             </li>
         </xpath>
@@ -994,7 +994,7 @@
                                                             </t>
                                                         </div>
                                                         <div class="price">
-                                                            <span t-field="line.price_unit" style="white-space: nowrap;" t-field-options='{
+                                                            <span t-esc="line.price_unit*line.product_uom_qty/line.product_uos_qty" style="white-space: nowrap;" t-field-options='{
                                                                  "widget": "monetary",
                                                                  "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
                                                             }'/>
@@ -1008,7 +1008,7 @@
                                                                 <i class="fa fa-minus"/>
                                                             </a>
                                                         </span>
-                                                        <input type="text" class="js_quantity form-control" t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id" t-att-value="int(line.product_uom_qty)"/>
+                                                        <input type="text" class="js_quantity form-control" t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id" t-att-value="int(line.product_uos_qty)"/>
                                                         <span class="input-group-addon">
                                                             <a t-attf-href="#" class="mb8 float_left js_add_cart_json" data-no-instant="">
                                                                 <i class="fa fa-plus"/>
@@ -1257,7 +1257,7 @@
                                     <t t-set="variant_data" t-value="website.env['baron_website_tools'].variant_data(product, value_id)"/>
                                     <t t-if="value_id.pack_qty">
                                         <span t-esc="value_id.pack_qty" name="attr_uom_val" hidden="1"/>
-                                        <span t-esc="variant_data['variant_qty']" name="attr_uos_val" hidden="1"/>
+                                        <!--<span t-esc="variant_data['variant_pack_qty']" name="variant_pack_qty" hidden="1"/>-->
                                     </t>
                                     <span class="badge" t-if="value_id.price_extra">
                                         <t t-esc="value_id.price_extra > 0 and '+' or ''"/><span t-field="value_id.price_extra" style="white-space: nowrap;" t-field-options='{

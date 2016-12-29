@@ -27,6 +27,7 @@ class BaronWebsite(models.Model):
         if uos_id:
             uos = self.env['product.uom'].sudo().browse(uos_id)
             res['qty'] = self.subnumber(uos.name)
+            res['factor'] = product.uos_id.factor
             res['uos_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  uos.name.encode('utf8').decode('utf8'))
             if uos.uom_type == 'smaller':
                 res['cof'] = float(product.uos_coeff)
@@ -43,8 +44,8 @@ class BaronWebsite(models.Model):
         partner = self.pool['res.users'].browse(cr, SUPERUSER_ID, uid, context=context).partner_id
         pricelist = partner.property_product_pricelist.id
         vals = {'variant_qty': False, 'variant_uos': False}
-        vals['variant_qty'] = self.subnumber(variant.name)
-        vals['variant_uos'] = ""
+        # vals['variant_qty'] = self.subnumber(variant.name)
+        # vals['variant_uos'] = ""
         # if len(product.product_variant_ids):
         #     for prod_prod in product.product_variant_ids:
         #         price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist], prod_prod.id, 1.0, partner.id, context)[pricelist]
@@ -52,8 +53,8 @@ class BaronWebsite(models.Model):
         #         vals['price'] = price
         return vals
 
-    @api.model
-    def subnumber(self, inp):
+    @staticmethod
+    def subnumber(inp):
         s = "".join([x for x in inp if x in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "/", ".", ",", "-"]]).replace(",",".")
         try:
             res = FR(s)
