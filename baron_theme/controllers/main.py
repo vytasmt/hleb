@@ -537,7 +537,7 @@ class baron_website_sale(website_sale):
         partner = registry.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context).partner_id
         pricelist = partner.property_product_pricelist
         price_subtotal = 0
-        if len(so.website_order_line):
+        if so:
             for line in so.website_order_line:
                 price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
                 line.price_unit = price
