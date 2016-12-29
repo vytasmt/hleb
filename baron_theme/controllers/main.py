@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import openerp
-
 from openerp import SUPERUSER_ID
 from openerp import http
 from openerp.http import request
@@ -42,7 +40,6 @@ def get_pricelist():
             cr, SUPERUSER_ID, uid, context=context).partner_id
         pricelist = partner.property_product_pricelist
     return pricelist
-
 
 
 class baron_website(Website):
@@ -140,6 +137,7 @@ class baron_website(Website):
 
     @http.route('/page/<page:page>', type='http', auth="public", website=True)
     def page(self, page, **opt):
+        cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         keep = QueryURL('/page')
         context = request.context
 
@@ -147,8 +145,7 @@ class baron_website(Website):
             pricelist = self.get_pricelist()
             context['pricelist'] = int(pricelist)
         else:
-            pricelist = pool.get('product.pricelist').browse(
-                cr, uid, context['pricelist'], context)
+            pricelist = pool.get('product.pricelist').browse(cr, uid, context['pricelist'], context)
 
         values = {
             'path': page,
@@ -551,7 +548,7 @@ class baron_website_sale(website_sale):
                 line.product_uos_qty = line.correct_quantity
         soup = BeautifulSoup(value['website_sale.total'], 'html.parser')
         for el in soup.find_all('span', {"class": "oe_currency_value"}):
-            if float(el.string)!=0:
+            if el.string != "0,00":
                 el.string = str(price_subtotal)
         value['website_sale.total'] = str(soup)
         value['baron_theme.minimal_total_alert'] = request.website._render(
