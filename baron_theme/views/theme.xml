@@ -767,6 +767,7 @@
                                     <span itemprop="url" style="display:none;" t-esc="'/shop/product/%s' % slug(product)"/>
                                     <form t-att-action="keep('/shop/cart/update')" class="js_add_cart_variants" method="POST">
                                         <div class="js_product">
+                                          <div style="padding:0 15px 5px 15px">Выберите необходимый вариант продукции из этого списка:</div>
                                             <t t-placeholder="select">
                                                 <input type="hidden" class="product_id" name="product_id" t-att-value="int(product.product_variant_ids[0]) if len(product.product_variant_ids) == 1 else '0'"/>
                                                 <t t-call="baron_theme.custom_variants">
@@ -1212,6 +1213,7 @@
             <ul class="main-variants-nav">
                 <t t-foreach="product.attribute_line_ids" t-as="variant_id">
                     <li t-att-data-order="variant_id_index + 1">
+                      <span class="finger"/>
                         <strong t-field="variant_id.attribute_id.name"/>
                     </li>
                 </t>

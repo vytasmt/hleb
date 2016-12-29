@@ -124,20 +124,28 @@ $('.oe_website_sale').each(function () {
                 break
             }
             var product_id = false;
-            var uos_qty = parseFloat($("#uos_qty").text());
+            var uom_qty = parseFloat($("input.js_variant_change:checked").siblings("span[name=attr_uom_val]").text());
+            var uos_qty = parseFloat($("input.js_variant_change:checked").siblings("span[name=attr_uos_val]").text());
             var uos_name = $("#uos_name").text();
             var uom_name = $('#uom_name').text();
             var uos_cof = parseFloat($("#uos_cof").text()) || 1;
             var basic_price = parseFloat($("#list_price").text());
-            var qty_in_uom = uos_cof; // количество UOS приведенное в единицы UOM
+            var quantity = parseFloat($("[name='add_qty']").val());
+            var qty = 0;
+            if (uos_qty != uom_qty) {
+                qty = quantity_to_str(uos_qty) + " " + uos_name + " (" + quantity_to_str(uom_qty) + " " + uom_name + ")";
+            }
+            else {
+                qty = quantity_to_str(uom_qty) + " " + uom_name;
+            }
             for (var k in variant_ids) {
                 if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
                     product_id = variant_ids[k][0];
                     var result_price = parseFloat(variant_ids[k][3]);
                     var total_price = result_price * quantity;
                     $price.html(price_to_str(total_price));
-                    $price_per_one.html(price_to_str(basic_price));
-                    $price_per_one_qty.html(quantity_to_str(uos_qty) + " " + uos_name + " (" + quantity_to_str(qty_in_uom) + " " + uom_name + ")"); //
+                    $price_per_one.html(price_to_str(total_price / (uom_qty * quantity)));
+                    $price_per_one_qty.html(qty); //
                     $default_price.html(price_to_str(variant_ids[k][3]));
                     if (variant_ids[k][3] - variant_ids[k][2] > 0.2) {
                         $default_price.closest('.oe_website_sale').addClass("discount");
@@ -281,7 +289,7 @@ $('.oe_website_sale').each(function () {
                 var result_price = parseFloat(variant_ids[k][3]);
                 var total_price = result_price * quantity;
                 $price.html(price_to_str(total_price));
-                $price_per_one.html(price_to_str(total_price/uom_qty));
+                $price_per_one.html(price_to_str(total_price/(uom_qty*quantity)));
                 $price_per_one_qty.html(qty); //
                 $default_price.html(price_to_str(variant_ids[k][3]));
                 if (variant_ids[k][3]-variant_ids[k][2]>0.2) {
