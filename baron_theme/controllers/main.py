@@ -538,19 +538,17 @@ class baron_website_sale(website_sale):
         pricelist = partner.property_product_pricelist
         price_subtotal = 0
         if so:
-            amount_total = 0
-            amount_untaxed = 0
+            amount_total = 0.00
             amount_qty = 0
             for line in so.website_order_line:
                 ous_price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
-                price = ous_price / (line.correct_quantity * line.product_uom_qty)
+                price = ous_price / (line.correct_quantity / line.product_uom_qty)
                 line.price_unit = price
                 line.price_reduce = price
                 line.product_uos_qty = line.product_uom_qty
                 line.product_uom_qty = line.correct_quantity
-                line.price_subtotal = price * line.product_uos_qty
+                line.price_subtotal = price * line.correct_quantity
                 amount_total += line.price_subtotal
-                amount_untaxed += line.price_subtotal
                 amount_qty += line.product_uos_qty
             so.cart_uos_qty = amount_qty
             soup = BeautifulSoup(value['website_sale.total'], 'html.parser')
@@ -590,14 +588,13 @@ class baron_website_sale(website_sale):
             amount_qty = 0
             for line in so.website_order_line:
                 ous_price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
-                price = ous_price / line.correct_quantity * line.product_uom_qty
+                price = ous_price / (line.correct_quantity / line.product_uom_qty)
                 line.price_unit = price
                 line.price_reduce = price
                 line.product_uos_qty = line.product_uom_qty
                 line.product_uom_qty = line.correct_quantity
-                line.price_subtotal = price * line.product_uos_qty
+                line.price_subtotal = price * line.correct_quantity
                 amount_total += line.price_subtotal
-                amount_untaxed += line.price_subtotal
                 amount_qty += line.product_uos_qty
             so.amount_total = amount_total
             so.amount_untaxed = amount_untaxed
@@ -643,11 +640,3 @@ class baron_website_sale(website_sale):
                     res['val_property_caption'] = ''
         return res
 
-    @staticmethod
-    def subnumber(inp):
-        s = "".join([x for x in inp if x in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "/", ".", ",", "-"]]).replace(",",".")
-        try:
-            res = FR(s)
-            return float(res) if int(res) != float(res) else int(res)
-        except:
-            return 1

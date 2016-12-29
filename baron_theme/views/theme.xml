@@ -840,7 +840,7 @@
     <template id="header" inherit_id="baron_theme.layout_inherit" name="Header Shop My Cart Link">
         <xpath expr="//ul[@id='top_menu']" position="inside">
             <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
-            <li t-att-class="'' if website_sale_order and website_sale_order.cart_quantity else 'hidden'">
+            <li t-att-class="'' if website_sale_order and website_sale_order.cart_uos_qty else 'hidden'">
                 <a href="/shop/cart">
                     <i class="fa fa-shopping-cart"></i>
                     My cart <sup t-attf-class="my_cart_quantity label label-primary" t-esc="website_sale_order and website_sale_order.cart_uos_qty or ''"/>
