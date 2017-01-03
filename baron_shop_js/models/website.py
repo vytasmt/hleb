@@ -21,14 +21,19 @@ class BaronWebsite(models.Model):
     @api.model
     def product_get_quantity(self, product):
         uos_id = product.uos_id.id
-        res = {'styles': '', 'qty': False, 'uos_name': False, 'cof': False}
+        uom_id = product.uom_id.id
+        res = {'styles': '','factor': '', 'uos_name': False,'uom_name': False,'uos_qty': False, 'uom_qty': False, 'cof': False}
         res['list_price'] = product.list_price
         res['styles'] = ', '.join(self.env['product.style'].sudo().browse(product.website_style_ids.ids).mapped('html_class'))
         if uos_id:
             uos = self.env['product.uom'].sudo().browse(uos_id)
-            res['qty'] = self.subnumber(uos.name)
+            uom = self.env['product.uom'].sudo().browse(uom_id)
+            res['uos_qty'] = self.subnumber(uos.name)
+            res['uom_qty'] = self.subnumber(uom.name)
             res['factor'] = product.uos_id.factor
+            res['uos_coeff'] = product.uos_coeff
             res['uos_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  uos.name.encode('utf8').decode('utf8'))
+            res['uom_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  uom.name.encode('utf8').decode('utf8'))
             if uos.uom_type == 'smaller':
                 res['cof'] = float(product.uos_coeff)
             elif uos.uom_type == 'bigger':

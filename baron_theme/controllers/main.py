@@ -538,18 +538,26 @@ class baron_website_sale(website_sale):
         pricelist = partner.property_product_pricelist
         price_subtotal = 0
         if so:
-            amount_total = 0.00
+            amount_total = 0
+            amount_untaxed = 0
             amount_qty = 0
             for line in so.website_order_line:
-                ous_price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id],line.product_id.id, 1, partner.id, context)[pricelist.id]
+                ous_price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id], line.product_id.id, 1,partner.id, context)[pricelist.id]
                 price = ous_price / (line.correct_quantity / line.product_uom_qty)
                 line.price_unit = price
                 line.price_reduce = price
-                line.product_uos_qty = line.product_uom_qty
-                line.product_uom_qty = line.correct_quantity
-                line.price_subtotal = price * line.correct_quantity
+                if line.old_pack != line.number_packages and line.mod:
+                    line.price_subtotal = price * line.correct_quantity
+                elif not line.mod:
+                    line.price_subtotal = price * line.correct_quantity
+                    line.product_uos_qty = line.number_packages  # продаваемое количество в единицах UOS (нр. 100 г.)
+                    line.product_uom_qty = line.correct_quantity  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
+                    line.old_pack = line.number_packages  # количество штук UOS (нр. 1 пакет 100г.)
+                    line.mod = True
                 amount_total += line.price_subtotal
                 amount_qty += line.product_uos_qty
+            so.amount_total = amount_total
+            so.amount_untaxed = amount_untaxed
             so.cart_uos_qty = amount_qty
             soup = BeautifulSoup(value['website_sale.total'], 'html.parser')
             for el in soup.find_all('span', {"class": "oe_currency_value"}):
@@ -595,12 +603,12 @@ class baron_website_sale(website_sale):
                     line.price_subtotal = price * line.correct_quantity
                 elif not line.mod:
                     line.price_subtotal = price * line.correct_quantity
-                    line.product_uos_qty = line.number_packages    # продаваемое количество в единицах UOS
-                    line.product_uom_qty = line.correct_quantity   # продаваемое количество в единицах UOM
-                    line.old_pack = line.number_packages
+                    line.product_uos_qty = line.product_uom_qty    # продаваемое количество в единицах UOS (нр. 100 г.)
+                    line.product_uom_qty = line.correct_quantity   # продаваемое количество в единицах UOM (нр. 0.1 кг.)
+                    line.old_pack = line.product_uos_qty  # количество штук UOS (нр. 1 пакет 100г.)
                     line.mod = True
-                    amount_total += line.price_subtotal
-                    amount_qty += line.product_uos_qty
+                amount_total += line.price_subtotal
+                amount_qty += line.product_uos_qty
             so.amount_total = amount_total
             so.amount_untaxed = amount_untaxed
             so.cart_uos_qty = amount_qty

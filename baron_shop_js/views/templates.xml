@@ -13,10 +13,13 @@
 
     <xpath expr="//b[@class='oe_price']" position="before">
         <t t-set="uos_vals" t-value="website.env['baron_website_tools'].product_get_quantity(product)"/>
-        <span id='uos_qty' t-esc="uos_vals['qty']" hidden="1"/>
+        <span id='uom_qty' t-esc="uos_vals['uom_qty']" hidden="1"/>
+        <span id='uos_qty' t-esc="uos_vals['uos_qty']" hidden="1"/>
         <span id='factor' t-esc="uos_vals['factor']" hidden="1"/>
+        <span id='uos_coeff' t-esc="uos_vals['uos_coeff']" hidden="1"/>
         <span id='uos_cof' t-esc="uos_vals['cof']" hidden="1"/>
         <span id='uos_name' t-esc="uos_vals['uos_name']" hidden="1"/>
+        <span id='uom_name' t-esc="uos_vals['uom_name']" hidden="1"/>
         <span id='list_price' t-esc="uos_vals['list_price']" hidden="1"/>
         <span id='website_styles' t-esc="uos_vals['styles']" hidden="1"/>
         <t t-set="attribute_value_ids_price" t-value="get_attribute_value_ids(product)"/>
