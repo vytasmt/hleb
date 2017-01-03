@@ -3,7 +3,8 @@
 from openerp import api, fields, models, _
 import random
 
-class sale_order(models.Model):
+
+class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     cart_uos_qty = fields.Float()
@@ -16,3 +17,11 @@ class sale_order(models.Model):
             s -= set(l.product_id.id for l in order.order_line)
             product_ids = s
             return self.env['product.product'].browse(product_ids)
+
+
+class SaleOrderLine(models.Model):
+    _inherit = "sale.order.line"
+
+    mod = fields.Boolean(default=False)
+    old_pack = fields.Float(default=0)
+
