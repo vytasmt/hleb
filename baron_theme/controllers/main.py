@@ -546,11 +546,15 @@ class baron_website_sale(website_sale):
                 price = ous_price / (line.correct_quantity / line.product_uom_qty)
                 line.price_unit = price
                 line.price_reduce = price
-                if line.old_pack != line.number_packages and line.mod:
-                    line.price_subtotal = price * line.correct_quantity
+                if line.mod:
+                    if line.old_pack != line.product_uos_qty:
+                        line.price_subtotal = price * line.correct_quantity
+                        line.product_uos_qty = line.product_uom_qty  # продаваемое количество в единицах UOS (нр. 100 г.)
+                        line.product_uom_qty = line.correct_quantity  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
+                        line.old_pack = line.product_uos_qty  # количество штук UOS (нр. 1 пакет 100г.)
                 elif not line.mod:
                     line.price_subtotal = price * line.correct_quantity
-                    line.product_uos_qty = line.number_packages  # продаваемое количество в единицах UOS (нр. 100 г.)
+                    line.product_uos_qty = line.product_uom_qty  # продаваемое количество в единицах UOS (нр. 100 г.)
                     line.product_uom_qty = line.correct_quantity  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
                     line.old_pack = line.number_packages  # количество штук UOS (нр. 1 пакет 100г.)
                     line.mod = True
@@ -599,8 +603,12 @@ class baron_website_sale(website_sale):
                 price = ous_price / (line.correct_quantity / line.product_uom_qty)
                 line.price_unit = price
                 line.price_reduce = price
-                if line.old_pack != line.number_packages and line.mod:
-                    line.price_subtotal = price * line.correct_quantity
+                if line.mod:
+                    if line.old_pack != line.product_uos_qty:
+                        line.price_subtotal = price * line.correct_quantity
+                        line.product_uos_qty = line.product_uom_qty  # продаваемое количество в единицах UOS (нр. 100 г.)
+                        line.product_uom_qty = line.correct_quantity  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
+                        line.old_pack = line.product_uos_qty  # количество штук UOS (нр. 1 пакет 100г.)
                 elif not line.mod:
                     line.price_subtotal = price * line.correct_quantity
                     line.product_uos_qty = line.product_uom_qty    # продаваемое количество в единицах UOS (нр. 100 г.)
