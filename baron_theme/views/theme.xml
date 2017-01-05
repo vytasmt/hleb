@@ -988,7 +988,7 @@
                                              <p style="color: #1b1b1b; padding-bottom: 15px;margin-left:15px;border-bottom:15px;border-bottom:1px solid #d4d4d4;margin-bottom:25px">Выбрано:
                                                 <span class="variants_result_string"/>
                                             </p>
-                                            <a id="add_to_cart" class="btn btn-primary btn-lg mt8 js_check_product a-submit" href="#">Add to Cart</a>
+                                            <a id="add_to_cart" class="btn btn-primary btn-lg mt8 js_check_product a-submit">Add to Cart</a>
                                             <div class="prod-cont">
                                             <t t-call="website_sale.product_price"/>
                                             <p t-if="len(product.product_variant_ids) &gt; 1" class="css_not_available_msg bg-danger" style="padding: 15px;">Product not available</p>
@@ -1051,7 +1051,7 @@
     <template id="header" inherit_id="baron_theme.layout_inherit" name="Header Shop My Cart Link">
         <xpath expr="//ul[@id='top_menu']" position="inside">
             <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
-            <li t-att-class="'' if website_sale_order and website_sale_order.cart_uos_qty else 'hidden'">
+            <li t-att-class="'' if website_sale_order and website_sale_order.cart_uos_qty else ''">
                 <a href="/shop/cart">
                     <i class="fa fa-shopping-cart"></i>
                     My cart <sup t-attf-class="my_cart_quantity label label-primary" t-esc="website_sale_order and website_sale_order.cart_uos_qty or ''"/>

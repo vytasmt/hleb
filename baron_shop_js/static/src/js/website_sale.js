@@ -193,7 +193,16 @@ $('.oe_website_sale').each(function () {
     // $(oe_website_sale).on('click', 'a.js_add_cart_json')
     $('.oe_website_sale .a-submit, #comment .a-submit').off('click').on('click', function () {
         $(this).closest('form').submit();
+        setTimeout(update_cart_amount, 2000);
+
     });
+    function update_cart_amount() {
+        openerp.jsonRpc("/shop/get_order", 'call', {})
+            .then(function (data) {
+                var $q = $(".my_cart_quantity");
+                $q.html(data['cart_uos_qty']).hide().fadeIn(600);
+            });
+    };
     $('form.js_attributes input, form.js_attributes select', oe_website_sale).on('change', function () {
         $(this).closest("form").submit();
     });

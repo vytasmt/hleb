@@ -162,6 +162,13 @@ class baron_shop(website_sale):
                 res['prod_property_caption'] = prod.property_id.caption
         return res
 
+    @http.route('/shop/get_order', type='json', auth="public", website=True)
+    def get_order(self, *args, **kwargs):
+        cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
+        order = request.website.sale_get_order(force_create=0)
+
+        return {'cart_uos_qty': order.cart_uos_qty}
+
 
 class CountactusExt(contactus):
 

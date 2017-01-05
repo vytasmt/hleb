@@ -605,14 +605,15 @@ class baron_website_sale(website_sale):
                 line.price_reduce = price
                 if line.mod:
                     if line.old_pack != line.product_uos_qty:
-                        line.price_subtotal = price * line.correct_quantity
-                        line.product_uos_qty = line.product_uom_qty  # продаваемое количество в единицах UOS (нр. 100 г.)
-                        line.product_uom_qty = line.correct_quantity  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
+                        qty = line.old_pack + float(add_qty)
+                        line.product_uos_qty = qty  # продаваемое количество в единицах UOS (нр. 100 г.)
+                        line.product_uom_qty = qty * line.correct_price_unit  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
+                        line.price_subtotal = price * line.product_uom_qty
                         line.old_pack = line.product_uos_qty  # количество штук UOS (нр. 1 пакет 100г.)
                 elif not line.mod:
                     line.price_subtotal = price * line.correct_quantity
-                    line.product_uos_qty = line.product_uom_qty    # продаваемое количество в единицах UOS (нр. 100 г.)
-                    line.product_uom_qty = line.correct_quantity   # продаваемое количество в единицах UOM (нр. 0.1 кг.)
+                    line.product_uos_qty = line.product_uom_qty    # продаваемое количество в единицах UOS (1 нр. 100 г.)
+                    line.product_uom_qty = line.correct_quantity   # продаваемое количество в единицах UOM (10 нр. 0.1 кг.)
                     line.old_pack = line.product_uos_qty  # количество штук UOS (нр. 1 пакет 100г.)
                     line.mod = True
                 amount_total += line.price_subtotal
@@ -621,7 +622,7 @@ class baron_website_sale(website_sale):
             so.amount_untaxed = amount_untaxed
             so.cart_uos_qty = amount_qty
         back_to_product_href = "/shop/product/" + slug(product.product_tmpl_id)
-        return request.redirect(back_to_product_href)
+        # return request.redirect(back_to_product_href)
 
     @http.route('/shop/properties', type='json', auth="public", website=True)
     def pyth_met(self, *args, **kwargs):

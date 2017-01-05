@@ -7,6 +7,7 @@ from fractions import Fraction as FR
 from openerp import tools, SUPERUSER_ID
 import re
 
+
 class BaronWebsite(models.Model):
     _name = 'baron_website_tools'
 
