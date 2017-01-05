@@ -22,7 +22,7 @@ class BaronWebsite(models.Model):
     def product_get_quantity(self, product):
         uos_id = product.uos_id.id
         uom_id = product.uom_id.id
-        res = {'styles': '','factor': '', 'uos_name': False,'uom_name': False,'uos_qty': False, 'uom_qty': False, 'cof': False}
+        res = {'uos_coeff': '','styles': '','factor': '', 'uos_name': False,'uom_name': False,'uos_qty': False, 'uom_qty': False, 'cof': False}
         res['list_price'] = product.list_price
         res['styles'] = ', '.join(self.env['product.style'].sudo().browse(product.website_style_ids.ids).mapped('html_class'))
         if uos_id:

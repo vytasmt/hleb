@@ -10,7 +10,6 @@
         'website_sale',
         'baron_shop_js',
         'baron_shelf',
-        'ingredients',
     ],
     'external_dependencies': {'python': ['bs4']},
     'data': [

@@ -549,7 +549,7 @@ class baron_website_sale(website_sale):
                 if line.mod:
                     if line.old_pack != line.product_uos_qty:
                         line.price_subtotal = price * line.correct_quantity
-                        line.product_uos_qty = line.product_uom_qty  # продаваемое количество в единицах UOS (нр. 100 г.)
+                        line.product_uos_qty = line.product_uom_qty  # продаваемое количество в единицах UOS (2 шт по 100 г.)
                         line.product_uom_qty = line.correct_quantity  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
                         line.old_pack = line.product_uos_qty  # количество штук UOS (нр. 1 пакет 100г.)
                 elif not line.mod:
