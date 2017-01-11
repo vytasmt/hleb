@@ -3,6 +3,7 @@
 <data>
     <template id="theme" inherit_id="website.theme" name="Baron Theme">
         <xpath expr="link[@href='/web/static/lib/bootstrap/css/bootstrap.css']" position="replace"/>
+        <link rel="stylesheet" href="/web/static/lib/jquery.ui/css/smoothness/jquery-ui-1.9.1.custom.css" />
     </template>
 
     <template id="homepage_inherit" inherit_id="website.homepage">
@@ -655,6 +656,7 @@
 
     <template id="product_item_card" name="Product item card">
         <t t-set="uos_vals" t-value="website.env['baron_website_tools'].product_get_quantity(product)"/>
+        <link rel="stylesheet" href="/web/static/lib/jquery.ui/css/smoothness/jquery-ui-1.9.1.custom.css" />
         <div class="col-lg-3 col-md-6 col-sm-12">
             <form action="/shop/cart/update" method="post">
                 <div class="block-goods" t-att-data-publish="product.website_published and 'on' or 'off'">
@@ -786,6 +788,7 @@
 
     <template id="products_item" inherit_id="website_sale.products_item" name="Product item">
         <xpath expr="//form[@action='/shop/cart/update']" position="replace">
+            <link rel="stylesheet" href="/web/static/lib/jquery.ui/css/smoothness/jquery-ui-1.9.1.custom.css" />
             <t t-call="baron_theme.product_item_card"/>
         </xpath>
     </template>
@@ -820,6 +823,7 @@
 
     <template id="products" inherit_id="website_sale.products" name="Products">
         <xpath expr="//t[@t-call='website.layout']" position="replace">
+            <link rel="stylesheet" href="/web/static/lib/jquery.ui/css/smoothness/jquery-ui-1.9.1.custom.css" />
             <t t-call="website.layout">
                 <t t-set="additional_title">Shop</t>
                 <section class="inner_header"
@@ -1286,6 +1290,7 @@
             <p>
                 Есть купон? Заполните это поле.
             </p>
+            <t t-if="website_sale_order is not None">
             <form t-if="website_sale_order and website_sale_order.website_order_line" action="/shop/pricelist" method="post" class="mb32">
                 <div class="input-group">
                     <input name="promo" class='form-control-primary' type="text" placeholder="code..." t-att-value="website_sale_order.pricelist_id.code or ''"/>
@@ -1294,6 +1299,7 @@
                     </div>
                 </div>
             </form>
+            </t>
         </xpath>
     </template>
 
