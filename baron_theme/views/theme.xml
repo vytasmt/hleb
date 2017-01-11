@@ -1478,7 +1478,7 @@
                                             }'/>
                                     </span>
                                 </label>
-                                <span class="carret" onclick="$('.a-submit')[1].click();"/>
+                                <span class="carret" onclick="$(this).siblings().first().children('input').css('class','js_variant_select')[0].checked=true;$('.a-submit')[1].click();$('.a-submit')[1].click();"/>
                             </li>
                             <t t-set="inc" t-value="inc+1"/>
                         </t>
