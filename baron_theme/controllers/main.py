@@ -215,8 +215,9 @@ class baron_website_sale(website_sale):
                     res = pool.get('product.attribute.value').browse(
                         cr, uid, res_ids)
                     attrs_vals.append(res[0])
+            att_ids = [r.id for r in attrs_vals]
             for product in product.product_variant_ids:
-                if attrs_vals == product.attribute_value_ids.ids:
+                if att_ids == product.attribute_value_ids.ids:
                     default_product = product
             if not default_product:
                 value_ids = product.attribute_line_ids[0].value_ids.ids
