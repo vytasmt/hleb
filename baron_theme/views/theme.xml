@@ -1064,26 +1064,26 @@
 
     <template id="minimal_total_alert" name="Minimal Total Alert">
         <t t-if="website_sale_order is not None">
-            <div id="minimal_total_alert">
-                <t t-if="minimal_order_price &lt;= website_sale_order.amount_total">
-                    <a t-if="not optional_products and website_sale_order and website_sale_order.website_order_line"
-                       class="btn btn-primary pull-right mb32" href="/shop/checkout">
-                        <span class="hidden-xs">Оформить заказ</span>
-                        <span class="visible-xs-inline">Далее</span>
-                        <span class="fa fa-long-arrow-right"/>
-                    </a>
-                </t>
-                <t t-if="minimal_order_price &gt; website_sale_order.amount_total">
-                    <div class="row">
-                        <div class="col-sm-4 col-sm-offset-8">
-                            <div class="alert alert-danger">
-                                Сумма заказа должна быть не меньше<span
-                                    t-esc="format_lang(minimal_order_price)" style="white-space: nowrap;"/>!
+            <t t-if="website_sale_order.website_order_line is not None">
+                <div id="minimal_total_alert">
+                    <t t-if="minimal_order_price &lt;= website_sale_order.amount_total">
+                        <a t-if="not optional_products and website_sale_order and website_sale_order.website_order_line" class="btn btn-primary pull-right mb32" href="/shop/checkout">
+                            <span class="hidden-xs">Оформить заказ</span>
+                            <span class="visible-xs-inline">Далее</span>
+                            <span class="fa fa-long-arrow-right"/>
+                        </a>
+                    </t>
+                    <t t-if="minimal_order_price &gt; website_sale_order.amount_total">
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <div class="alert alert-danger">
+                                    Сумма заказа должна быть не меньше<span t-esc="format_lang(minimal_order_price)" style="white-space: nowrap;"/>!
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </t>
-            </div>
+                    </t>
+                </div>
+            </t>
         </t>
     </template>
 
