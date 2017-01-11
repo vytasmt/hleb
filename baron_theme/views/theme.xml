@@ -1115,6 +1115,7 @@
             <div class="col-md-12 col-sm-9 oe_cart">
                 <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
                 <t t-if="website_sale_order is not None">
+                <t t-if="len(website_sale_order.website_order_line) > 0">
                     <div t-if="not website_sale_order or not website_sale_order.website_order_line"
                          class="well well-lg">Your cart is empty!
                     </div>
@@ -1194,68 +1195,70 @@
                             </div>
                             <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
                             <t t-if="website_sale_order is not None">
-                                <t t-foreach="website_sale_order.website_order_line" t-as="line">
-                                    <div class="row basket tovar">
-                                        <div class="col-lg-7 col-md-7 col-sm-5">
-                                            <div class="row basket_col-1">
-                                                <div class="col-lg-5 col-md-5 col-sm-12">
-                                                    <div>
-                                                        <a t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }">
-                                                            <h3 itemprop="name"
-                                                                t-field="line.product_id.name"/>
-                                                        </a>
+                                <t t-if="len(website_sale_order.website_order_line) > 0">
+                                    <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                                        <div class="row basket tovar">
+                                            <div class="col-lg-7 col-md-7 col-sm-5">
+                                                <div class="row basket_col-1">
+                                                    <div class="col-lg-5 col-md-5 col-sm-12">
+                                                        <div>
+                                                            <a t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }">
+                                                                <h3 itemprop="name"
+                                                                    t-field="line.product_id.name"/>
+                                                            </a>
+                                                        </div>
+                                                        <t t-if="line.product_id.attributes_values_string">
+                                                            <div class="text-muted"
+                                                                 t-esc="line.product_id.attributes_values_string"/>
+                                                        </t>
                                                     </div>
-                                                    <t t-if="line.product_id.attributes_values_string">
-                                                        <div class="text-muted"
-                                                             t-esc="line.product_id.attributes_values_string"/>
-                                                    </t>
+                                                    <div class="col-lg-7 col-md-6 col-sm-12 img_basket">
+                                                        <span t-field="line.product_id.image"
+                                                              t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;, &quot;style&quot;: &quot;width: 100%;&quot;}"/>
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-7 col-md-6 col-sm-12 img_basket">
-                                                    <span t-field="line.product_id.image"
-                                                          t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;, &quot;style&quot;: &quot;width: 100%;&quot;}"/>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-4">
+                                                <div class="row basket_col-1">
+                                                    <div class="text-center">
+                                                        <t t-if="(compute_currency(line.product_id.lst_price) - line.price_unit) &gt; 1">
+                                                            <del class="text-danger"
+                                                                 style="white-space: nowrap;"
+                                                                 t-field="line.product_id.lst_price"
+                                                                 t-field-options="{                                                                         &quot;widget&quot;: &quot;monetary&quot;,                                                                         &quot;from_currency&quot;: &quot;line.company_id.currency_id&quot;,                                                                         &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                                                     }"/>
+                                                            &amp;nbsp;
+                                                        </t>
+                                                    </div>
+                                                    <div class="price">
+                                                        <span t-esc="line.price_unit*line.product_uom_qty/line.product_uos_qty"
+                                                              style="white-space: nowrap;"
+                                                              t-field-options="{                                                                  &quot;widget&quot;: &quot;monetary&quot;,                                                                  &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                                             }"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-3">
+                                                <div class="css_quantity input-group oe_website_spinner">
+                                                    <span class="input-group-addon">
+                                                        <a t-attf-href="#" class="mb8 js_add_cart_json"
+                                                           data-no-instant="">
+                                                            <i class="fa fa-minus"/>
+                                                        </a>
+                                                    </span>
+                                                    <input type="text" class="js_quantity form-control"
+                                                           t-att-data-line-id="line.id"
+                                                           t-att-data-product-id="line.product_id.id"
+                                                           t-att-value="int(line.product_uos_qty)"/>
+                                                    <span class="input-group-addon">
+                                                        <a t-attf-href="#"
+                                                           class="mb8 float_left js_add_cart_json"
+                                                           data-no-instant="">
+                                                            <i class="fa fa-plus"/>
+                                                        </a>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-4">
-                                            <div class="row basket_col-1">
-                                                <div class="text-center">
-                                                    <t t-if="(compute_currency(line.product_id.lst_price) - line.price_unit) &gt; 1">
-                                                        <del class="text-danger"
-                                                             style="white-space: nowrap;"
-                                                             t-field="line.product_id.lst_price"
-                                                             t-field-options="{                                                                         &quot;widget&quot;: &quot;monetary&quot;,                                                                         &quot;from_currency&quot;: &quot;line.company_id.currency_id&quot;,                                                                         &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                                                     }"/>
-                                                        &amp;nbsp;
-                                                    </t>
-                                                </div>
-                                                <div class="price">
-                                                    <span t-esc="line.price_unit*line.product_uom_qty/line.product_uos_qty"
-                                                          style="white-space: nowrap;"
-                                                          t-field-options="{                                                                  &quot;widget&quot;: &quot;monetary&quot;,                                                                  &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                                             }"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-3">
-                                            <div class="css_quantity input-group oe_website_spinner">
-                                                <span class="input-group-addon">
-                                                    <a t-attf-href="#" class="mb8 js_add_cart_json"
-                                                       data-no-instant="">
-                                                        <i class="fa fa-minus"/>
-                                                    </a>
-                                                </span>
-                                                <input type="text" class="js_quantity form-control"
-                                                       t-att-data-line-id="line.id"
-                                                       t-att-data-product-id="line.product_id.id"
-                                                       t-att-value="int(line.product_uos_qty)"/>
-                                                <span class="input-group-addon">
-                                                    <a t-attf-href="#"
-                                                       class="mb8 float_left js_add_cart_json"
-                                                       data-no-instant="">
-                                                        <i class="fa fa-plus"/>
-                                                    </a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </t>
                                 </t>
                             </t>
                         </section>
@@ -1267,6 +1270,7 @@
                         <div class="oe_structure"/>
                     </div>
                     <table id="cart_products" class="hidden"/>
+                </t>
                 </t>
             </div>
           </div>
@@ -1290,6 +1294,7 @@
                 Есть купон? Заполните это поле.
             </p>
             <t t-if="website_sale_order is not None">
+                <t t-if="len(website_sale_order.website_order_line) > 0">
             <form t-if="website_sale_order and website_sale_order.website_order_line" action="/shop/pricelist" method="post" class="mb32">
                 <div class="input-group">
                     <input name="promo" class='form-control-primary' type="text" placeholder="code..." t-att-value="website_sale_order.pricelist_id.code or ''"/>
@@ -1298,6 +1303,7 @@
                     </div>
                 </div>
             </form>
+            </t>
             </t>
         </xpath>
     </template>
