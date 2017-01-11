@@ -1067,7 +1067,7 @@
 
     <template id="minimal_total_alert" name="Minimal Total Alert">
         <t t-if="website_sale_order is not None">
-            <t t-if="website_sale_order.website_order_line is not None">
+            <t t-if="len(website_sale_order.website_order_line) > 0">
                 <div id="minimal_total_alert">
                     <t t-if="minimal_order_price &lt;= website_sale_order.amount_total">
                         <a t-if="not optional_products and website_sale_order and website_sale_order.website_order_line" class="btn btn-primary pull-right mb32" href="/shop/checkout">
