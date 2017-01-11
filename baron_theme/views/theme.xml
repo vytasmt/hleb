@@ -3,7 +3,6 @@
 <data>
     <template id="theme" inherit_id="website.theme" name="Baron Theme">
         <xpath expr="link[@href='/web/static/lib/bootstrap/css/bootstrap.css']" position="replace"/>
-        <link rel="stylesheet" href="/web/static/lib/jquery.ui/css/smoothness/jquery-ui-1.9.1.custom.css" />
     </template>
 
     <template id="homepage_inherit" inherit_id="website.homepage">
