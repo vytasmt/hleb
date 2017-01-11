@@ -1056,7 +1056,7 @@
             <li t-att-class="'' if website_sale_order and website_sale_order.cart_uos_qty else ''">
                 <a href="/shop/cart">
                     <i class="fa fa-shopping-cart"></i>
-                    My cart <sup t-attf-class="my_cart_quantity label label-primary" t-esc="website_sale_order and website_sale_order.cart_uos_qty or ''"/>
+                    My cart <sup t-attf-class="my_cart_quantity label label-primary" t-esc="website_sale_order and website_sale_order.cart_uos_qty or 'website_sale_order.cart_quantity'"/>
                 </a>
             </li>
         </xpath>
@@ -1478,7 +1478,7 @@
                                             }'/>
                                     </span>
                                 </label>
-                                <span class="carret" onclick="$(this).siblings().first().children('input').css('class','js_variant_select')[0].checked=true;$('.a-submit')[1].click();$('.a-submit')[1].click();"/>
+                                <span class="carret" onclick="$(this).siblings().first().children('input').css('class','js_variant_select')[0].click();$('.a-submit')[1].click();$('.a-submit')[1].click();"/>
                             </li>
                             <t t-set="inc" t-value="inc+1"/>
                         </t>
