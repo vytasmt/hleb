@@ -1115,7 +1115,6 @@
             <div class="col-md-12 col-sm-9 oe_cart">
                 <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
                 <t t-if="website_sale_order is not None">
-                <t t-if="len(website_sale_order.website_order_line) > 0">
                     <div t-if="not website_sale_order or not website_sale_order.website_order_line"
                          class="well well-lg">Your cart is empty!
                     </div>
@@ -1270,7 +1269,6 @@
                         <div class="oe_structure"/>
                     </div>
                     <table id="cart_products" class="hidden"/>
-                </t>
                 </t>
             </div>
           </div>
