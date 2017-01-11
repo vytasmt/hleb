@@ -1063,6 +1063,7 @@
     </template>
 
     <template id="minimal_total_alert" name="Minimal Total Alert">
+        <t t-if="website_sale_order is not None">
         <div id="minimal_total_alert">
             <t t-if="minimal_order_price &lt;= website_sale_order.amount_total">
                 <a t-if="not optional_products and website_sale_order and website_sale_order.website_order_line" class="btn btn-primary pull-right mb32" href="/shop/checkout">
@@ -1081,6 +1082,7 @@
                 </div>
             </t>
         </div>
+        </t>
     </template>
 
 
@@ -1177,6 +1179,7 @@
                     </div>
                   </div>
                   <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+                    <t t-if="website_sale_order is not None">
                   <t t-foreach="website_sale_order.website_order_line" t-as="line">
                     <div class="row basket tovar">
                       <div class="col-lg-7 col-md-7 col-sm-5">
@@ -1224,6 +1227,7 @@
                       </div>
                     </div>
                   </t>
+                    </t>
                 </section>
                 <div class="col-xs-12 col-sm-6 text-muted right_column_bkg" id="right_column">
                                     </div>
