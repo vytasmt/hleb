@@ -1059,7 +1059,7 @@
             <li t-att-class="'' if website_sale_order and website_sale_order.cart_uos_qty else ''">
                 <a href="/shop/cart">
                     <i class="fa fa-shopping-cart"></i>
-                    My cart <sup t-attf-class="my_cart_quantity label label-primary" t-esc="website_sale_order and website_sale_order.cart_uos_qty or 'website_sale_order.cart_quantity'"/>
+                    My cart <sup t-attf-class="my_cart_quantity label label-primary" t-esc="website_sale_order and website_sale_order.cart_uos_qty or ''"/>
                 </a>
             </li>
         </xpath>
