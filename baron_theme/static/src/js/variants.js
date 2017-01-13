@@ -90,7 +90,7 @@ $(document).scroll(function() { // show top bar on scroll
     }
 });
 
-$( document ).ready(function() {
+jQuery(document).ready(function() {
 
 $('#add_to_cart').on('click', function () {
         var cart = $('.fa-shopping-cart');
@@ -114,7 +114,7 @@ $('#add_to_cart').on('click', function () {
                     'left': cart.offset().left + 10,
                     'width': 150,
                     'height': 150
-            }, 2000, 'easeInOutExpo');
+            }, 1500, 'linear');
             
             imgclone.animate({
                 'width': 0,
@@ -125,3 +125,4 @@ $('#add_to_cart').on('click', function () {
         }
     });
 });
+
