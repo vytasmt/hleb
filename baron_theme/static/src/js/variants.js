@@ -126,3 +126,8 @@ $('#add_to_cart').on('click', function () {
     });
 });
 
+$(document).ready(function(){
+   if ($(".my_cart_quantity").html().length > 0) {
+     $('.my_cart_quantity').each(function () {$(this).html(Math.round(parseFloat($(this).html())));});
+   }                                           
+ });
