@@ -1,7 +1,6 @@
 $(document).ready(function () {
 $('.oe_website_sale').each(function () {
     var oe_website_sale = this;
-
     var $shippingDifferent = $("select[name='shipping_id']", oe_website_sale);
     $shippingDifferent.change(function (event) {
         var value = +$shippingDifferent.val();
@@ -294,23 +293,25 @@ $('.oe_website_sale').each(function () {
         var uos_name = $("#uos_name").text();
         var uom_name = $('#uom_name').text();
         var uos_cof = parseFloat($("#uos_cof").text()) || 1;
-        var basic_price =  parseFloat($("#list_price").text());
+        var basic_price = parseFloat($("#list_price").text());
         var quantity = parseFloat($("[name='add_qty']").val());
         var qty = 0;
         if (res_uos_qty == res_uom_qty) {
-	    qty = quantity_to_str(res_uos_qty) + " " + uos_name;
-	}
-	else {qty = quantity_to_str(res_uos_qty) + " " + uos_name  + " (" +  quantity_to_str(res_uom_qty)  + " " + uom_name + ")";}
+            qty = quantity_to_str(res_uos_qty) + " " + uos_name;
+        }
+        else {
+            qty = quantity_to_str(res_uos_qty) + " " + uos_name + " (" + quantity_to_str(res_uom_qty) + " " + uom_name + ")";
+        }
         for (var k in variant_ids) {
             if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
                 product_id = variant_ids[k][0];
                 var result_price = parseFloat(variant_ids[k][3]);
                 var total_price = result_price * quantity;
                 $price.html(price_to_str(total_price));
-                $price_per_one.html(price_to_str(total_price/(uom_val*quantity)));
+                $price_per_one.html(price_to_str(total_price / (uom_val * quantity)));
                 $price_per_one_qty.html(qty); //
                 $default_price.html(price_to_str(variant_ids[k][3]));
-                if (variant_ids[k][3]-variant_ids[k][2]>0.2) {
+                if (variant_ids[k][3] - variant_ids[k][2] > 0.2) {
                     $default_price.closest('.oe_website_sale').addClass("discount");
                 } else {
                     $default_price.closest('.oe_website_sale').removeClass("discount");
@@ -353,6 +354,7 @@ $('.oe_website_sale').each(function () {
             $product_id.val(0);
             $parent.find(".js_check_product").attr("disabled", "disabled");
         }
+        $(".finger").click();
     }
     $('.js_add_cart_variants', oe_website_sale).each(function () {
         $('input.js_variant_change, select.js_variant_change', this).first().trigger('change');

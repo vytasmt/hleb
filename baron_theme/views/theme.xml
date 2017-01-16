@@ -1453,7 +1453,7 @@
             <ul class="main-variants-nav">
                 <t t-foreach="product.attribute_line_ids" t-as="variant_id">
                     <li t-att-data-order="variant_id_index + 1">
-                      <span class="finger"/>
+                      <span class="finger" style="visibility: visible;"/>
                         <strong t-field="variant_id.attribute_id.name"/>
                     </li>
                 </t>
