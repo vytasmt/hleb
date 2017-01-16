@@ -24,17 +24,17 @@
         <span id='website_styles' t-esc="uos_vals['styles']" hidden="1"/>
         <t t-set="attribute_value_ids_price" t-value="get_attribute_value_ids(product)"/>
         <t t-set="have_qty" t-value="website.env['baron_website_tools'].product_have_quantity(product)"/>
-        <p t-if="len(attribute_value_ids_price) &gt; 1" class="text-muted" style="font-size: 20pt; font-weight:700; line-height:30px;padding:10px 0">
+        <p t-if="len(attribute_value_ids_price) &gt; 0" class="text-muted" style="font-size: 20pt; font-weight:700; line-height:30px;padding:10px 0">
             Стоимость: <span class="price_per_one"/> руб. за <span t-field="product.uom_id"/>,<br/>
             <t t-if="have_qty">Количество:
                 <span class="price_per_one_qty"/>
             </t>
         </p>
-        <p t-if="len(attribute_value_ids_price) &lt;= 1" class="text-muted" style="font-size: 14pt; color: #5b90f1; font-family: proxima;">
+        <p t-if="len(attribute_value_ids_price) &lt; 1" class="text-muted" style="font-size: 14pt; color: #5b90f1; font-family: proxima;">
             Стоимость: <span t-field="product.price"/> руб. за <span t-field="product.uom_id"/>,<br/>
                <t t-if="have_qty">Количество: 1<span t-field="product.uom_id"/></t>
         </p>
-        <span style="font-size: 30px;" class="total_price_caption" id="total_price_caption" name="total_price_caption">Всего:</span>
+	    <span style="font-size: 32px;" class="total_price_caption" id="total_price_caption" name="total_price_caption">Всего:</span>
     </xpath>
 </template>
 
