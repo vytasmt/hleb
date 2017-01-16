@@ -127,6 +127,8 @@
 
 	}
 
+	h3 a:hover {}
+
 .mp {background: #fff;padding:0 50px;margin-bottom:50px;}
 
 	a {
@@ -842,7 +844,7 @@
 
 	}
 
-	.oe_structure.oe_empty:empty:before, [data-oe-type=html]:empty:before {content:"Чтобы добавить содержимое, нажмите кнопку редактировать" !important;color:#fff;font-size:19px;}
+	.oe_structure.oe_empty:empty:before, [data-oe-type=html]:empty:before {content:"Чтобы добавить содержимое, нажмите кнопку редактировать" !important;color:#cacaca;font-size:19px;}
 
 	.form-control {border: 1px solid #cacaca}
 	.ui-widget-content {border: 1px solid #d2d2d2}
@@ -1915,6 +1917,11 @@
 	.cart-totals{width:100%}
 
 	.cart-totals tr td:last-child{text-align: right;}
+
+	#cart_total #order_total_taxes {display: none;}
+
+	.js_payment {background: rgba(255, 255, 255, 0.85);padding: 30px}
+
 
 	.box .price,
 
@@ -10156,7 +10163,7 @@ section.mb16.privilege-section {background: rgba(255, 255, 255, 0.9)}
 .ui-tabs .ui-tabs-panel {padding: 2em 2.4em !important;border-top:0;}
 .ui-widget {font-size: 1em}
 .ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {border-radius: 0 !important}
-.ui-tabs .ui-tabs-nav li {width: 49%;white-space:normal;}
+.ui-tabs .ui-tabs-nav li {/*width: 49%;*/white-space:normal;}
 .ui-tabs .ui-tabs-nav {padding: 1.2em 0.2em 0 !important}
 
 .row.basket_col-1 {
