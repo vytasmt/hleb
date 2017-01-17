@@ -375,6 +375,8 @@ $('.oe_website_sale').each(function () {
         $select.parent().toggle(nb>1);
     });
     $(oe_website_sale).find("select[name='shipping_country_id']").change();
+    // $(".finger").first().css("class","active_variant");
+    $("li[data-order=1]").addClass( "active_variant" );
 });
 });
 
