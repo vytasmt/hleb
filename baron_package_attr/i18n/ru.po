@@ -1,0 +1,40 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* baron_package_attr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-07-19 14:47+0000\n"
+"PO-Revision-Date: 2015-07-19 17:48+0300\n"
+"Last-Translator: IT Libertas <info@itlibertas.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: baron_package_attr
+#: field:product.attribute.price,pack_true:0
+#: field:product.attribute.value,pack_true:0
+msgid "Package"
+msgstr "Упаковка"
+
+#. module: baron_package_attr
+#: model:ir.model,name:baron_package_attr.model_product_product
+msgid "Product"
+msgstr "Продукция"
+
+#. module: baron_package_attr
+#: code:addons/baron_package_attr/models/baron_package.py:36
+#, python-format
+msgid "Quantity in pack can not be less than 0!"
+msgstr "Количество в упаковке не может быть меньше 0"
+
+#. module: baron_package_attr
+#: field:product.attribute.price,pack_qty:0
+#: field:product.attribute.value,pack_qty:0
+msgid "Quantity in package"
+msgstr "Количество в упаковке"
