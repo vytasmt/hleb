@@ -145,9 +145,10 @@ $('.oe_website_sale').each(function () {
                 if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
                     product_id = variant_ids[k][0];
                     var result_price = parseFloat(variant_ids[k][3]);
-                    var total_price = result_price * quantity;
+                    var total_price = result_price * quantity * uom_val;
                     $price.html(price_to_str(total_price));
-                    $price_per_one.html(price_to_str(total_price / (uom_val * quantity)));
+                    // $price_per_one.html(price_to_str(total_price / (uom_val * quantity)));
+                    $price_per_one.html(price_to_str(result_price));
                     $price_per_one_qty.html(qty); //
                     $default_price.html(price_to_str(variant_ids[k][3]));
                     if (variant_ids[k][3] - variant_ids[k][2] > 0.2) {
@@ -306,9 +307,10 @@ $('.oe_website_sale').each(function () {
             if (_.isEmpty(_.difference(variant_ids[k][1], values))) {
                 product_id = variant_ids[k][0];
                 var result_price = parseFloat(variant_ids[k][3]);
-                var total_price = result_price * quantity;
+                var total_price = result_price * quantity * uom_val;
                 $price.html(price_to_str(total_price));
-                $price_per_one.html(price_to_str(total_price / (uom_val * quantity)));
+                // $price_per_one.html(price_to_str(total_price / (uom_val * quantity)));
+                $price_per_one.html(price_to_str(result_price));
                 $price_per_one_qty.html(qty); //
                 $default_price.html(price_to_str(variant_ids[k][3]));
                 if (variant_ids[k][3] - variant_ids[k][2] > 0.2) {
@@ -354,7 +356,7 @@ $('.oe_website_sale').each(function () {
             $product_id.val(0);
             $parent.find(".js_check_product").attr("disabled", "disabled");
         }
-        $(".finger").click();
+        // $(".finger").click();
     }
     $('.js_add_cart_variants', oe_website_sale).each(function () {
         $('input.js_variant_change, select.js_variant_change', this).first().trigger('change');

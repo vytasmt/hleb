@@ -14,6 +14,7 @@ from openerp.addons.website_sale.controllers.main import QueryURL
 from openerp.addons.website_sale.controllers.main import website_sale
 from openerp.addons.website_sale.controllers.main import table_compute
 
+
 class baron_shop(website_sale):
 
     @http.route(['/shop/cart/update_baron'], type='json', auth="public", methods=['POST'], website=True)

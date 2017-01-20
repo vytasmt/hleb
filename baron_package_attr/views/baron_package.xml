@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="variants_template_tree_view" model="ir.ui.view">
+        <field name="name">variants.template.tree</field>
+        <field name="model">product.attribute.value</field>
+        <field name="inherit_id" ref="variant_price_system.variants_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="price_multiple" position='after'>
+            	<field name='pack_true'/>
+            	<field name='pack_qty'/>
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>
