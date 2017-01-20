@@ -356,7 +356,7 @@ $('.oe_website_sale').each(function () {
             $product_id.val(0);
             $parent.find(".js_check_product").attr("disabled", "disabled");
         }
-        $(".finger").click();
+        // $(".finger").click();
     }
     $('.js_add_cart_variants', oe_website_sale).each(function () {
         $('input.js_variant_change, select.js_variant_change', this).first().trigger('change');
