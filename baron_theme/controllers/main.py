@@ -533,7 +533,16 @@ class baron_website_sale(website_sale):
     @http.route(['/shop/cart/update_json'], type='json', auth="public", methods=['POST'], website=True)
     def cart_update_json(self, product_id, line_id, add_qty=None, set_qty=None, display=True):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
-        value = super(baron_website_sale, self).cart_update_json(product_id, line_id, add_qty, set_qty, display)
+        add_uos_qty = float(add_qty or 0)
+        set_uos_qty = float(set_qty or 0)
+        product = registry.get('product.product').browse(cr, uid, int(product_id))
+        for v in product.attribute_value_ids:
+            for price_id in v.price_ids:
+                if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
+                    if price_id.pack_true:
+                        add_uos_qty = add_uos_qty * price_id.pack_qty
+                        set_uos_qty = set_uos_qty * price_id.pack_qty
+        value = super(baron_website_sale, self).cart_update_json(product_id, line_id, add_uos_qty, set_uos_qty, display)
         so = request.website.sale_get_order()
         partner = registry.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context).partner_id
         pricelist = partner.property_product_pricelist

@@ -28,9 +28,16 @@ class baron_shop(website_sale):
                 line_id = line_id[0]
         else:
             line_id = int(line_id)
-        set_qty = float(set_qty) if set_qty else None
-        add_qty = float(add_qty) if add_qty else None
-        value = request.website.sale_get_order(force_create=1)._cart_update(product_id=int(product_id), line_id=line_id, add_qty=add_qty, set_qty=set_qty)
+        set_qty = float(set_qty) if set_qty else 0
+        add_qty = float(add_qty) if add_qty else 0
+        product = pool.get('product.product').browse(cr, uid, int(product_id))
+        for v in product.attribute_value_ids:
+            for price_id in v.price_ids:
+                if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
+                    if price_id.pack_true:
+                        add_uos_qty = add_uos_qty * price_id.pack_qty
+                        set_uos_qty = set_uos_qty * price_id.pack_qty
+        value = request.website.sale_get_order(force_create=1)._cart_update(product_id=int(product_id), line_id=line_id, add_qty=add_uos_qty, set_qty=set_uos_qty)
         if not display:
             return None
         value['cart_quantity'] = order.cart_quantity
@@ -167,7 +174,7 @@ class baron_shop(website_sale):
     def get_order(self, *args, **kwargs):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         order = request.website.sale_get_order(force_create=0)
-        if not order.get('cart_uos_qty', False):
+        if order.cart_uos_qty:
             return {'cart_uos_qty': 0}
         return {'cart_uos_qty': order.cart_uos_qty}
 
