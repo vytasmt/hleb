@@ -1209,7 +1209,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <t t-set="product_pack_qty" t-value="default_product(line.product_id).get_default_pack_qty()[0]"/>
+                                            <t t-set="product_pack_qty" t-value="line.product_id.get_default_pack_qty()[0]"/>
                                             <div class="col-lg-3 col-md-3 col-sm-4">
                                                 <div class="row basket_col-1">
                                                     <div class="text-center">
