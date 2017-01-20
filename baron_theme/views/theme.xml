@@ -673,8 +673,7 @@
                            t-value="get_attribute_value_ids(product, order=True)"/>
                         <t t-set="website_price"
                            t-value="get_website_price(product_product, attribute_value_ids_price)"/>
-                        <t t-set="product_pack_qty"
-                           t-value="default_product(product).get_default_pack_qty()[0]"/>
+                        <t t-set="product_pack_qty" t-value="default_product(product).get_default_pack_qty()[0]"/>
                         <p t-if="len(attribute_value_ids_price) &gt; 1">Стоимость:
                             <span t-esc="website_price / product_pack_qty"
                                   t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;,                                    &quot;from_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/>
@@ -1198,21 +1197,19 @@
                                                     <div class="col-lg-5 col-md-5 col-sm-12">
                                                         <div>
                                                             <a t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }">
-                                                                <h3 itemprop="name"
-                                                                    t-field="line.product_id.name"/>
+                                                                <h3 itemprop="name" t-field="line.product_id.name"/>
                                                             </a>
                                                         </div>
                                                         <t t-if="line.product_id.attributes_values_string">
-                                                            <div class="text-muted"
-                                                                 t-esc="line.product_id.attributes_values_string"/>
+                                                            <div class="text-muted" t-esc="line.product_id.attributes_values_string"/>
                                                         </t>
                                                     </div>
                                                     <div class="col-lg-7 col-md-6 col-sm-12 img_basket">
-                                                        <span t-field="line.product_id.image"
-                                                              t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;, &quot;style&quot;: &quot;width: 100%;&quot;}"/>
+                                                        <span t-field="line.product_id.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;, &quot;style&quot;: &quot;width: 100%;&quot;}"/>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <t t-set="product_pack_qty" t-value="default_product(line.product_id).get_default_pack_qty()[0]"/>
                                             <div class="col-lg-3 col-md-3 col-sm-4">
                                                 <div class="row basket_col-1">
                                                     <div class="text-center">
@@ -1225,9 +1222,9 @@
                                                         </t>
                                                     </div>
                                                     <div class="price">
-                                                        <span t-esc="line.price_unit*line.product_uom_qty/line.product_uos_qty"
+                                                        <span t-esc="line.price_unit*product_pack_qty"
                                                               style="white-space: nowrap;"
-                                                              t-field-options="{                                                                  &quot;widget&quot;: &quot;monetary&quot;,                                                                  &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                                             }"/>
+                                                              t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1242,7 +1239,7 @@
                                                     <input type="text" class="js_quantity form-control"
                                                            t-att-data-line-id="line.id"
                                                            t-att-data-product-id="line.product_id.id"
-                                                           t-att-value="int(line.product_uos_qty)"/>
+                                                           t-att-value="int(line.product_uom_qty/product_pack_qty)"/>
                                                     <span class="input-group-addon">
                                                         <a t-attf-href="#"
                                                            class="mb8 float_left js_add_cart_json"

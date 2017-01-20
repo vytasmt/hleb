@@ -585,12 +585,12 @@ class baron_website_sale(website_sale):
         add_uos_qty = float(add_qty)
         # add_uos_qty = float(add_qty) / product.uos_coeff
         set_uos_qty = float(set_qty)
-        # for v in product.attribute_value_ids:
-        #     for price_id in v.price_ids:
-        #         if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
-        #             if price_id.pack_true:
-        #                 add_uos_qty = add_uos_qty * price_id.pack_qty
-        #                 set_uos_qty = set_uos_qty * price_id.pack_qty
+        for v in product.attribute_value_ids:
+            for price_id in v.price_ids:
+                if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
+                    if price_id.pack_true:
+                        add_uos_qty = add_uos_qty * price_id.pack_qty
+                        set_uos_qty = set_uos_qty * price_id.pack_qty
         kw['qty_uos'] = 1
         res = super(baron_website_sale, self).cart_update(product_id, add_uos_qty, set_uos_qty, **kw)
         so = request.website.sudo().sale_get_order()
@@ -624,7 +624,7 @@ class baron_website_sale(website_sale):
         #     so.amount_untaxed = amount_untaxed
         #     so.cart_uos_qty = amount_qty
         back_to_product_href = "/shop/product/" + slug(product.product_tmpl_id)
-        return request.redirect(back_to_product_href)
+        # return request.redirect(back_to_product_href)
 
     @http.route('/shop/properties', type='json', auth="public", website=True)
     def pyth_met(self, *args, **kwargs):
