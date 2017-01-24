@@ -42,6 +42,17 @@ class product_product(models.Model):
                         return price_id.pack_qty
         return 1
 
+    @api.one
+    def get_uom_qty(self):
+        uom_qty = 1
+        for v in self.attribute_value_ids:
+            for price_id in v.price_ids:
+                if price_id.product_tmpl_id.id == self.product_tmpl_id.id:
+                    if price_id.pack_true:
+                        uom_qty = uom_qty * price_id.pack_qty
+        uom_qty = uom_qty / self.uos_coeff
+        return uom_qty
+
     attributes_values_string = fields.Char(
         string='Attributes values',
         compute=get_attributes_values)

@@ -175,7 +175,7 @@ class baron_shop(website_sale):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         order = request.website.sale_get_order(force_create=0)
         if order.cart_uos_qty:
-            return {'cart_uos_qty': 0}
+            return {'cart_uos_qty': order.cart_uos_qty}
         return {'cart_uos_qty': order.cart_uos_qty}
 
 
