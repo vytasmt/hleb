@@ -1210,6 +1210,7 @@
                                                 </div>
                                             </div>
                                             <t t-set="product_pack_qty" t-value="line.product_id.get_default_pack_qty()[0]"/>
+                                            <t t-set="uom_qty" t-value="line.product_id.get_uom_qty()[0]"/>
                                             <div class="col-lg-3 col-md-3 col-sm-4">
                                                 <div class="row basket_col-1">
                                                     <div class="text-center">
@@ -1222,7 +1223,7 @@
                                                         </t>
                                                     </div>
                                                     <div class="price">
-                                                        <span t-esc="line.price_unit*product_pack_qty"
+                                                        <span t-esc="line.price_unit*uom_qty"
                                                               style="white-space: nowrap;"
                                                               t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}"/>
                                                     </div>
@@ -1239,7 +1240,7 @@
                                                     <input type="text" class="js_quantity form-control"
                                                            t-att-data-line-id="line.id"
                                                            t-att-data-product-id="line.product_id.id"
-                                                           t-att-value="int(line.product_uom_qty/product_pack_qty)"/>
+                                                           t-att-value="int(line.product_uom_qty/uom_qty)"/>
                                                     <span class="input-group-addon">
                                                         <a t-attf-href="#"
                                                            class="mb8 float_left js_add_cart_json"

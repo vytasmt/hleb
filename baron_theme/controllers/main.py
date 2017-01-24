@@ -120,7 +120,6 @@ class baron_website(Website):
                     return line[2]
         return 0
 
-
     def format_lang(self, value):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         res = 1
@@ -529,46 +528,19 @@ class baron_website_sale(website_sale):
         }
         return request.website.render("website_sale.product", values)
 
-
     @http.route(['/shop/cart/update_json'], type='json', auth="public", methods=['POST'], website=True)
     def cart_update_json(self, product_id, line_id, add_qty=None, set_qty=None, display=True):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
-        value = super(baron_website_sale, self).cart_update_json(product_id, line_id, add_qty, set_qty, display)
+        product = registry.get('product.product').browse(cr, uid, int(product_id))
+        mult = self.get_multiplier(product)
+        add_uos_qty = float(add_qty or 0) * mult / product.uos_coeff
+        set_uos_qty = float(set_qty or 0) * mult / product.uos_coeff
+        value = super(baron_website_sale, self).cart_update_json(product_id, line_id, add_uos_qty, set_uos_qty, display)
         so = request.website.sale_get_order()
-        partner = registry.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context).partner_id
-        pricelist = partner.property_product_pricelist
-        price_subtotal = 0
-        # if so:
-        #     amount_total = 0
-        #     amount_untaxed = 0
-        #     amount_qty = 0
-        #     for line in so.website_order_line:
-        #         ous_price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id], line.product_id.id, 1,partner.id, context)[pricelist.id]
-        #         price = ous_price / (line.correct_quantity / line.product_uom_qty)
-        #         line.price_unit = price
-        #         line.price_reduce = price
-        #         if line.mod:
-        #             if line.old_pack != line.product_uos_qty:
-        #                 line.price_subtotal = price * line.correct_quantity
-        #                 line.product_uos_qty = line.product_uom_qty  # продаваемое количество в единицах UOS (2 шт по 100 г.)
-        #                 line.product_uom_qty = line.correct_quantity  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
-        #                 line.old_pack = line.product_uos_qty  # количество штук UOS (нр. 1 пакет 100г.)
-        #         elif not line.mod:
-        #             line.price_subtotal = price * line.correct_quantity
-        #             line.product_uos_qty = line.product_uom_qty  # продаваемое количество в единицах UOS (нр. 100 г.)
-        #             line.product_uom_qty = line.correct_quantity  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
-        #             line.old_pack = line.number_packages  # количество штук UOS (нр. 1 пакет 100г.)
-        #             line.mod = True
-        #         amount_total += line.price_subtotal
-        #         amount_qty += line.product_uos_qty
-        #     so.amount_total = amount_total
-        #     so.amount_untaxed = amount_untaxed
-        #     so.cart_uos_qty = amount_qty
-        #     soup = BeautifulSoup(value['website_sale.total'], 'html.parser')
-        #     for el in soup.find_all('span', {"class": "oe_currency_value"}):
-        #         if el.string != "0,00":
-        #             el.string = str(amount_total)
-        #     value['website_sale.total'] = str(soup)
+        line_qty = filter(lambda x: x.id == value['line_id'], so.order_line)[0].product_uom_qty
+        line_qty = line_qty / mult
+        value['quantity'] = line_qty * product.uos_coeff
+        value['cart_quantity'] = sum([r.product_id.uos_coeff*r.product_uom_qty/self.get_multiplier(r.product_id) for r in so.order_line])
         value['baron_theme.minimal_total_alert'] = request.website._render(
             "baron_theme.minimal_total_alert", {
                 'website_sale_order': so,
@@ -578,52 +550,32 @@ class baron_website_sale(website_sale):
         )
         return value
 
-    @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True)
-    def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
-        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
-        product = registry.get('product.product').browse(cr, uid, int(product_id))
-        add_uos_qty = float(add_qty)
-        # add_uos_qty = float(add_qty) / product.uos_coeff
-        set_uos_qty = float(set_qty)
+    def get_multiplier(self, product):
+        res = 1
         for v in product.attribute_value_ids:
             for price_id in v.price_ids:
                 if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
                     if price_id.pack_true:
-                        add_uos_qty = add_uos_qty * price_id.pack_qty
-                        set_uos_qty = set_uos_qty * price_id.pack_qty
+                        res *= price_id.pack_qty
+        return res
+
+    @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True)
+    def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+        product = registry.get('product.product').browse(cr, uid, int(product_id))
+        mult = self.get_multiplier(product)
+        add_uos_qty = float(add_qty or 0) * mult / product.uos_coeff
+        set_uos_qty = float(set_qty or 0) * mult / product.uos_coeff
         kw['qty_uos'] = 1
-        res = super(baron_website_sale, self).cart_update(product_id, add_uos_qty, set_uos_qty, **kw)
+        value = super(baron_website_sale, self).cart_update(product_id, add_uos_qty, set_uos_qty, **kw)
         so = request.website.sudo().sale_get_order()
         partner = registry.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context).partner_id
         pricelist = partner.property_product_pricelist
-        # if so:
-        #     amount_total = 0
-        #     amount_untaxed = 0
-        #     amount_qty = 0
-        #     for line in so.website_order_line:
-        #         ous_price = registry.get('product.pricelist').price_get(cr, uid, [pricelist.id], line.product_id.id, 1, partner.id, context)[pricelist.id]
-        #         price = ous_price / (line.correct_quantity / line.product_uom_qty)
-        #         line.price_unit = price
-        #         line.price_reduce = price
-        #         if line.mod:
-        #             if line.old_pack != line.product_uos_qty:
-        #                 qty = line.old_pack + float(add_qty)
-        #                 line.product_uos_qty = qty  # продаваемое количество в единицах UOS (нр. 100 г.)
-        #                 line.product_uom_qty = qty * line.correct_price_unit  # продаваемое количество в единицах UOM (нр. 0.1 кг.)
-        #                 line.price_subtotal = price * line.product_uom_qty
-        #                 line.old_pack = line.product_uos_qty  # количество штук UOS (нр. 1 пакет 100г.)
-        #         elif not line.mod:
-        #             line.price_subtotal = price * line.correct_quantity
-        #             line.product_uos_qty = line.product_uom_qty    # продаваемое количество в единицах UOS (1 нр. 100 г.)
-        #             line.product_uom_qty = line.correct_quantity   # продаваемое количество в единицах UOM (10 нр. 0.1 кг.)
-        #             line.old_pack = line.product_uos_qty  # количество штук UOS (нр. 1 пакет 100г.)
-        #             line.mod = True
-        #         amount_total += line.price_subtotal
-        #         amount_qty += line.product_uos_qty
-        #     so.amount_total = amount_total
-        #     so.amount_untaxed = amount_untaxed
-        #     so.cart_uos_qty = amount_qty
         back_to_product_href = "/shop/product/" + slug(product.product_tmpl_id)
+        so.cart_quantity = sum(
+            [r.product_id.uos_coeff * r.product_uom_qty / self.get_multiplier(r.product_id) for r in
+             so.order_line])
+        so.cart_uos_qty = so.cart_quantity
         # return request.redirect(back_to_product_href)
 
     @http.route('/shop/properties', type='json', auth="public", website=True)
