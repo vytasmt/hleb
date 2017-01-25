@@ -530,20 +530,26 @@ class baron_website_sale(website_sale):
 
     @http.route(['/shop/cart/update_json'], type='json', auth="public", methods=['POST'], website=True)
     def cart_update_json(self, product_id, line_id, add_qty=None, set_qty=None, display=True):
+        so = request.website.sale_get_order(force_create=1)
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         product = registry.get('product.product').browse(cr, uid, int(product_id))
         mult = self.get_multiplier(product)
-        add_uos_qty = float(add_qty or 0) * mult / product.uos_coeff
-        set_uos_qty = float(set_qty or 0) * mult / product.uos_coeff
+        add_uos_qty = None
+        set_uos_qty = 0
+        if add_qty:
+            add_uos_qty = float(add_qty) * mult / product.uos_coeff
+        if set_qty:
+            set_uos_qty = float(set_qty) * mult / product.uos_coeff
         value = super(baron_website_sale, self).cart_update_json(product_id, line_id, add_uos_qty, set_uos_qty, display)
-        so = request.website.sale_get_order()
-        line_qty = filter(lambda x: x.id == value['line_id'], so.order_line)[0].product_uom_qty
-        line_qty = line_qty / mult
-        value['quantity'] = line_qty * product.uos_coeff
-        value['cart_quantity'] = sum([r.product_id.uos_coeff*r.product_uom_qty/self.get_multiplier(r.product_id) for r in so.order_line])
+        if len(so.order_line) > 0:
+            if so.order_line.id == value['line_id']:
+                line_qty = filter(lambda x: x.id == value['line_id'], so.order_line)[0].product_uom_qty
+                line_qty = line_qty / mult
+                value['quantity'] = line_qty * product.uos_coeff
+                value['cart_quantity'] = sum([r.product_id.uos_coeff*r.product_uom_qty/self.get_multiplier(r.product_id) for r in so.order_line])
         value['baron_theme.minimal_total_alert'] = request.website._render(
             "baron_theme.minimal_total_alert", {
-                'website_sale_order': so,
+                # 'website_sale_order': so,
                 'minimal_order_price': self.get_minimal_order_price(),
                 'format_lang': self.format_lang,
             }
