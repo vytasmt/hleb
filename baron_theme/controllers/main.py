@@ -542,11 +542,11 @@ class baron_website_sale(website_sale):
             set_uos_qty = float(set_qty) * mult / product.uos_coeff
         value = super(baron_website_sale, self).cart_update_json(product_id, line_id, add_uos_qty, set_uos_qty, display)
         if len(so.order_line) > 0:
-            if so.order_line.id == value['line_id']:
+            if value['line_id'] in so.order_line.ids:
                 line_qty = filter(lambda x: x.id == value['line_id'], so.order_line)[0].product_uom_qty
                 line_qty = line_qty / mult
                 value['quantity'] = line_qty * product.uos_coeff
-                value['cart_quantity'] = sum([r.product_id.uos_coeff*r.product_uom_qty/self.get_multiplier(r.product_id) for r in so.order_line])
+            value['cart_quantity'] = sum([r.product_id.uos_coeff*r.product_uom_qty/self.get_multiplier(r.product_id) for r in so.order_line])
         value['baron_theme.minimal_total_alert'] = request.website._render(
             "baron_theme.minimal_total_alert", {
                 # 'website_sale_order': so,
