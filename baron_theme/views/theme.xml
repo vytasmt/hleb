@@ -677,7 +677,7 @@
                         <p t-if="len(attribute_value_ids_price) &gt; 1">Стоимость:
                             <span t-esc="website_price / product_pack_qty"
                                   t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;,                                    &quot;from_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/>
-                            за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;"
+                            за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;margin-left:5px"
                                     t-field="product.uom_id"/>,
                             <br/>
                             Количество:
@@ -689,7 +689,7 @@
                         <p t-if="len(attribute_value_ids_price) &lt;= 1">Стоимость:
                             <span t-esc="website_price"
                                   t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;,                                    &quot;from_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/>
-                            за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;"
+                            за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;margin-left:5px"
                                     t-field="product.uom_id"/>,
                             <br/>
                             Количество:
