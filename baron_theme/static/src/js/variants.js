@@ -104,8 +104,8 @@ $('#add_to_cart').on('click', function () {
                 .css({
                 'opacity': '0.8',
                     'position': 'absolute',
-                    'height': '350px',
-                    'width': '350px',
+                    'height': '375px',
+                    'width': '563px',
                     'z-index': '100'
             })
                 .appendTo($('body'))
