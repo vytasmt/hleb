@@ -591,15 +591,15 @@ class baron_website_sale(website_sale):
         if kwargs.get('value_id', False):
             val = registry.get('product.attribute.value').browse(cr, uid, int(kwargs['value_id']))[0]
             prod = registry.get('product.product').browse(cr, uid, int(kwargs['prod_id']))[0]
-            if prod.property_id:
-                res['prod_property'] = prod.property_id.description
-                res['prod_property_caption'] = prod.property_id.caption
+            if prod.hlebproperty_id:
+                res['prod_property'] = prod.hlebproperty_id.description
+                res['prod_property_caption'] = prod.hlebproperty_id.caption
             else:
                 res['prod_property'] = ''
                 res['prod_property_caption'] = ''
-            if val.property_id:
-                res['val_property'] = val.property_id.description
-                res['val_property_caption'] = val.property_id.caption
+            if val.hlebproperty_id:
+                res['val_property'] = val.hlebproperty_id.description
+                res['val_property_caption'] = val.hlebproperty_id.caption
             else:
                 res['val_property'] = ''
                 res['val_property_caption'] = ''
@@ -608,15 +608,15 @@ class baron_website_sale(website_sale):
             val = registry.get('product.attribute.value').browse(cr, uid, val_id)
             prod = registry.get('product.product').browse(cr, uid, int(kwargs['prod_id']))[0]
             if len(val):
-                if prod.property_id:
-                    res['prod_property'] = prod.property_id.description
-                    res['prod_property_caption'] = prod.property_id.caption
+                if prod.hlebproperty_id:
+                    res['prod_property'] = prod.hlebproperty_id.description
+                    res['prod_property_caption'] = prod.hlebproperty_id.caption
                 else:
                     res['prod_property'] = ''
                     res['prod_property_caption'] = ''
-                if val.property_id:
-                    res['val_property'] = val.property_id.description
-                    res['val_property_caption'] = val.property_id.caption
+                if val.hlebproperty_id:
+                    res['val_property'] = val.hlebproperty_id.description
+                    res['val_property_caption'] = val.hlebproperty_id.caption
                 else:
                     res['val_property'] = ''
                     res['val_property_caption'] = ''
