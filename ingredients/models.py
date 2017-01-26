@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 
 
 class Property(models.Model):
-    _name = 'property'
+    _name = 'hlebproperty'
 
     name = fields.Char(string=u"Наименование", required=True)
     caption = fields.Char(string=u"Заголовок", required=True)
@@ -18,10 +18,10 @@ class Property(models.Model):
 class ProductAttributeValue(models.Model):
     _inherit = 'product.attribute.value'
 
-    property_id = fields.Many2one('property', string=u"Свойство")
+    hlebproperty_id = fields.Many2one('hlebproperty', string=u"Свойство")
 
 
 class ProductProduct(models.Model):
     _inherit = 'product.template'
 
-    property_id = fields.Many2one('property', string=u"Свойство")
+    hlebproperty_id = fields.Many2one('hlebproperty', string=u"Свойство")

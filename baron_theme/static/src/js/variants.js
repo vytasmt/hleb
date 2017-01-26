@@ -8,7 +8,7 @@ $(document).ready(function () {
         $("label > input.js_variant_change:checked").each(function () {
             var parent_li = $(this).parents("ul.list-unstyled"); // parent element is needed to get sequence number
             variant_text = $("li[data-order=" + parent_li.data("order") + "]").children().first().text(); // get corresponding variant text
-            value_text = $(this).parent().text()
+            value_text = $(this).parent().text();
             // if (variant_text == 'Выберите вкус'){
             //     value_name = value_text
             // }
@@ -18,7 +18,7 @@ $(document).ready(function () {
         $(".variants_result_string").text(result);
         openerp.jsonRpc("/shop/properties", 'call', {
             'prod_id': this.prod_id,
-            'value_id': this.value,
+            'value_id': $("input.js_variant_change:checked").first().val(),
             'value_name': value_name
         }).then(function (result) {
             $(".prod_property_caption").text(result['prod_property_caption']);
