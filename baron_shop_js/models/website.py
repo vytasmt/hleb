@@ -5,6 +5,7 @@ from openerp import models
 from openerp.http import request
 from fractions import Fraction as FR
 from openerp import tools, SUPERUSER_ID
+import decimal
 import re
 
 
@@ -26,13 +27,18 @@ class BaronWebsite(models.Model):
         res = {'uos_coeff': '','styles': '','factor': '', 'uos_name': False,'uom_name': False,'uos_qty': False, 'uom_qty': False, 'cof': False}
         res['list_price'] = product.list_price
         res['styles'] = ', '.join(self.env['product.style'].sudo().browse(product.website_style_ids.ids).mapped('html_class'))
+        res['mult'] = 1
+        res['variant_price'] = res['list_price']
         if uos_id:
             uos = self.env['product.uom'].sudo().browse(uos_id)
             uom = self.env['product.uom'].sudo().browse(uom_id)
+            res['mult'] = self.get_multiplier(product)
             res['uos_qty'] = self.subnumber(uos.name)
             res['uom_qty'] = self.subnumber(uom.name)
+            res['variant_uos'] = decimal.Decimal(res['uos_qty'] * res['mult'])
             res['factor'] = product.uos_id.factor
-            res['uos_coeff'] = product.uos_coeff
+            res['uos_coeff'] = product.uos_coeff or 1
+            res['variant_price'] = round(decimal.Decimal(res['mult']*res['list_price']/res['uos_coeff']),1)
             res['uos_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  uos.name.encode('utf8').decode('utf8'))
             res['uom_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  uom.name.encode('utf8').decode('utf8'))
             if uos.uom_type == 'smaller':
@@ -42,6 +48,17 @@ class BaronWebsite(models.Model):
             else:
                 res['cof'] = 1
             return res
+        return res
+
+    def get_multiplier(self, product):
+        res = 1
+        if product._model._name == 'product.template':
+            return res
+        for v in product.attribute_value_ids:
+            for price_id in v.price_ids:
+                if price_id.product_tmpl_id.id == product.product_tmpl_id.id:
+                    if price_id.pack_true:
+                        res *= price_id.pack_qty
         return res
 
     @api.model
