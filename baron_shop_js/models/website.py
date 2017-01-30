@@ -29,9 +29,10 @@ class BaronWebsite(models.Model):
         res['styles'] = ', '.join(self.env['product.style'].sudo().browse(product.website_style_ids.ids).mapped('html_class'))
         res['mult'] = 1
         res['variant_price'] = res['list_price']
+        uom = self.env['product.uom'].sudo().browse(uom_id)
+        res['uom_name'] = re.sub(re.compile(u'[0-9/ ]'), '', uom.name.encode('utf8').decode('utf8'))
         if uos_id:
             uos = self.env['product.uom'].sudo().browse(uos_id)
-            uom = self.env['product.uom'].sudo().browse(uom_id)
             res['mult'] = self.get_multiplier(product)
             res['uos_qty'] = self.subnumber(uos.name)
             res['uom_qty'] = self.subnumber(uom.name)
@@ -40,7 +41,6 @@ class BaronWebsite(models.Model):
             res['uos_coeff'] = product.uos_coeff or 1
             res['variant_price'] = round(decimal.Decimal(res['mult']*res['list_price']/res['uos_coeff']),1)
             res['uos_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  uos.name.encode('utf8').decode('utf8'))
-            res['uom_name'] = re.sub(re.compile(u'[0-9/ ]'), '',  uom.name.encode('utf8').decode('utf8'))
             if uos.uom_type == 'smaller':
                 res['cof'] = float(product.uos_coeff)
             elif uos.uom_type == 'bigger':
@@ -49,6 +49,10 @@ class BaronWebsite(models.Model):
                 res['cof'] = 1
             return res
         return res
+
+    @api.model
+    def convert_price(self, price):
+        return ("%.02f" % price).replace('.', ',')
 
     def get_multiplier(self, product):
         res = 1

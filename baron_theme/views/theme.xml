@@ -673,25 +673,23 @@
                         <t t-set="website_price" t-value="get_website_price(product_product, attribute_value_ids_price)"/>
                         <t t-set="product_pack_qty" t-value="default_product(product).get_default_pack_qty()[0]"/>
                         <p t-if="product_pack_qty &gt; 1">Стоимость:
-                            <span t-esc="website_price" t-esc-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;,&quot;from_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}"/>
+                            <span t-esc="website.env['baron_website_tools'].convert_price(website_price) +' руб.'"/>
                             за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;margin-left:5px" t-field="product.uom_id"/>,
                             <br/>
-                            Количество:
-                            <b><t t-esc="uos_vals['variant_uos']"/></b>
-                            <span style="color: #1b1b1b;font-weight: normal;" t-esc="uos_vals['uos_name']"/>
+                            В упаковке:
+                            <b><t t-esc="str(uos_vals['variant_uos']) + ' ' + uos_vals['uos_name']"/></b>
                         </p>
                         <p t-if="product_pack_qty &lt; 2">Стоимость:
-                            <span t-esc="website_price" t-esc-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;,&quot;from_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}"/>
+                            <span t-esc="website.env['baron_website_tools'].convert_price(website_price) +' руб.'"/>
                             за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;margin-left:5px" t-field="product.uom_id"/>,
                             <br/>
                             Количество:
-                            <span style="font-size:15px; color: #1b1b1b;"><b>1</b></span>
-                            <span style="color: #1b1b1b;font-weight: normal;" t-field="product.uom_id"/>
+                            <span style="font-size:15px; color: #1b1b1b;"><b>1 <t t-esc="uos_vals['uom_name']"/></b></span>
                         </p>
                         <p t-if="product_product.lst_price - website_price &gt; 1" style="display: inline; padding-right: 10px;">
                             <del class="text-danger" style="white-space: nowrap;" t-esc="round(product_product.lst_price)" t-esc-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}"/>
                         </p>
-                        <span class="price" t-esc="uos_vals['variant_price']" style="display: inline;" t-esc-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}">
+                        <span class="price" t-esc="website.env['baron_website_tools'].convert_price(uos_vals['variant_price']) +' руб.'" style="display: inline;" >
                         </span>
                         <span itemprop="price" style="display:none;" t-esc="website_price"/>
                         <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
