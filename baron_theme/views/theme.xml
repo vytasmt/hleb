@@ -1071,107 +1071,105 @@
 
 
     <template id="cart" inherit_id="website_sale.cart" name="Shopping Cart" >
-        <xpath expr="//t[@t-call='website.layout']" position="replace">
-    <t t-call="website.layout">
-      <section class="inner_header" style="background-image: url(/baron_theme/static/src/img/bc_inner_1.jpg);">
-        <div class="vint_border"/>
-        <div class="container oe_website_sale">
-          <div class="row">
-            <a href="javascript:void(0)" class="logo-big"/>
-            <div class="contact-block-slider">
-              <a class="phone-slider">+7 (812) 648-45-45</a>
-              <a class="call-slider" href="/page/website.contactus">Заказать звонок</a>
-              <a class="map-slider" href="/page/website.contactus">
-                <span>На карте</span>
-              </a>
+    <xpath expr="//t[@t-call='website.layout']" position="replace">
+        <t t-call="website.layout">
+        <section class="inner_header" style="background-image: url(/baron_theme/static/src/img/bc_inner_1.jpg);">
+            <div class="vint_border"/>
+            <div class="container oe_website_sale">
+              <div class="row">
+                <a href="javascript:void(0)" class="logo-big"/>
+                <div class="contact-block-slider">
+                  <a class="phone-slider">+7 (812) 648-45-45</a>
+                  <a class="call-slider" href="/page/website.contactus">Заказать звонок</a>
+                  <a class="map-slider" href="/page/website.contactus">
+                    <span>На карте</span>
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-      <div id="wrap">
-        <div class="container oe_website_sale">
-          <div class="row">
-            <div class="col-md-12 col-sm-9 oe_cart">
-                <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+          </section>
+        <div id="wrap">
+            <div class="container oe_website_sale">
+              <div class="row">
+                <div class="col-md-12 col-sm-9 oe_cart">
+                    <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
                     <div t-if="not website_sale_order or not website_sale_order.website_order_line"
-                         class="well well-lg">Your cart is empty!
-                    </div>
+                             class="well well-lg">Your cart is empty!
+                        </div>
                     <div class="container oe_website_sale">
-                        <h1>
-                            <span class="title-section-separation left"/>
-                            <span>Корзина</span>
-                            <span class="title-section-separation right"/>
-                        </h1>
-                        <section name="conditions" class="oe_structure">
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="row" style="margin-top:35px">
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-                                         style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
-                                        <span aria-hidden="true" class="fa fa-truck " style=""/>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                        <ul class="list-unstyled-cart">
-                                            <li>Оперативная доставка по Санкт-Петербургу</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="row" style="margin-top:35px">
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-                                         style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
-                                        <i aria-hidden="true" class="fa fa-envelope" style=""/>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                        <ul class="list-unstyled-cart">
-                                            <li>Счет высылается по электронной почте</li>
-                                        </ul>
+                            <h1>
+                                <span class="title-section-separation left"/>
+                                <span>Корзина</span>
+                                <span class="title-section-separation right"/>
+                            </h1>
+                            <section name="conditions" class="oe_structure">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="row" style="margin-top:35px">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+                                             style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
+                                            <span aria-hidden="true" class="fa fa-truck " style=""/>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                            <ul class="list-unstyled-cart">
+                                                <li>Оперативная доставка по Санкт-Петербургу</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="row" style="margin-top:35px">
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-                                         style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
-                                        <span aria-hidden="true" class="fa fa-check-circle-o "
-                                              style="animation-play-state: paused; transition: none"/>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                        <ul class="list-unstyled-cart">
-                                            <li>Вся продукция сертифицирована EAC</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="row" style="margin-top:35px">
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
-                                         style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
-                                        <span aria-hidden="true" class="fa fa-rub "
-                                              style="animation-play-state: paused; transition: none"/>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                        <ul class="list-unstyled-cart">
-                                            <li>Оплата при получении заказа</li>
-                                        </ul>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="row" style="margin-top:35px">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+                                             style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
+                                            <i aria-hidden="true" class="fa fa-envelope" style=""/>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                            <ul class="list-unstyled-cart">
+                                                <li>Счет высылается по электронной почте</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                        <section class="oe_structure basket_main">
-                            <div class="row basket title">
-                                <div class="col-lg-7 col-md-7 col-sm-5 col-xs-4">
-                                    <h4>Товар</h4>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="row" style="margin-top:35px">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"
+                                             style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
+                                            <span aria-hidden="true" class="fa fa-check-circle-o "
+                                                  style="animation-play-state: paused; transition: none"/>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                            <ul class="list-unstyled-cart">
+                                                <li>Вся продукция сертифицирована EAC</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
-                                    <h4>Цена</h4>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="row" style="margin-top:35px">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="font-size: 25px; text-align: right; color: rgba(0, 0, 0, 0.35);">
+                                            <span aria-hidden="true" class="fa fa-rub " style="animation-play-state: paused; transition: none"/>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                            <ul class="list-unstyled-cart">
+                                                <li>Оплата при получении заказа</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                                    <h4>Количество</h4>
+                            </section>
+                            <section class="oe_structure basket_main">
+                                <div class="row basket title">
+                                    <div class="col-lg-7 col-md-7 col-sm-5 col-xs-4">
+                                        <h4>Товар</h4>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                                        <h4>Цена</h4>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                                        <h4>Количество</h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
-                            <t t-if="website_sale_order is not None">
+                                <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+                                <t t-if="website_sale_order is not None">
                                     <t t-foreach="website_sale_order.website_order_line" t-as="line">
                                         <div class="row basket tovar">
                                             <div class="col-lg-7 col-md-7 col-sm-5">
@@ -1197,36 +1195,24 @@
                                                 <div class="row basket_col-1">
                                                     <div class="text-center">
                                                         <t t-if="(compute_currency(line.product_id.lst_price) - line.price_unit) &gt; 1">
-                                                            <del class="text-danger"
-                                                                 style="white-space: nowrap;"
-                                                                 t-field="line.product_id.lst_price"
-                                                                 t-field-options="{                                                                         &quot;widget&quot;: &quot;monetary&quot;,                                                                         &quot;from_currency&quot;: &quot;line.company_id.currency_id&quot;,                                                                         &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                                                     }"/>
-                                                            &amp;nbsp;
+                                                            <del class="text-danger" style="white-space: nowrap;" t-field="line.product_id.lst_price" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;from_currency&quot;: &quot;line.company_id.currency_id&quot;,&quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}"/>&amp;nbsp;
                                                         </t>
                                                     </div>
                                                     <div class="price">
-                                                        <span t-esc="line.price_unit*uom_qty"
-                                                              style="white-space: nowrap;"
-                                                              t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}"/>
+                                                        <span t-esc="website.env['baron_website_tools'].convert_price(line.price_unit*uom_qty) +' руб.'" style="white-space: nowrap;" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-3">
                                                 <div class="css_quantity input-group oe_website_spinner">
                                                     <span class="input-group-addon">
-                                                        <a t-attf-href="#" class="mb8 js_add_cart_json"
-                                                           data-no-instant="">
+                                                        <a t-attf-href="#" class="mb8 js_add_cart_json" data-no-instant="">
                                                             <i class="fa fa-minus"/>
                                                         </a>
                                                     </span>
-                                                    <input type="text" class="js_quantity form-control"
-                                                           t-att-data-line-id="line.id"
-                                                           t-att-data-product-id="line.product_id.id"
-                                                           t-att-value="int(line.product_uom_qty/uom_qty)"/>
+                                                    <input type="text" class="js_quantity form-control" t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id" t-att-value="int(line.product_uom_qty/uom_qty)"/>
                                                     <span class="input-group-addon">
-                                                        <a t-attf-href="#"
-                                                           class="mb8 float_left js_add_cart_json"
-                                                           data-no-instant="">
+                                                        <a t-attf-href="#" class="mb8 float_left js_add_cart_json" data-no-instant="">
                                                             <i class="fa fa-plus"/>
                                                         </a>
                                                     </span>
@@ -1234,29 +1220,51 @@
                                             </div>
                                         </div>
                                     </t>
-                            </t>
-                        </section>
-                        <div class="col-xs-12 col-sm-6 text-muted right_column_bkg" id="right_column">
+                                </t>
+                            </section>
+                            <div class="col-xs-12 col-sm-6 text-muted right_column_bkg" id="right_column"></div>
+                            <t t-call="website_sale.total"/>
+                            <div class="clearfix"/>
+                            <t t-call="baron_theme.minimal_total_alert"/>
+                            <div class="oe_structure"/>
                         </div>
-                        <t t-call="website_sale.total"/>
-                        <div class="clearfix"/>
-                        <t t-call="baron_theme.minimal_total_alert"/>
-                        <div class="oe_structure"/>
-                    </div>
                     <table id="cart_products" class="hidden"/>
+                </div>
+              </div>
             </div>
           </div>
+        <div class="oe_structure"/>
+        <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_1459091489617" href="#myCarousel_1459091489617" style="width: 10%">
+            <i class="fa fa-chevron-left"/>
         </div>
-      </div>
-      <div class="oe_structure"/>
-      <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_1459091489617" href="#myCarousel_1459091489617" style="width: 10%">
-        <i class="fa fa-chevron-left"/>
-      </div>
-      <div class="carousel-control right" data-slide="next" data-target="#myCarousel_1459091489617" href="#myCarousel_1459091489617" style="width: 10%">
-        <i class="fa fa-chevron-right"/>
-      </div>
-    </t>
-  </xpath>
+        <div class="carousel-control right" data-slide="next" data-target="#myCarousel_1459091489617" href="#myCarousel_1459091489617" style="width: 10%">
+            <i class="fa fa-chevron-right"/>
+        </div>
+        </t>
+    </xpath>
+    </template>
+
+    <template id="website_sale.total">
+        <table class='pull-right mb16' id="cart_total" t-if="website_sale_order">
+            <thead>
+                <tr width="100" style="border-top: 1px solid #000" id="order_total">
+                    <th><h3>Итого: </h3></th>
+                    <th class="text-right">
+                      <h3><span t-esc="website.env['baron_website_tools'].convert_price(website_sale_order.amount_total) +' руб.'"/></h3>
+                    </th>
+                </tr>
+                <tr width="120" class="text-muted" id="order_total_taxes">
+                    <td><abbr title="Taxes may be updated after providing shipping address">Taxes:</abbr></td>
+                    <td class="text-right">
+                        <span t-field="website_sale_order.amount_tax" style="white-space: nowrap;" t-field-options='{
+                            "widget": "monetary",
+                            "from_currency": "website_sale_order.pricelist_id.currency_id",
+                            "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                        }'/>
+                    </td>
+                </tr>
+            </thead>
+        </table>
     </template>
 
     <template id="website_sale.reduction_code" inherit_id="baron_theme.cart" active="False" customize_show="True" name="Coupon Code">
