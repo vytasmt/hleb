@@ -512,6 +512,10 @@
         <xpath expr="//html/head" position="inside">
             <link rel="stylesheet" href="/baron_theme/static/src/css/bootstrap.css"/>
             <link rel="stylesheet" href="/baron_theme/static/src/css/custom.css"/>
+            <link rel="stylesheet" href="/baron_theme/static/src/css/animate.min.css"/>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"/>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"/>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.js"/>
         </xpath>
         <xpath expr="//div[@id='wrapwrap']/header" position="attributes">
             <attribute name="id">header-style-1</attribute>
@@ -724,7 +728,7 @@
                         <p t-if="len(attribute_value_ids_price) &gt; 1">Стоимость:
                             <span t-esc="website_price / product_pack_qty"
                                   t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/>
-                            за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;"
+                            за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;margin-left:5px"
                                     t-field="product.uom_id"/>,
                             <br/>
                             Количество:
@@ -736,7 +740,7 @@
                         <p t-if="len(attribute_value_ids_price) &lt;= 1">Стоимость:
                             <span t-esc="round(website_price)"
                                   t-esc-options="{                                    &quot;widget&quot;: &quot;monetary&quot;,                                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                                }"/>
-                            за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;"
+                            за<span style="font-size:15px; font-weight: normal; color: #1b1b1b;margin-left:5px"
                                     t-field="product.uom_id"/>,
                             <br/>
                             Количество:
@@ -1016,7 +1020,7 @@
             <section class="oe_structure mt-20" t-if="product.alternative_product_ids">
                 <div class="container category related">
                     <div style="background: rgba(255, 253, 234, 0.92);margin:0" class="row mt0 mb16">
-                    <div class="col-md-12 text-center">
+                    <div style="padding-bottom:10px" class="col-md-12 text-center">
                             <h2 class="title-block pro-title">
                                 <span class="title-section-separation left"/>
                                 <span>Обратите внимание на эти товары:</span>
