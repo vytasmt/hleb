@@ -239,7 +239,7 @@ $('.oe_website_sale').each(function () {
     function price_to_str(price) {
         price = Math.round(price * 100) / 100;
         var dec = Math.round((price % 1) * 100);
-        return price + (dec ? '' : '.0') + (dec%10 ? '' : '0');
+        return price + (dec ? '' : ',0') + (dec%10 ? '' : '0');
     }
     function quantity_to_str(price) {
         price = Math.round(price * 100) / 100;
