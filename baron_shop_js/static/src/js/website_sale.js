@@ -76,6 +76,10 @@ $('.oe_website_sale').each(function () {
                 $('.js_quantity[data-line-id='+line_id+']').val(data.quantity).html(data.quantity);
                 $("#cart_total").replaceWith(data['website_sale.total']);
                 $("#minimal_total_alert").replaceWith(data['baron_theme.minimal_total_alert']);
+                for (line_subtotal in data['lines_price_subtotal']) {
+                    summ = data['lines_price_subtotal'][line_subtotal];
+                    $('.price_subtotal[data-line-id=' + parseInt(line_subtotal) + ']').val(summ).html(summ);
+                }
             });
     });
 

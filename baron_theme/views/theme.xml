@@ -1199,7 +1199,12 @@
                                                         </t>
                                                     </div>
                                                     <div class="price">
-                                                        <span t-esc="website.env['baron_website_tools'].convert_price(line.price_unit*uom_qty) +' руб.'" style="white-space: nowrap;" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;}"/>
+                                                        <span t-esc="website.env['baron_website_tools'].convert_price(line.price_unit*uom_qty) +' руб.'" style="white-space: nowrap;"/>
+                                                        <br></br>
+                                                        <br></br>
+                                                        <span class="total_price_subtotal">Всего: </span>
+                                                        <span class="price_subtotal" t-esc="website.env['baron_website_tools'].convert_price(line.price_subtotal)" t-att-data-line-id="line.id"/>
+                                                        <span class="currency_price_subtotal"> руб.</span>
                                                     </div>
                                                 </div>
                                             </div>
