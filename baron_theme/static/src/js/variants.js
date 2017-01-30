@@ -5,17 +5,19 @@ $(document).ready(function () {
         var variant_text = "";
         var value_text = "";
         var value_name = "";
+        var mult = 1;
         $("label > input.js_variant_change:checked").each(function () {
-            var parent_li = $(this).parents("ul.list-unstyled"); // parent element is needed to get sequence number
-            variant_text = $("li[data-order=" + parent_li.data("order") + "]").children().first().text(); // get corresponding variant text
-            value_text = $(this).parent().text();
-            // if (variant_text == 'Выберите вкус'){
-            //     value_name = value_text
-            // }
-            // result += variant_text + ": " + value_text + "; "; // get variant value
-            result += value_text + "; "; // get variant value
+            if ($(this).siblings("span[name='attr_uom_val']").length == 0) {
+                var parent_li = $(this).parents("ul.list-unstyled"); // parent element is needed to get sequence number
+                variant_text = $("li[data-order=" + parent_li.data("order") + "]").children().first().text(); // get corresponding variant text
+                value_text = $(this).parent().text();
+                result += value_text + ", "; // get variant value
+            }
+            else {
+                mult *= $(this).siblings("span[name='attr_uom_val']").text();
+            }
         });
-        $(".variants_result_string").text(result);
+        $(".variants_result_string").text(result + mult + ' шт.');
         openerp.jsonRpc("/shop/properties", 'call', {
             'prod_id': this.prod_id,
             'value_id': $("input.js_variant_change:checked").first().val(),
